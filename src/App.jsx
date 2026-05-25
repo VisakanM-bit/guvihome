@@ -9,6 +9,10 @@ import Companies from "./components/Companies/Companies"
 import Proud from "./components/Proud/Proud"
 import Explore from "./components/Explore/Explore"
 import Awards from "./components/Awards/Awards"
+import Learning from "./components/Learning/Learning"
+import Corporate from "./components/Corporate/Corporate"
+import About from "./components/About/About"
+import Resources from "./components/Resources/Resources"
 
 function App() {
 
@@ -46,8 +50,22 @@ function App() {
       {/* EXPLORE COURSES */}
       <Explore />
 
+      {/* LEARNING PLATFORM */}
+      <Learning />
+
+      {/* CORPORATE SECTION */}
+      <Corporate />
+
+      {/* ABOUT SECTION */}
+      <About />
+
       {/* AWARDS SECTION */}
       <Awards />
+      
+      {/* FREE RESOURCES */}
+      <Resources />
+
+      
 
     </>
 
