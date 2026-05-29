@@ -1,5 +1,8 @@
 import { FaChevronDown } from "react-icons/fa"
+<<<<<<< HEAD
 import { Link } from "react-router-dom"
+=======
+>>>>>>> 8cca6526669db68d743f5eab34e201df603fed9a
 import {
   FaLaptopCode,
   FaRobot,
@@ -166,6 +169,7 @@ function Navbar() {
 
                   </div>
 
+<<<<<<< HEAD
                   <Link
   to="/programs"
   className="
@@ -179,6 +183,13 @@ function Navbar() {
 >
   Explore all Programs →
 </Link>
+=======
+                  <button className="bg-black text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 transition">
+
+                    Explore All Programs →
+
+                  </button>
+>>>>>>> 8cca6526669db68d743f5eab34e201df603fed9a
 
                 </div>
 
