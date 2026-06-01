@@ -6,6 +6,7 @@ import InvestmentCalculator from "../components/InvestmentCalculator/InvestmentC
 import LearnerVideos from "../components/LearnerVideos/LearnerVideos"
 import BenefitsSection from "../components/BenefitsSection/BenefitsSection"
 import AboutGuvi from "../components/AboutGuvi/AboutGuvi"
+import CareerPopup from "../components/CareerPopup/CareerPopup";
 
 import {
   FaBrain,
