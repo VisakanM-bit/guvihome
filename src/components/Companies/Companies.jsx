@@ -36,10 +36,10 @@ function Companies() {
 
   return (
 
-    <section className="bg-[#f5f5f5] py-24 overflow-hidden">
+    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10">
 
       {/* TITLE */}
-      <h1 className="text-center text-5xl font-bold text-[#222] mb-16">
+      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#222] mb-8 sm:mb-10 md:mb-12 lg:mb-16">
 
         Where Do Our Students Work?
 
@@ -49,7 +49,7 @@ function Companies() {
       <div className="overflow-hidden w-full">
 
         <div
-          className="flex gap-6 w-max animate-scroll"
+          className="flex gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-max animate-scroll"
         >
 
           {[...companies, ...companies].map((company, index) => (

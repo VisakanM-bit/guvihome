@@ -11,17 +11,17 @@ function Footer1() {
 
   return (
 
-    <footer className="bg-[#111111] text-white pt-20 pb-8 px-10 mt-20">
+    <footer className="bg-[#111111] text-white pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-4 sm:pb-6 md:pb-8 px-4 sm:px-6 md:px-8 lg:px-10 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
 
-      <div className="max-w-[1500px] mx-auto">
+      <div className="max-w-full lg:max-w-[1500px] mx-auto">
 
         {/* TOP LINKS */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 pb-16 border-b border-gray-700">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 pb-8 sm:pb-10 md:pb-12 lg:pb-16 border-b border-gray-700">
 
           {/* COLUMN 1 */}
           <div>
 
-            <h2 className="font-bold text-white mb-6 uppercase tracking-wide">
+            <h2 className="font-bold text-white mb-4 sm:mb-5 md:mb-6 uppercase tracking-wide text-xs sm:text-sm md:text-base">
 
               Zen Class
 

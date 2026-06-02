@@ -100,38 +100,39 @@ const [openFilter, setOpenFilter] = useState(null)
 
   return (
 
-    <section className="max-w-7xl mx-auto py-20">
+    <section className="max-w-full lg:max-w-7xl mx-auto py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-0">
 
       {/* HEADER */}
 
-      <div className="flex justify-between items-center mb-14">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-10 md:mb-12 lg:mb-14">
 
-        <h2 className="text-5xl font-bold text-slate-900">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
           Featured Programs
         </h2>
 
-        <div className="relative">
+        <div className="relative w-full sm:w-auto">
 
           <input
             type="text"
             placeholder="Search"
             className="
-            w-[320px]
+            w-full sm:w-80
             border
             border-slate-300
-            rounded-xl
-            px-5
-            py-4
+            rounded-lg sm:rounded-xl lg:rounded-2xl
+            px-4 sm:px-5 md:px-6
+            py-2 sm:py-3 md:py-4
             outline-none
+            text-sm sm:text-base
             "
           />
 
-          <FaSearch className="absolute right-5 top-5 text-gray-500" />
+          <FaSearch className="absolute right-3 sm:right-4 top-2.5 sm:top-3 md:top-4 text-gray-500 text-xs sm:text-sm" />
 
         </div>
 
       </div>
-    <div className="grid grid-cols-4 gap-6 mb-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
 
   {/* CATEGORY */}
 
@@ -168,16 +169,16 @@ const [openFilter, setOpenFilter] = useState(null)
       <div
         className="
         absolute
-        top-16
+        top-12 sm:top-14 md:top-16
         left-0
         w-full
         bg-white
-        rounded-2xl
+        rounded-lg sm:rounded-xl lg:rounded-2xl
         shadow-xl
         border
         z-50
-        p-4
-        space-y-3
+        p-3 sm:p-4 md:p-5
+        space-y-2 sm:space-y-3
         "
       >
 
@@ -389,7 +390,7 @@ const [openFilter, setOpenFilter] = useState(null)
 </div>
       {/* CARDS */}
 
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
 
         {courses.map((course, index) => (
 
@@ -397,12 +398,12 @@ const [openFilter, setOpenFilter] = useState(null)
             key={index}
             className="
             bg-white
-            rounded-2xl
+            rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl
             border
             border-purple-100
             shadow-md
             overflow-hidden
-            h-[360px]
+            min-h-80 sm:min-h-96 md:min-h-[420px]
             flex
             flex-col
             "
@@ -418,8 +419,8 @@ const [openFilter, setOpenFilter] = useState(null)
               text-white
               text-xs
               font-bold
-              px-4
-              py-2
+              px-3 sm:px-4 md:px-5
+              py-2 sm:py-2.5 md:py-3
               inline-block
               w-fit
               "
@@ -429,18 +430,18 @@ const [openFilter, setOpenFilter] = useState(null)
 
             {/* BODY */}
 
-            <div className="p-5 flex flex-col flex-1">
+            <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1">
 
               {/* TITLE */}
 
               <h3
                 className="
-                text-xl
+                text-base sm:text-lg md:text-xl lg:text-2xl
                 font-bold
                 text-slate-800
-                leading-7
-                min-h-[70px]
-                mb-4
+                leading-snug
+                min-h-16 sm:min-h-20 md:min-h-24
+                mb-3 sm:mb-4 md:mb-5
                 "
               >
                 {course.title}
@@ -448,7 +449,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
               {/* DETAILS */}
 
-              <div className="space-y-3 text-gray-600 flex-grow">
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3 text-gray-600 text-xs sm:text-sm flex-grow">
 
                 <div className="flex items-start gap-3">
                   <FaGlobe className="mt-1" />
@@ -469,7 +470,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
               {/* BUTTONS */}
 
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 mt-4 sm:mt-5 md:mt-6">
 
                 <button
                   className="
@@ -477,9 +478,9 @@ const [openFilter, setOpenFilter] = useState(null)
                   hover:bg-green-600
                   text-white
                   font-semibold
-                  py-3
+                  py-2 sm:py-2.5 md:py-3 lg:py-4
                   rounded-lg
-                  text-sm
+                  text-xs sm:text-sm md:text-base
                   transition
                   "
                 >
@@ -490,10 +491,10 @@ const [openFilter, setOpenFilter] = useState(null)
                   className="
                   border
                   border-gray-300
-                  py-3
+                  py-2 sm:py-2.5 md:py-3 lg:py-4
                   rounded-lg
                   font-semibold
-                  text-sm
+                  text-xs sm:text-sm md:text-base
                   hover:bg-gray-50
                   transition
                   "

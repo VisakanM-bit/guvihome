@@ -31,7 +31,7 @@ function Awards() {
 
   return (
 
-    <section className="bg-[#f5f5f5] py-24 px-10">
+    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
 
       <Swiper
 
@@ -56,18 +56,18 @@ function Awards() {
 
           <SwiperSlide key={index}>
 
-            <div className="bg-white rounded-3xl p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center shadow-md">
+            <div className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl p-6 sm:p-7 md:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 md:gap-8 lg:gap-10 items-center shadow-md">
 
               {/* LEFT SIDE */}
-              <div className="text-center px-8">
+              <div className="text-center px-4 sm:px-6 md:px-8">
 
-                <h3 className="text-gray-500 tracking-widest text-xl mb-6">
+                <h3 className="text-gray-500 tracking-widest text-xs sm:text-sm md:text-base lg:text-xl mb-4 sm:mb-5 md:mb-6">
 
                   OUR AWARDS & ACHIEVEMENTS
 
                 </h3>
 
-                <div className="flex items-center justify-center gap-6">
+                <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6">
 
                   <div className="text-[120px] text-yellow-500">
 
@@ -75,7 +75,7 @@ function Awards() {
 
                   </div>
 
-                  <h1 className="text-6xl font-bold text-[#2b2b2b] leading-tight">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2b2b2b] leading-tight">
 
                     {award.title}
 
@@ -89,7 +89,7 @@ function Awards() {
 
                 </div>
 
-                <p className="text-gray-500 text-2xl leading-relaxed mt-10">
+                <p className="text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mt-6 sm:mt-8 md:mt-10">
 
                   {award.description}
 
@@ -103,7 +103,7 @@ function Awards() {
                 <img
                   src={award.image}
                   alt="Award"
-                  className="w-full h-[600px] object-cover rounded-3xl"
+                  className="w-full h-auto max-h-80 sm:max-h-96 md:max-h-[500px] lg:max-h-[600px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl"
                 />
 
               </div>

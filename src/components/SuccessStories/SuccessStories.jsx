@@ -60,13 +60,13 @@ function SuccessStories() {
 
   return (
 
-    <section className="max-w-[1700px] mx-auto py-24 px-6">
+    <section className="max-w-full lg:max-w-[1700px] mx-auto py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-6">
 
-      <h2 className="text-center text-5xl font-bold text-slate-900 mb-16">
+      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
         Transformed Lives
       </h2>
 
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
 
         {stories.map((item, index) => (
 
@@ -75,7 +75,7 @@ function SuccessStories() {
             className={`
               ${item.bg}
               ${item.border}
-              rounded-[30px]
+              rounded-2xl sm:rounded-2xl md:rounded-3xl lg:rounded-[30px]
               overflow-hidden
               border
               shadow-md
@@ -86,7 +86,7 @@ function SuccessStories() {
 
             {/* IMAGE */}
 
-            <div className="relative h-[320px]">
+            <div className="relative h-56 sm:h-64 md:h-72 lg:h-80">
 
               <img
                 src={item.image}
@@ -105,8 +105,8 @@ function SuccessStories() {
                 right-0
                 bg-black/40
                 backdrop-blur-md
-                px-6
-                py-5
+                px-3 sm:px-4 md:px-5 lg:px-6
+                py-3 sm:py-4 md:py-5 lg:py-5
                 flex
                 justify-between
                 items-center
@@ -114,7 +114,7 @@ function SuccessStories() {
 
                 <div>
 
-                  <h3 className="text-white text-2xl font-bold">
+                  <h3 className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold">
                     {item.name}
                   </h3>
 
@@ -122,11 +122,11 @@ function SuccessStories() {
 
                 <div className="text-right">
 
-                  <p className="text-white text-sm">
+                  <p className="text-white text-xs sm:text-sm">
                     Working at
                   </p>
 
-                  <p className="text-white font-semibold">
+                  <p className="text-white font-semibold text-xs sm:text-sm md:text-base">
                     {item.company}
                   </p>
 
@@ -137,10 +137,10 @@ function SuccessStories() {
               <FaLinkedin
                 className="
                   absolute
-                  top-5
-                  right-5
+                  top-3 sm:top-4 md:top-5 lg:top-5
+                  right-3 sm:right-4 md:right-5 lg:right-5
                   text-[#0a66c2]
-                  text-5xl
+                  text-3xl sm:text-4xl md:text-4xl lg:text-5xl
                 "
               />
 
@@ -148,37 +148,38 @@ function SuccessStories() {
 
             {/* DETAILS */}
 
-            <div className="p-8">
+            <div className="p-4 sm:p-5 md:p-6 lg:p-8">
 
-              <div className="flex items-center gap-4 mb-5">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-5">
 
                 <FaCircle className="text-gray-400 text-xs" />
 
-                <p className="font-semibold text-lg">
+                <p className="font-semibold text-sm sm:text-base md:text-lg">
                   {item.role}
                 </p>
 
               </div>
 
-              <div className="border-l-2 border-dashed border-gray-300 ml-2 pl-6 space-y-6">
+              <div className="border-l-2 border-dashed border-gray-300 ml-2 pl-4 sm:pl-5 md:pl-6 space-y-4 sm:space-y-5 md:space-y-6">
 
                 <div>
 
                   <div className="
-                    w-9 h-9
+                    w-8 sm:w-9 h-8 sm:h-9
                     rounded-full
                     bg-green-500
                     text-white
                     flex
                     items-center
                     justify-center
-                    -ml-[42px]
+                    -ml-[38px] sm:-ml-[42px]
                     absolute
+                    text-xs sm:text-sm
                   ">
                     g
                   </div>
 
-                  <p className="text-lg text-gray-700">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-700">
                     {item.joined}
                   </p>
 
@@ -186,7 +187,7 @@ function SuccessStories() {
 
                 <div>
 
-                  <p className="font-semibold text-gray-800">
+                  <p className="font-semibold text-xs sm:text-sm md:text-base text-gray-800">
                     {item.before}
                   </p>
 

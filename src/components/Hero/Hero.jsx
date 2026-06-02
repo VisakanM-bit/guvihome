@@ -49,51 +49,51 @@ function Hero() {
         }}
         navigation
         pagination={{ clickable: true }}
-        className="w-full h-[550px]"
+        className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[550px]"
       >
 
         {banners.map((banner, index) => (
 
           <SwiperSlide key={index}>
 
-            <section className={`${banner.bg} h-[550px]`}>
+            <section className={`${banner.bg} h-full`}>
 
-              <div className="grid grid-cols-2 items-center h-full px-16 gap-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 items-center h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 py-6 sm:py-8 lg:py-0">
 
                 {/* LEFT SIDE */}
                 <div>
 
                   {/* SALE BADGE */}
-                  <div className="inline-block border border-orange-300 bg-white rounded-full px-6 py-2 mb-8">
+                  <div className="inline-block border border-orange-300 bg-white rounded-full px-3 sm:px-5 lg:px-6 py-2 mb-4 sm:mb-6 lg:mb-8">
 
-                    <p className="text-xl text-gray-700">
+                    <p className="text-xs sm:text-base lg:text-lg xl:text-xl text-gray-700">
                       ☀️ Summer Sale
                     </p>
 
                   </div>
 
                   {/* TITLE */}
-                  <h1 className="text-6xl font-bold leading-tight mb-6">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 lg:mb-6">
 
                     {banner.title}
 
                   </h1>
 
                   {/* SUBTITLE */}
-                  <p className="text-2xl text-gray-700 mb-8">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-4 sm:mb-6 lg:mb-8">
 
                     {banner.subtitle}
 
                   </p>
 
                   {/* TAGS */}
-                  <div className="flex gap-4 flex-wrap mb-10">
+                  <div className="flex gap-2 sm:gap-3 flex-wrap mb-6 sm:mb-8 lg:mb-10">
 
                     {banner.tags.map((tag, i) => (
 
                       <div
                         key={i}
-                        className="border border-orange-300 bg-white rounded-full px-5 py-3 text-lg"
+                        className="border border-orange-300 bg-white rounded-full px-3 sm:px-4 lg:px-5 py-2 sm:py-2 lg:py-3 text-xs sm:text-sm lg:text-base xl:text-lg"
                       >
 
                         ✅ {tag}
@@ -105,15 +105,15 @@ function Hero() {
                   </div>
 
                   {/* BUTTON + PRICE */}
-                  <div className="flex items-center gap-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 lg:gap-10">
 
-                    <button className="bg-black text-white px-8 py-4 rounded-lg text-xl hover:bg-gray-800 transition">
+                    <button className="bg-black text-white px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg xl:text-xl hover:bg-gray-800 transition">
 
                       {banner.button}
 
                     </button>
 
-                    <h2 className="text-5xl font-bold">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
 
                       Only - {banner.price}
 
@@ -124,12 +124,12 @@ function Hero() {
                 </div>
 
                 {/* RIGHT SIDE IMAGE */}
-                <div className="flex justify-center items-center h-full">
+                <div className="flex justify-center items-center h-full hidden lg:flex">
 
                   <img
                     src={banner.image}
                     alt="AI Banner"
-                    className="w-full h-[420px] object-cover rounded-2xl shadow-xl"
+                    className="w-full h-auto max-h-80 lg:max-h-[420px] object-cover rounded-lg lg:rounded-2xl shadow-lg lg:shadow-xl"
                   />
 
                 </div>

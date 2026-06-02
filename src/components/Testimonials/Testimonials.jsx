@@ -36,7 +36,7 @@ function Testimonials() {
 
   return (
 
-    <section className="bg-[#f5f5f5] py-24 px-6">
+    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
 
       {/* TITLE */}
       <h1 className="text-center text-6xl font-bold text-[#222] mb-16">

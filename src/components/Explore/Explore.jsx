@@ -39,18 +39,18 @@ function Explore() {
 
   return (
 
-    <section className="bg-[#f5f5f5] py-24 px-10">
+    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
 
       {/* TITLE */}
       <div className="text-center mb-16">
 
-        <h1 className="text-5xl font-bold text-[#172b4d] mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#172b4d] mb-2 sm:mb-3 md:mb-4">
 
           Your Learning, Your Pace: Explore, Master, Succeed
 
         </h1>
 
-        <p className="text-2xl text-gray-500">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500">
 
           Choose from 1250+ exclusive courses with new courses being published every month.
 
@@ -59,9 +59,9 @@ function Explore() {
       </div>
 
       {/* CATEGORY TABS */}
-      <div className="flex justify-center flex-wrap gap-2 mb-16">
+      <div className="flex flex-col sm:flex-row justify-center flex-wrap gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-12 lg:mb-16 max-w-full">
 
-        <button className="bg-[#e9f8ec] text-[#16c247] px-8 py-4 rounded-t-lg border-b-4 border-[#16c247] text-xl font-semibold">
+        <button className="bg-[#e9f8ec] text-[#16c247] px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-t-lg border-b-4 border-[#16c247] text-sm sm:text-base md:text-lg lg:text-xl font-semibold hover:bg-[#d4f0dd] transition">
 
           Business & Management
 
@@ -94,7 +94,7 @@ function Explore() {
       </div>
 
       {/* COURSE CARDS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
 
         {courses.map((course, index) => (
 
@@ -113,7 +113,7 @@ function Explore() {
               />
 
               {/* PAID TAG */}
-              <div className="absolute bottom-4 left-4 bg-[#ff4d4f] text-white px-5 py-2 rounded-md text-lg font-semibold">
+              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-[#ff4d4f] text-white px-3 sm:px-4 md:px-5 py-1 sm:py-2 rounded text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
 
                 Paid
 
@@ -122,15 +122,15 @@ function Explore() {
             </div>
 
             {/* CONTENT */}
-            <div className="p-6">
+            <div className="p-4 sm:p-5 md:p-6">
 
-              <h2 className="text-4xl font-bold text-[#2b2b2b] mb-10">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#2b2b2b] mb-6 sm:mb-8 md:mb-10">
 
                 {course.title}
 
               </h2>
 
-              <div className="flex items-center gap-4 text-gray-500 text-xl">
+              <div className="flex items-center gap-3 sm:gap-4 text-gray-500 text-xs sm:text-sm md:text-base lg:text-xl">
 
                 <span>⏱ {course.hours}</span>
 

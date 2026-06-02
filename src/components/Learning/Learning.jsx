@@ -138,12 +138,12 @@ function Learning() {
 
   return (
 
-    <section className="bg-[#f7f7f7] py-24 px-12">
+    <section className="bg-[#f7f7f7] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12">
 
       {/* TITLE */}
       <div className="text-center mb-14">
 
-        <h1 className="text-5xl font-bold text-gray-900 mb-5">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-5">
 
           Learn. Practice. Earn. Have Fun!
 
@@ -152,9 +152,9 @@ function Learning() {
       </div>
 
       {/* TABS */}
-      <div className="flex justify-center mb-20">
+      <div className="flex justify-center mb-12 sm:mb-16 lg:mb-20 overflow-x-auto">
 
-        <div className="flex bg-[#f1f1f1] rounded-md overflow-hidden">
+        <div className="flex bg-[#f1f1f1] rounded-md overflow-hidden flex-wrap sm:flex-nowrap gap-1 sm:gap-0">
 
           {sections.map((item, index) => (
 
@@ -181,9 +181,9 @@ function Learning() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full lg:max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-24 items-center">
 
           {/* LEFT SIDE */}
           <div className="flex justify-center">
@@ -192,9 +192,9 @@ function Learning() {
             <div className="relative">
 
               {/* SCREEN */}
-              <div className="bg-black rounded-[28px] p-4 shadow-2xl">
+              <div className="bg-black rounded-lg sm:rounded-2xl md:rounded-3xl lg:rounded-[28px] p-2 sm:p-3 md:p-4 shadow-2xl">
 
-                <div className="bg-white rounded-[18px] overflow-hidden w-[650px] h-[360px]">
+                <div className="bg-white rounded-lg sm:rounded-2xl md:rounded-3xl lg:rounded-[18px] overflow-hidden w-full max-w-xs sm:max-w-md md:max-w-lg h-auto aspect-video">
 
                   <img
                     src={sections[active].image}
@@ -217,10 +217,10 @@ function Learning() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div>
+<div className="relative">
 
             {/* TITLE */}
-            <h2 className="text-6xl font-bold text-gray-900 mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4">
 
               {sections[active].title}
 
@@ -249,7 +249,7 @@ function Learning() {
             </ul>
 
             {/* BUTTON */}
-            <button className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white text-2xl font-semibold px-12 py-5 rounded-lg shadow-lg">
+            <button className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white text-sm sm:text-base md:text-lg lg:text-xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg w-full sm:w-auto">
 
               {sections[active].button}
 

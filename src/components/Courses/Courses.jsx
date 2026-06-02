@@ -63,17 +63,17 @@ function Courses() {
 
   return (
 
-    <section className="bg-[#f5f5f5] py-20 px-10 overflow-hidden">
+    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden">
 
       {/* HEADING */}
-      <h1 className="text-5xl font-bold text-center mb-6">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-3 sm:mb-4 md:mb-6 lg:mb-6">
 
         🔴 Live Classes + Placement Guidance
 
       </h1>
 
       {/* SUBTEXT */}
-      <p className="text-center text-gray-600 text-2xl max-w-5xl mx-auto mb-16 leading-relaxed">
+      <p className="text-center text-gray-600 text-base sm:text-lg md:text-xl lg:text-2xl max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mb-8 sm:mb-12 md:mb-16 leading-relaxed">
 
         HCL GUVI offers industry-leading Project Based Career Programs with live classes, certifications and placement guidance.
 
@@ -94,15 +94,22 @@ function Courses() {
         breakpoints={{
           320: {
             slidesPerView: 1,
+            spaceBetween: 16,
           },
           640: {
             slidesPerView: 2,
+            spaceBetween: 20,
           },
           1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+          1280: {
             slidesPerView: 4,
+            spaceBetween: 30,
           },
         }}
-        className="pb-20"
+        className="pb-12 sm:pb-16 md:pb-20 lg:pb-20 px-2 sm:px-4"
       >
 
         {courses.map((course, index) => (

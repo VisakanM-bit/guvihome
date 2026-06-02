@@ -47,12 +47,12 @@ function Learners() {
 
   return (
 
-    <section className="bg-[#f7f7f7] py-16 px-5 overflow-hidden">
+    <section className="bg-[#f7f7f7] py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden">
 
       {/* TITLE */}
       <div className="text-center mb-12">
 
-        <h1 className="text-5xl font-bold text-gray-900">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900">
 
           Journey Of Our Learners
 
@@ -61,7 +61,7 @@ function Learners() {
       </div>
 
       {/* CARDS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-[1800px] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-full mx-auto">
 
         {learners.map((learner, index) => (
 
@@ -86,7 +86,7 @@ function Learners() {
                 {/* IMAGE BOX */}
                 <div className="w-full rounded-[16px] overflow-hidden border border-gray-200 shadow-sm mb-5 bg-white">
 
-                  <div className="bg-white flex items-center justify-center h-[250px] overflow-hidden p-3">
+                  <div className="bg-white flex items-center justify-center h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden p-2 sm:p-3">
 
                     <img
                       src={learner.image}
@@ -99,7 +99,7 @@ function Learners() {
                 </div>
 
                 {/* NAME */}
-                <h2 className="text-[20px] font-bold text-gray-800 text-center mb-4 leading-tight">
+                <h2 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 text-center mb-3 sm:mb-4 leading-tight">
 
                   {learner.name}
 
@@ -108,7 +108,7 @@ function Learners() {
                 {/* COMPANY */}
                 <div className="bg-white border border-gray-200 rounded-lg px-5 py-2 shadow-sm">
 
-                  <p className="text-green-500 text-[16px] font-semibold">
+                  <p className="text-sm sm:text-base md:text-lg font-semibold">
 
                     {learner.company}
 
@@ -124,11 +124,11 @@ function Learners() {
             <div className="px-4 py-5">
 
               {/* BEFORE BOX */}
-              <div className="border border-gray-300 rounded-[16px] px-4 py-4 flex items-center gap-3 mb-5 bg-white min-h-[72px]">
+              <div className="border border-gray-300 rounded-lg sm:rounded-xl md:rounded-2xl px-3 sm:px-4 md:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 bg-white min-h-auto sm:min-h-[72px]">
 
-                <FaCircle className="text-gray-300 text-[10px] min-w-fit" />
+                <FaCircle className="text-gray-300 text-[8px] sm:text-[10px] min-w-fit" />
 
-                <p className="text-[15px] text-gray-800 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-gray-800 font-medium leading-relaxed">
 
                   {learner.before}
 
@@ -137,7 +137,7 @@ function Learners() {
               </div>
 
               {/* TIMELINE */}
-              <div className="relative pl-2 mb-5">
+              <div className="relative pl-2 mb-4 sm:mb-5">
 
                 {/* VERTICAL LINE */}
                 <div className="absolute left-[12px] top-8 h-10 border-l-2 border-dashed border-gray-300"></div>
@@ -146,7 +146,7 @@ function Learners() {
                 <div className="flex items-center gap-3">
 
                   {/* GREEN CIRCLE */}
-                  <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-sm z-10">
+                  <div className="w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-xs sm:text-sm z-10">
 
                     g
 
