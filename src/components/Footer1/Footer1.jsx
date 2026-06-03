@@ -6,6 +6,7 @@ import {
   FaTwitter,
   FaFacebookF,
 } from "react-icons/fa"
+import { BRAND, PROGRAMS } from "../../data/siteContent"
 
 function Footer1() {
 
@@ -23,22 +24,14 @@ function Footer1() {
 
             <h2 className="font-bold text-white mb-4 sm:mb-5 md:mb-6 uppercase tracking-wide text-xs sm:text-sm md:text-base">
 
-              Zen Class
+              Career Programs
 
             </h2>
 
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Full Stack Development</li>
-              <li>Data Science</li>
-              <li>Software Development</li>
-              <li>Intel AIML</li>
-              <li>Automation & Testing</li>
-              <li>UI/UX</li>
-              <li>DevOps</li>
-              <li>Business Analytics</li>
-              <li>All Programs</li>
-
+            <ul className="space-y-3 text-gray-300 text-sm">
+              {PROGRAMS.slice(0, 6).map((p) => (
+                <li key={p.title}>{p.title}</li>
+              ))}
             </ul>
 
           </div>
@@ -116,7 +109,7 @@ function Footer1() {
 
               <li>HackerKID</li>
               <li>Placement Preparation</li>
-              <li>HCL GUVI for Corporates</li>
+              <li>Jawa EdTech for Corporates</li>
 
             </ul>
 
@@ -188,35 +181,20 @@ function Footer1() {
           {/* LEFT */}
           <div className="lg:col-span-2">
 
-            {/* LOGO */}
-            <div className="flex items-center gap-4 mb-8">
-
-              <h1 className="text-5xl font-bold text-green-500">
-
-                GUVI
-
-              </h1>
-
-              <span className="text-5xl font-bold text-white">
-
-                HCL
-
-              </span>
-
-            </div>
-
             {/* DESCRIPTION */}
-            <p className="text-gray-300 text-lg leading-9 mb-8">
-
-              HCL GUVI (Grab Your Vernacular Imprint) Geek Network Private Limited is a leading online learning and skills development company, incubated by IIT Madras and IIM Ahmedabad.
-
+            <h2 className="text-3xl font-bold text-emerald-400 mb-4">{BRAND.name}</h2>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+              {BRAND.tagline}. {BRAND.motto}
             </p>
-
-            <p className="text-gray-300 text-lg leading-9">
-
-              Established in 2014 and acquired by the HCL Group in 2022, HCL GUVI provides effective and high-quality learning and skilling programs that transcend language barriers in technology education.
-
+            <p className="text-gray-400 text-sm leading-relaxed mb-2">
+              {BRAND.address}
             </p>
+            <p className="text-gray-400 text-sm">
+              <a href={`mailto:${BRAND.email}`} className="text-emerald-400 hover:underline">{BRAND.email}</a>
+              {" · "}
+              <a href={`tel:${BRAND.phone.replace(/\s/g, "")}`} className="text-emerald-400 hover:underline">{BRAND.phone}</a>
+            </p>
+            <p className="text-gray-500 text-sm mt-2">{BRAND.website}</p>
 
           </div>
 
@@ -318,7 +296,7 @@ function Footer1() {
 
           <p>
 
-            © HCL GUVI Geek Network Pvt. Ltd.
+            © {BRAND.name}. Transforming Learners into Professionals.
 
           </p>
 

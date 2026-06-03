@@ -1,589 +1,199 @@
-import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import {
-  FaLaptopCode,
-  FaRobot,
-  FaChartBar,
-  FaPalette,
-  FaBookOpen,
-  FaTrophy,
-  FaUsers,
-  FaDownload,
-} from "react-icons/fa"
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes, FaSearch, FaGraduationCap } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
+import { NAV_LINKS } from "../../data/siteContent";
+import { openCareerPopup } from "../../utils/careerPopupEvents";
+import GlobalSearch from "../GlobalSearch/GlobalSearch";
 
 function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [mobileDropdown, setMobileDropdown] = useState(null)
+  const { isAuthenticated, user, logout } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const openSearch = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", openSearch);
+    return () => window.removeEventListener("keydown", openSearch);
+  }, []);
+
+  const handleNavClick = (href) => {
+    setMobileOpen(false);
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-
-      {/* MAIN NAVBAR */}
-      <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-16 py-3 sm:py-4">
-
-        {/* LEFT SIDE */}
-        <div className="flex items-center gap-6 md:gap-12">
-
-          {/* LOGO */}
-          <div className="flex items-center gap-2 sm:gap-3 cursor-pointer">
-
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-500">
-              GUVI
-            </h1>
-
-            <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700">
-              HCL
+    <>
+      <header
+        className={`sticky top-0 z-50 bg-jawa-card/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300 ${
+          scrolled ? "shadow-md py-0" : "shadow-sm"
+        }`}
+        role="banner"
+      >
+        <nav
+          className={`container-jawa flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "py-2.5" : "py-4"
+          }`}
+          aria-label="Main navigation"
+        >
+          <Link
+            to="/"
+            className="flex items-center gap-2 shrink-0"
+            aria-label="Jawa EdTech home"
+          >
+            <FaGraduationCap
+              className={`text-jawa-secondary transition-all ${
+                scrolled ? "text-xl" : "text-2xl"
+              }`}
+            />
+            <span
+              className={`font-heading font-bold text-jawa-primary transition-all ${
+                scrolled ? "text-base" : "text-lg"
+              }`}
+            >
+              Jawa<span className="text-jawa-secondary"> EdTech</span>
             </span>
-
-          </div>
-
-          {/* NAV LINKS - Hidden on mobile, shown on lg */}
-          <ul className="hidden lg:flex items-center gap-6 xl:gap-10 text-sm xl:text-lg font-semibold text-gray-800">
-
-            {/* LIVE CLASSES */}
-            <li className="relative group cursor-pointer">
-
-              <div className="flex items-center gap-2 hover:text-green-500 transition">
-
-                LIVE Classes
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition duration-300" />
-
-              </div>
-
-              {/* DROPDOWN */}
-              <div className="absolute top-12 left-0 w-[500px] md:w-[700px] bg-white rounded-2xl shadow-2xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-4 md:p-8">
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-
-                  <div className="space-y-6">
-
-                    <div className="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-xl transition">
-
-                      <FaLaptopCode className="text-3xl text-purple-600 mt-1" />
-
-                      <div>
-
-                        <h2 className="font-bold text-xl">
-                          Full Stack Development
-                        </h2>
-
-                        <p className="text-gray-500">
-                          IIT-M Pravartak certified
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                    <div className="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-xl transition">
-
-                      <FaRobot className="text-3xl text-purple-600 mt-1" />
-
-                      <div>
-
-                        <h2 className="font-bold text-xl">
-                          AI & Machine Learning
-                        </h2>
-
-                        <p className="text-gray-500">
-                          Intel & IIT-M Pravartak
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                    <div className="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-xl transition">
-
-                      <FaChartBar className="text-3xl text-purple-600 mt-1" />
-
-                      <div>
-
-                        <h2 className="font-bold text-xl">
-                          Data Science
-                        </h2>
-
-                        <p className="text-gray-500">
-                          Industry-ready programs
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <div className="space-y-6">
-
-                    <div className="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-xl transition">
-
-                      <FaPalette className="text-3xl text-purple-600 mt-1" />
-
-                      <div>
-
-                        <h2 className="font-bold text-xl">
-                          UI/UX Design
-                        </h2>
-
-                        <p className="text-gray-500">
-                          Design thinking + Figma
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                    <div className="flex items-start gap-4 hover:bg-gray-50 p-3 rounded-xl transition">
-
-                      <FaBookOpen className="text-3xl text-purple-600 mt-1" />
-
-                      <div>
-
-                        <h2 className="font-bold text-xl">
-                          Mechanical CAD
-                        </h2>
-
-                        <p className="text-gray-500">
-                          Autodesk certified
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                {/* BOTTOM */}
-                <div className="border-t mt-6 pt-5 flex items-center justify-between">
-
-                  <div className="flex items-center gap-3 text-lg font-semibold">
-
-                    <FaUsers className="text-green-500" />
-
-                    Request a Callback
-
-                  </div>
-
-                  <Link
-                    to="/programs"
-                    className="bg-black text-white px-8 py-4 rounded-xl font-semibold"
-                  >
-                    Explore all Programs →
-                  </Link>
-
-                </div>
-
-              </div>
-
-            </li>
-
-            {/* COURSES */}
-            <li className="relative group cursor-pointer">
-
-              <div className="flex items-center gap-2 hover:text-green-500 transition">
-
-                Courses
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition duration-300" />
-
-              </div>
-
-              <div className="absolute top-12 left-0 w-[320px] bg-white rounded-2xl shadow-2xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
-
-                <div className="space-y-5">
-
-                  <p className="hover:text-green-500 transition">
-                    Python Programming
-                  </p>
-
-                  <p className="hover:text-green-500 transition">
-                    React Development
-                  </p>
-
-                  <p className="hover:text-green-500 transition">
-                    DevOps Engineering
-                  </p>
-
-                  <p className="hover:text-green-500 transition">
-                    Business Analytics
-                  </p>
-
-                </div>
-
-              </div>
-
-            </li>
-
-            {/* PRACTICE */}
-            <li className="relative group cursor-pointer">
-
-              <div className="flex items-center gap-2 hover:text-green-500 transition">
-
-                Practice
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition duration-300" />
-
-              </div>
-
-              <div className="absolute top-12 left-0 w-[300px] bg-white rounded-2xl shadow-2xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
-
-                <div className="space-y-5">
-
-                  <p>Coding Challenges</p>
-
-                  <p>Mock Interviews</p>
-
-                  <p>Hackathons</p>
-
-                  <p>Daily Practice</p>
-
-                </div>
-
-              </div>
-
-            </li>
-
-            {/* RESOURCES */}
-            <li className="relative group cursor-pointer">
-
-              <div className="flex items-center gap-2 hover:text-green-500 transition">
-
-                Resources
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition duration-300" />
-
-              </div>
-
-              <div className="absolute top-12 left-0 w-[420px] bg-white rounded-2xl shadow-2xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
-
-                <div className="grid grid-cols-2 gap-6">
-
-                  <div className="flex items-center gap-3">
-
-                    <FaBookOpen className="text-purple-600" />
-
-                    Free Resources
-
-                  </div>
-
-                  <div className="flex items-center gap-3">
-
-                    <FaTrophy className="text-purple-600" />
-
-                    Success Stories
-
-                  </div>
-
-                  <div className="flex items-center gap-3">
-
-                    <FaDownload className="text-purple-600" />
-
-                    Get The App
-
-                  </div>
-
-                  <div className="flex items-center gap-3">
-
-                    <FaUsers className="text-purple-600" />
-
-                    Referral Program
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </li>
-
-            {/* PRODUCTS */}
-            <li className="relative group cursor-pointer">
-
-              <div className="flex items-center gap-2 hover:text-green-500 transition">
-
-                Our Products
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition duration-300" />
-
-              </div>
-
-              <div className="absolute top-12 left-0 w-[340px] bg-white rounded-2xl shadow-2xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
-
-                <div className="space-y-6">
-
-                  <div>
-
-                    <h2 className="font-bold text-xl">
-                      HackerKID
-                    </h2>
-
-                    <p className="text-gray-500">
-                      Coding classes for kids
-                    </p>
-
-                  </div>
-
-                  <div>
-
-                    <h2 className="font-bold text-xl">
-                      GUVI For Corporates
-                    </h2>
-
-                    <p className="text-gray-500">
-                      Meet your hiring needs
-                    </p>
-
-                  </div>
-
-                  <div>
-
-                    <h2 className="font-bold text-xl">
-                      Placement Preparation
-                    </h2>
-
-                    <p className="text-gray-500">
-                      Ace your aptitude
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </li>
-
+          </Link>
+
+          <ul className="hidden xl:flex items-center gap-1">
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(href);
+                  }}
+                  className="px-3 py-2 text-sm font-medium text-jawa-text hover:text-jawa-secondary rounded-lg hover:bg-jawa-bg transition"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
 
-        </div>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="hidden sm:flex items-center gap-2 px-3 py-2 text-sm text-slate-500 bg-jawa-bg border border-slate-200 rounded-lg hover:border-jawa-secondary/40 transition"
+              aria-label="Open search"
+            >
+              <FaSearch className="text-xs" />
+              <span className="hidden md:inline">Search</span>
+              <kbd className="hidden lg:inline text-[10px] bg-white px-1.5 py-0.5 rounded border border-slate-200">
+                ⌘K
+              </kbd>
+            </button>
 
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="sm:hidden p-2 text-slate-600 hover:text-jawa-secondary"
+              aria-label="Open search"
+            >
+              <FaSearch />
+            </button>
 
-          {/* Hamburger Menu - Mobile Only */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-2xl text-gray-800 hover:text-green-500 transition"
-          >
-            {mobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+            <button
+              type="button"
+              onClick={openCareerPopup}
+              className="hidden md:inline-flex items-center px-4 py-2 text-sm font-semibold text-jawa-secondary border border-jawa-secondary rounded-lg hover:bg-green-50 transition"
+            >
+              Career Counseling
+            </button>
 
-          {/* Login/Signup Buttons - Hidden on mobile, shown on md+ */}
-          <button className="hidden md:block border border-green-500 text-green-600 px-4 md:px-6 lg:px-8 py-2 md:py-3 rounded-lg md:rounded-xl text-xs md:text-lg font-semibold hover:bg-green-50 transition">
-
-            Login
-
-          </button>
-
-          <button className="hidden md:block bg-green-500 text-white px-4 md:px-6 lg:px-8 py-2 md:py-3 rounded-lg md:rounded-xl text-xs md:text-lg font-semibold hover:bg-green-600 transition shadow-lg">
-
-            Sign up
-
-          </button>
-
-        </div>
-
-      </div>
-
-      {/* MOBILE MENU - Dropdown */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 max-h-[calc(100vh-80px)] overflow-y-auto">
-          <div className="px-4 py-6 space-y-4">
-
-            {/* LIVE CLASSES MOBILE */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setMobileDropdown(mobileDropdown === "live" ? null : "live")}
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-green-500 py-3"
+            {isAuthenticated ? (
+              <div className="hidden md:flex items-center gap-2">
+                <Link
+                  to="/dashboard"
+                  className="text-sm font-medium text-jawa-text hover:text-jawa-secondary"
+                >
+                  {user?.name?.split(" ")[0] || "Dashboard"}
+                </Link>
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="text-sm text-slate-500 hover:text-jawa-accent"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/auth"
+                className="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-jawa-primary rounded-lg hover:bg-slate-800 transition shadow-sm"
               >
-                <span>LIVE Classes</span>
-                <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === "live" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileDropdown === "live" && (
-                <div className="pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
-                  <div className="flex items-start gap-3">
-                    <FaLaptopCode className="text-2xl text-purple-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold">Full Stack Development</h3>
-                      <p className="text-gray-500 text-sm">IIT-M Pravartak certified</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FaRobot className="text-2xl text-purple-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold">AI & Machine Learning</h3>
-                      <p className="text-gray-500 text-sm">Intel & IIT-M Pravartak</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FaChartBar className="text-2xl text-purple-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold">Data Science</h3>
-                      <p className="text-gray-500 text-sm">Industry-ready programs</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FaPalette className="text-2xl text-purple-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold">UI/UX Design</h3>
-                      <p className="text-gray-500 text-sm">Design thinking + Figma</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FaBookOpen className="text-2xl text-purple-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold">Mechanical CAD</h3>
-                      <p className="text-gray-500 text-sm">Autodesk certified</p>
-                    </div>
-                  </div>
-                  <div className="border-t pt-4 space-y-3">
-                    <div className="flex items-center gap-2 text-base font-semibold">
-                      <FaUsers className="text-green-500" />
-                      Request a Callback
-                    </div>
-                    <Link
-                      to="/programs"
-                      className="block bg-black text-white px-4 py-2 rounded-lg font-semibold text-center text-sm"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Explore all Programs →
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
+                Get Started
+              </Link>
+            )}
 
-            {/* COURSES MOBILE */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setMobileDropdown(mobileDropdown === "courses" ? null : "courses")}
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-green-500 py-3"
-              >
-                <span>Courses</span>
-                <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === "courses" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileDropdown === "courses" && (
-                <div className="pl-4 space-y-3 bg-gray-50 rounded-lg p-4 text-base">
-                  <p className="hover:text-green-500 transition cursor-pointer">Python Programming</p>
-                  <p className="hover:text-green-500 transition cursor-pointer">React Development</p>
-                  <p className="hover:text-green-500 transition cursor-pointer">DevOps Engineering</p>
-                  <p className="hover:text-green-500 transition cursor-pointer">Business Analytics</p>
-                </div>
-              )}
-            </div>
-
-            {/* PRACTICE MOBILE */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setMobileDropdown(mobileDropdown === "practice" ? null : "practice")}
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-green-500 py-3"
-              >
-                <span>Practice</span>
-                <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === "practice" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileDropdown === "practice" && (
-                <div className="pl-4 space-y-3 bg-gray-50 rounded-lg p-4 text-base">
-                  <p>Coding Challenges</p>
-                  <p>Mock Interviews</p>
-                  <p>Hackathons</p>
-                  <p>Daily Practice</p>
-                </div>
-              )}
-            </div>
-
-            {/* RESOURCES MOBILE */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setMobileDropdown(mobileDropdown === "resources" ? null : "resources")}
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-green-500 py-3"
-              >
-                <span>Resources</span>
-                <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === "resources" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileDropdown === "resources" && (
-                <div className="pl-4 space-y-3 bg-gray-50 rounded-lg p-4 grid grid-cols-1 gap-3 text-base">
-                  <div className="flex items-center gap-2">
-                    <FaBookOpen className="text-purple-600" />
-                    Free Resources
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaTrophy className="text-purple-600" />
-                    Success Stories
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaDownload className="text-purple-600" />
-                    Get The App
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaUsers className="text-purple-600" />
-                    Referral Program
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* PRODUCTS MOBILE */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setMobileDropdown(mobileDropdown === "products" ? null : "products")}
-                className="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-green-500 py-3"
-              >
-                <span>Our Products</span>
-                <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === "products" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileDropdown === "products" && (
-                <div className="pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
-                  <div>
-                    <h3 className="font-bold text-base">HackerKID</h3>
-                    <p className="text-gray-500 text-sm">Coding classes for kids</p>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-base">GUVI For Corporates</h3>
-                    <p className="text-gray-500 text-sm">Meet your hiring needs</p>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-base">Placement Preparation</h3>
-                    <p className="text-gray-500 text-sm">Ace your aptitude</p>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Auth Buttons */}
-            <div className="border-t pt-4 flex gap-3">
-              <button 
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 border border-green-500 text-green-600 px-4 py-3 rounded-lg font-semibold hover:bg-green-50 transition text-sm"
-              >
-                Login
-              </button>
-              <button 
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex-1 bg-green-500 text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-600 transition text-sm"
-              >
-                Sign up
-              </button>
-            </div>
-
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="xl:hidden p-2 text-jawa-primary"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <FaTimes /> : <FaBars />}
+            </button>
           </div>
-        </div>
-      )}
+        </nav>
 
-      {/* RIGHT SIDE - Desktop only */}
-      <div className="hidden md:flex items-center gap-5">
-      </div>
+        {mobileOpen && (
+          <div className="xl:hidden border-t border-slate-100 bg-white max-h-[70vh] overflow-y-auto">
+            <ul className="container-jawa py-4 space-y-1">
+              {NAV_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(href);
+                    }}
+                    className="block px-3 py-3 text-sm font-medium text-jawa-text hover:bg-jawa-bg rounded-lg"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+              <li className="pt-2 border-t border-slate-100 mt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    openCareerPopup();
+                  }}
+                  className="w-full text-left px-3 py-3 text-sm font-semibold text-jawa-secondary"
+                >
+                  Career Counseling
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
 
-      {/* BOTTOM GREEN LINE */}
-      <div className="h-[3px] bg-gradient-to-r from-green-500 via-emerald-400 to-green-500"></div>
+        <div className="h-0.5 bg-gradient-to-r from-jawa-secondary via-green-400 to-jawa-secondary" />
+      </header>
 
-    </nav>
-
-  )
+      <GlobalSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;

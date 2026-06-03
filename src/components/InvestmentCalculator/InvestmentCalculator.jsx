@@ -1,4 +1,21 @@
+import { useNavigate } from "react-router-dom";
+import { submitExpertLeadAndRedirect } from "../../utils/expertLead";
+
 function InvestmentCalculator() {
+  const navigate = useNavigate();
+
+  const handleTalkToCounselor = async () => {
+    try {
+      await submitExpertLeadAndRedirect(
+        { source: "investment_calculator", name: "Counselor inquiry" },
+        navigate
+      );
+    } catch (error) {
+      console.error(error);
+      navigate("/auth?from=expert");
+    }
+  };
+
   return (
     <section className="max-w-7xl mx-auto py-20 px-6">
 
@@ -266,6 +283,8 @@ function InvestmentCalculator() {
       <div className="flex justify-center gap-5 mt-8">
 
         <button
+          type="button"
+          onClick={handleTalkToCounselor}
           className="
           border-2
           border-black
@@ -273,6 +292,8 @@ function InvestmentCalculator() {
           py-4
           rounded-xl
           font-semibold
+          hover:bg-slate-50
+          transition
           "
         >
           Talk to our Counselor

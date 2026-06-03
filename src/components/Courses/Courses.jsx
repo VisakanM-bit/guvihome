@@ -1,188 +1,90 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Autoplay } from "swiper/modules"
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { PROGRAMS } from "../../data/siteContent";
+import aimlImage from "../../assets/logos/aiml.png";
+import pythonImage from "../../assets/logos/python.png";
+import reactImage from "../../assets/logos/react.png";
+import devopsImage from "../../assets/logos/devops.png";
+import businessImage from "../../assets/logos/businessandmarketing.png";
+import masterDataImage from "../../assets/logos/masterdatascience.png";
 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-
-import aimlImage from "../../assets/logos/aiml.png"
-import businessImage from "../../assets/logos/businessandmarketing.png"
-import devopsImage from "../../assets/logos/devops.png"
-import masterDataImage from "../../assets/logos/masterdatascience.png"
-import pythonImage from "../../assets/logos/python.png"
-import reactImage from "../../assets/logos/react.png"
-import uiuxImage from "../../assets/logos/uiuxdesign.png"
+const IMAGES = [businessImage, masterDataImage, reactImage, pythonImage, aimlImage, businessImage, devopsImage, reactImage];
 
 function Courses() {
-
-  const courses = [
-
-    {
-      image: masterDataImage,
-      title: "Master Data Science Program",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: aimlImage,
-      title: "Artificial Intelligence & Machine Learning",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: reactImage,
-      title: "Full Stack React Development",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: pythonImage,
-      title: "Python Full Stack Development",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: uiuxImage,
-      title: "UI/UX Design Program",
-      language: "Tamil, English, Hindi & Telugu",
-    },
-
-    {
-      image: devopsImage,
-      title: "DevOps & Cloud Engineering",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: businessImage,
-      title: "Business & Marketing Analytics",
-      language: "Tamil, English & Hindi",
-    },
-
-  ]
+  const courses = PROGRAMS.map((p, i) => ({
+    ...p,
+    image: IMAGES[i % IMAGES.length],
+  }));
 
   return (
-
-    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden">
-
-      {/* HEADING */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-3 sm:mb-4 md:mb-6 lg:mb-6">
-
-        🔴 Live Classes + Placement Guidance
-
-      </h1>
-
-      {/* SUBTEXT */}
-      <p className="text-center text-gray-600 text-base sm:text-lg md:text-xl lg:text-2xl max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mb-8 sm:mb-12 md:mb-16 leading-relaxed">
-
-        HCL GUVI offers industry-leading Project Based Career Programs with live classes, certifications and placement guidance.
-
+    <section className="bg-[#f5f5f5] py-12 sm:py-16 lg:py-20 px-4 sm:px-8" id="programs">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-3 text-slate-900">
+        Career Accelerator Programs
+      </h2>
+      <p className="text-center text-slate-600 text-base sm:text-lg max-w-3xl mx-auto mb-10 sm:mb-14 leading-relaxed">
+        Industry-focused HR &amp; Technology programs with practical training,
+        internships, and placement support.
       </p>
 
-      {/* SWIPER */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={4}
-        spaceBetween={30}
+        spaceBetween={24}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        loop
         breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 16,
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 24,
-          },
-          1280: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
+          320: { slidesPerView: 1, spaceBetween: 16 },
+          640: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+          1280: { slidesPerView: 4, spaceBetween: 28 },
         }}
-        className="pb-12 sm:pb-16 md:pb-20 lg:pb-20 px-2 sm:px-4"
+        className="pb-14 px-2"
       >
-
         {courses.map((course, index) => (
-
           <SwiperSlide key={index}>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
-
-              {/* IMAGE */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition h-full flex flex-col">
               <img
                 src={course.image}
                 alt={course.title}
-                className="w-full h-60 object-cover"
+                className="w-full h-52 object-cover"
               />
-
-              {/* CONTENT */}
-              <div className="p-6">
-
-                {/* TITLE */}
-                <h2 className="text-2xl font-semibold leading-snug mb-8 min-h-[100px]">
-
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
+                <span className="inline-block w-fit px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
+                  {course.tag}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 leading-snug min-h-[3.5rem]">
                   {course.title}
-
-                </h2>
-
-                {/* LANGUAGE */}
-                <p className="text-gray-500 text-lg mb-10">
-
-                  🌐 {course.language}
-
-                </p>
-
-                {/* BUTTONS */}
-                <div className="flex gap-4">
-
-                  <button className="border border-gray-400 px-4 py-3 rounded-lg text-lg w-1/2 hover:bg-gray-100 transition">
-
-                    Syllabus
-
-                  </button>
-
-                  <button className="bg-[#00c853] text-white px-4 py-3 rounded-lg text-lg w-1/2 hover:bg-green-600 transition">
-
-                    Know More
-
-                  </button>
-
-                </div>
-
+                </h3>
+                <p className="text-slate-600 text-sm mb-3 flex-1">{course.desc}</p>
+                <p className="text-xs text-emerald-700 font-semibold mb-4">{course.roles}</p>
+                <Link
+                  to="/auth?from=expert"
+                  className="block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition text-sm"
+                >
+                  Know More
+                </Link>
               </div>
-
             </div>
-
           </SwiperSlide>
-
         ))}
-
       </Swiper>
 
-      {/* EXPLORE BUTTON */}
-      <div className="flex justify-center mt-10">
-
-        <button className="border border-gray-400 px-12 py-5 rounded-xl text-2xl hover:bg-white transition duration-300">
-
+      <div className="flex justify-center mt-8">
+        <Link
+          to="/programs"
+          className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 font-bold px-10 py-4 rounded-xl transition text-lg"
+        >
           Explore All Programs
-
-        </button>
-
+        </Link>
       </div>
-
     </section>
-
-  )
+  );
 }
 
-export default Courses
+export default Courses;

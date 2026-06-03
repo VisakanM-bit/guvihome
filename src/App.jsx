@@ -1,74 +1,45 @@
-import Navbar from "./components/Navbar/Navbar"
-import Hero from "./components/Hero/Hero"
-import Partners from "./components/Partners/Partners"
-import Courses from "./components/Courses/Courses"
-import Assessments from "./components/Assessments/Assessments"
-import Learners from "./components/Learners/Learners"
-import Testimonials from "./components/Testimonials/Testimonials"
-import Companies from "./components/Companies/Companies"
-import Proud from "./components/Proud/Proud"
-import Explore from "./components/Explore/Explore"
-import Awards from "./components/Awards/Awards"
-import Learning from "./components/Learning/Learning"
-import Corporate from "./components/Corporate/Corporate"
-import About from "./components/About/About"
-import Resources from "./components/Resources/Resources"
-import Footer1 from "./components/Footer1/Footer1"
-import CareerPopup from "./components/CareerPopup/CareerPopup"
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
+import Ecosystem from "./components/Ecosystem/Ecosystem";
+import ProgramsSection from "./components/ProgramsSection/ProgramsSection";
+import CareerPath from "./components/CareerPath/CareerPath";
+import ProjectsShowcase from "./components/ProjectsShowcase/ProjectsShowcase";
+import WhyJawa from "./components/WhyJawa/WhyJawa";
+import PlacementRoadmap from "./components/PlacementRoadmap/PlacementRoadmap";
+import Testimonials from "./components/Testimonials/Testimonials";
+import Partners from "./components/Partners/Partners";
+import About from "./components/About/About";
+import Resources from "./components/Resources/Resources";
+import Corporate from "./components/Corporate/Corporate";
+import Footer1 from "./components/Footer1/Footer1";
+import CareerPopup from "./components/CareerPopup/CareerPopup";
+import SeoHead from "./components/SeoHead/SeoHead";
 
 function App() {
   return (
     <>
-      {/* NAVBAR */}
+      <SeoHead />
       <Navbar />
-
       <CareerPopup />
-      {/* HERO SECTION */}
-      <Hero />
 
-      {/* PARTNERS */}
-      <Partners />
+      <main>
+        <Hero />
+        <Ecosystem />
+        <ProgramsSection />
+        <CareerPath />
+        <ProjectsShowcase />
+        <WhyJawa />
+        <PlacementRoadmap />
+        <Testimonials />
+        <Partners />
+        <About />
+        <Corporate />
+        <Resources />
+      </main>
 
-      {/* COURSES */}
-      <Courses />
-
-      {/* SKILL ASSESSMENT */}
-      <Assessments />
-
-      {/* LEARNERS JOURNEY */}
-      <Learners />
-
-      {/* TESTIMONIALS */}
-      <Testimonials />
-
-      {/* COMPANIES */}
-      <Companies />
-
-      {/* PROUD SECTION */}
-      <Proud />
-
-      {/* EXPLORE COURSES */}
-      <Explore />
-
-      {/* LEARNING PLATFORM */}
-      <Learning />
-
-      {/* CORPORATE SECTION */}
-      <Corporate />
-
-      {/* ABOUT SECTION */}
-      <About />
-
-      {/* AWARDS SECTION */}
-      <Awards />
-
-      {/* FREE RESOURCES */}
-      <Resources />
-
-      {/* FOOTER */}
       <Footer1 />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

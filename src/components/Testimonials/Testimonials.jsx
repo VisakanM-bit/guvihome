@@ -1,178 +1,86 @@
-import feedbackImage from "../../assets/logos/feedback.png"
-
-import { Swiper, SwiperSlide } from "swiper/react"
-
-import { Navigation, Pagination, Autoplay } from "swiper/modules"
-
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { FaPlay, FaStar } from "react-icons/fa";
+import { TESTIMONIALS } from "../../data/siteContent";
 
 function Testimonials() {
-
-  const testimonials = [
-
-    {
-      name: "SRI HARI K",
-      role: "Full Stack Developer",
-      review:
-        "I've been a non-IT professional for six years and switched to IT through HCL GUVI's Full Stack Development course. The flexible schedule, expert instructors, and mock interviews were invaluable, helping me secure my first IT role in Chennai. I would highly recommend HCL GUVI.",
-    },
-
-    {
-      name: "Vinitha G",
-      role: "Node Js developer",
-      video: true,
-    },
-
-    {
-      name: "Vinitha G",
-      role: "Node Js developer",
-      review:
-        "I completed HCL GUVI's Full Stack Development (MERN) Program, and their teaching with query resolution was excellent. My mentors used to explain concepts in Tamil in really clear-cut ways. Placement support along with mock interviews and job-specific prep sessions was very useful.",
-    },
-
-  ]
-
   return (
-
-    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
-
-      {/* TITLE */}
-      <h1 className="text-center text-6xl font-bold text-[#222] mb-16">
-
-        What Our Learners Are Saying!
-
-      </h1>
-
-      {/* GOOGLE RATING */}
-      <div className="flex items-center justify-center gap-8 mb-20">
-
-        {/* GOOGLE LOGO */}
-        <div className="w-24 h-24 rounded-full bg-white border border-[#ececec] shadow-sm flex items-center justify-center">
-
-          <span className="text-[58px] font-bold text-[#4285F4]">
-
-            G
-
-          </span>
-
-        </div>
-
-        {/* RATING TEXT */}
-        <div>
-
-          <h2 className="text-[42px] font-bold text-[#222]">
-
-            Rated 4.3/5.0
-
+    <section
+      className="section-padding bg-jawa-bg"
+      id="testimonials"
+      aria-labelledby="testimonials-heading"
+    >
+      <div className="container-jawa">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2
+            id="testimonials-heading"
+            className="text-3xl sm:text-4xl font-heading font-bold text-jawa-primary mb-3"
+          >
+            Student Success Stories
           </h2>
-
-          <p className="text-[22px] text-gray-500 mt-1">
-
-            More than 2500 Google Reviews
-
+          <p className="text-jawa-text text-base leading-relaxed">
+            Real people. Real transformations. Hear from learners who launched their careers.
           </p>
-
         </div>
 
-      </div>
-
-      {/* SWIPER */}
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        slidesPerView={3}
-        spaceBetween={35}
-        loop={true}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
-        navigation
-        pagination={{ clickable: true }}
-      >
-
-        {testimonials.map((item, index) => (
-
-          <SwiperSlide key={index}>
-
-            <div className="bg-[#f7fcf7] border border-[#e7eee7] rounded-[28px] p-10 min-h-[500px] shadow-sm hover:shadow-lg transition duration-300 flex flex-col justify-between">
-
-              {/* TOP */}
-              <div>
-
-                {/* NAME */}
-                <h2 className="text-[34px] font-bold text-[#2d2d2d] mb-3">
-
-                  {item.name}
-
-                </h2>
-
-                {/* ROLE */}
-                <p className="text-[22px] text-gray-600 mb-8">
-
-                  {item.role}
-
-                </p>
-
-                {/* VIDEO */}
-                {item.video ? (
-
-                  <div className="relative overflow-hidden rounded-2xl">
-
-                    <img
-                      src={feedbackImage}
-                      alt="Feedback"
-                      className="w-full h-[260px] object-cover rounded-2xl"
-                    />
-
-                    {/* PLAY BUTTON */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-
-                      <div className="w-24 h-24 rounded-full bg-[#00c853] flex items-center justify-center text-white text-4xl shadow-xl hover:scale-110 transition cursor-pointer">
-
-                        ▶
-
-                      </div>
-
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={1}
+          spaceBetween={24}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-12"
+        >
+          {TESTIMONIALS.map((t) => (
+            <SwiperSlide key={t.name}>
+              <article className="bg-jawa-card rounded-2xl overflow-hidden shadow-md border border-slate-100 h-full flex flex-col hover:shadow-xl transition">
+                <div className="relative h-40 bg-jawa-primary">
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    className="w-full h-full object-cover opacity-90"
+                    loading="lazy"
+                  />
+                  {t.video && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <span className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                        <FaPlay className="text-jawa-secondary ml-1" />
+                      </span>
                     </div>
-
+                  )}
+                </div>
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                  <div className="flex gap-0.5 text-amber-400 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="text-sm" />
+                    ))}
                   </div>
-
-                ) : (
-
-                  <p className="text-[21px] text-gray-600 leading-[42px]">
-
-                    {item.review}
-
+                  <p className="text-jawa-text text-sm leading-relaxed flex-1 mb-4">
+                    &ldquo;{t.review}&rdquo;
                   </p>
-
-                )}
-
-              </div>
-
-            </div>
-
-          </SwiperSlide>
-
-        ))}
-
-      </Swiper>
-
-      {/* BUTTON */}
-      <div className="flex justify-center mt-20">
-
-        <button className="border border-gray-400 bg-white hover:bg-gray-100 transition px-14 py-5 rounded-xl text-2xl text-[#333]">
-
-          View All
-
-        </button>
-
+                  <div className="border-t border-slate-100 pt-4">
+                    <p className="font-heading font-bold text-jawa-primary">{t.name}</p>
+                    <p className="text-jawa-secondary text-sm font-semibold">{t.role}</p>
+                    <p className="text-slate-500 text-xs mt-0.5">{t.company}</p>
+                  </div>
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-
     </section>
-
-  )
+  );
 }
 
-export default Testimonials
+export default Testimonials;
