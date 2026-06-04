@@ -1,51 +1,200 @@
-import Navbar from "../components/Navbar/Navbar";
-import ProgramsSection from "../components/ProgramsSection/ProgramsSection";
-import CareerPath from "../components/CareerPath/CareerPath";
-import PlacementRoadmap from "../components/PlacementRoadmap/PlacementRoadmap";
-import Footer1 from "../components/Footer1/Footer1";
+import Navbar from "../components/Navbar/Navbar"
+import FeaturedPrograms from "../components/FeaturedPrograms/FeaturedPrograms"
+import SuccessStories from "../components/SuccessStories/SuccessStories"
+import Footer1 from "../components/Footer1/Footer1"
+import InvestmentCalculator from "../components/InvestmentCalculator/InvestmentCalculator"
+import LearnerVideos from "../components/LearnerVideos/LearnerVideos"
+import BenefitsSection from "../components/BenefitsSection/BenefitsSection"
+import AboutGuvi from "../components/AboutGuvi/AboutGuvi"
 import CareerPopup from "../components/CareerPopup/CareerPopup";
-import SeoHead from "../components/SeoHead/SeoHead";
-import { BRAND, HERO } from "../data/siteContent";
-import { openCareerPopup } from "../utils/careerPopupEvents";
+
+import {
+  FaBrain,
+  FaDatabase,
+  FaCode,
+  FaLayerGroup,
+} from "react-icons/fa"
+
+import hiring from "../assets/logos/hiring.png"
 
 function Programs() {
-  return (
-    <>
-      <SeoHead
-        title="Career Programs | Jawa EdTech — HR & Technology Training"
-        description="Explore HR Executive, Talent Acquisition, Full Stack, Python, and AI/ML programs with internships and placement support."
-        path="/programs"
-      />
-      <Navbar />
-      <CareerPopup />
 
-      <section className="section-padding bg-jawa-bg">
-        <div className="container-jawa text-center max-w-3xl mx-auto mb-4">
-          <p className="text-jawa-secondary font-semibold text-sm uppercase tracking-wide mb-3">
-            {BRAND.name}
-          </p>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-jawa-primary leading-tight mb-4">
-            Industry-Focused Career Programs
-          </h1>
-          <p className="text-jawa-text text-base sm:text-lg leading-relaxed mb-8">
-            {HERO.description}
-          </p>
-          <button
-            type="button"
-            onClick={openCareerPopup}
-            className="inline-flex items-center px-6 py-3.5 bg-jawa-secondary text-white font-bold rounded-xl hover:bg-green-600 transition"
-          >
-            Get Free Career Counseling
-          </button>
+  const programs = [
+
+    {
+      title: "Data Science Program",
+      icon: <FaDatabase />,
+    },
+
+    {
+      title: "Intel AIML Program",
+      icon: <FaBrain />,
+    },
+
+    {
+      title: "Gen AI Software Development",
+      icon: <FaLayerGroup />,
+    },
+
+    {
+      title: "MERN Full Stack Program",
+      icon: <FaCode />,
+    },
+
+  ]
+
+  return (
+
+    <>
+
+      {/* NAVBAR */}
+      <Navbar />
+
+      <section className="bg-white">
+
+        {/* HERO SECTION */}
+        <div
+          className="
+          bg-[linear-gradient(#f8fafc_1px,transparent_1px),
+          linear-gradient(90deg,#f8fafc_1px,transparent_1px)]
+          bg-[size:70px_70px]
+          "
+        >
+
+          <div className="max-w-7xl mx-auto px-6 pt-10">
+
+            {/* HEADING */}
+            <h1
+              className="
+              text-center
+              text-[52px]
+              font-bold
+              text-slate-800
+              leading-tight
+              max-w-5xl
+              mx-auto
+              "
+            >
+              Master the skills that drive industry innovation
+            </h1>
+
+            {/* SUBTITLE */}
+            <p
+              className="
+              text-center
+              text-[22px]
+              text-gray-500
+              mt-5
+              "
+            >
+              Check out our top four best-selling courses,
+              trusted by learners
+            </p>
+
+            {/* PROGRAM PILLS */}
+            <div className="max-w-4xl mx-auto mt-12">
+
+              <div className="grid grid-cols-2 gap-5">
+
+                {programs.map((item, index) => (
+
+                  <div
+                    key={index}
+                    className="
+                    bg-white
+                    rounded-full
+                    px-6
+                    py-4
+                    flex
+                    items-center
+                    gap-4
+                    shadow-md
+                    hover:shadow-lg
+                    transition-all
+                    duration-300
+                    cursor-pointer
+                    "
+                  >
+
+                    {/* ICON */}
+                    <div
+                      className="
+                      w-12
+                      h-12
+                      rounded-full
+                      bg-purple-700
+                      text-white
+                      flex
+                      items-center
+                      justify-center
+                      text-lg
+                      "
+                    >
+                      {item.icon}
+                    </div>
+
+                    {/* TITLE */}
+                    <h3
+                      className="
+                      text-xl
+                      font-semibold
+                      text-slate-800
+                      "
+                    >
+                      {item.title}
+                    </h3>
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+            {/* HIRING IMAGE */}
+            <div className="flex justify-center mt-10 overflow-hidden">
+
+              <img
+                src={hiring}
+                alt="Hiring Programs"
+                className="
+                w-full
+                max-w-[1500px]
+                object-contain
+                mix-blend-multiply
+                "
+              />
+
+            </div>
+
+          </div>
+
         </div>
+
+        {/* FEATURED PROGRAMS */}
+        <FeaturedPrograms />
+
+        {/* SUCCESS STORIES */}
+        <SuccessStories />  
+
+        <InvestmentCalculator />
+
+        <LearnerVideos />
+
+        <BenefitsSection />
+
+        <AboutGuvi />
+        
+        {/* FOOTER */}
+        <Footer1 />
+
       </section>
 
-      <ProgramsSection />
-      <CareerPath />
-      <PlacementRoadmap />
-      <Footer1 />
     </>
-  );
+
+  )
+
 }
 
-export default Programs;
+export default Programs

@@ -48,7 +48,7 @@ function Signup() {
     try {
       await signup({ name, email, phone, password });
       consumePendingLead();
-      navigate("/", { replace: true });
+      navigate("/dashboard", { replace: true });
     } catch (err) {
       setError(err.message || "Unable to create account. Please try again.");
     } finally {
@@ -60,9 +60,9 @@ function Signup() {
     <AuthLayout
       badge={pending ? "Pre-filled from your request" : null}
       title="Create account"
-      subtitle="Start learning with mentors & placement support"
+      subtitle="Create your Jawa EdTech account"
     >
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <Field icon={FaUser} label="Full name">
           <input
             type="text"
@@ -111,7 +111,7 @@ function Signup() {
         </Field>
 
         {error && (
-          <p className="text-red-600 text-xs font-medium bg-red-50 px-3 py-2 rounded-lg">
+          <p className="rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-200">
             {error}
           </p>
         )}
@@ -119,15 +119,15 @@ function Signup() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:brightness-105 disabled:opacity-60 text-white text-sm font-bold py-3 rounded-xl shadow-md transition"
+          className="w-full rounded-2xl bg-gradient-to-r from-blue-500 to-blue-400 py-4 text-base font-black text-white shadow-xl shadow-blue-500/20 transition hover:from-blue-600 hover:to-blue-500 disabled:opacity-60"
         >
           {loading ? "Creating account..." : "Create account & continue"}
         </button>
       </form>
 
-      <p className="text-center text-xs text-slate-500 mt-4">
+      <p className="mt-5 text-center text-xs text-slate-400">
         Have an account?{" "}
-        <Link to="/login" className="text-emerald-600 font-bold hover:underline">
+        <Link to="/login" className="font-bold text-blue-300 hover:underline">
           Sign in
         </Link>
       </p>
@@ -136,14 +136,14 @@ function Signup() {
 }
 
 const inputClass =
-  "w-full border border-slate-200 rounded-lg pl-10 pr-3 py-2.5 text-sm outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15";
+  "w-full rounded-2xl border border-slate-600 bg-[#1e2c40] pl-12 pr-4 py-3.5 text-sm font-semibold text-white outline-none transition placeholder:text-slate-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-500/20";
 
 function Field({ icon: Icon, label, children }) {
   return (
     <div>
-      <label className="block text-xs font-semibold text-slate-700 mb-1">{label}</label>
+      <label className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{label}</label>
       <div className="relative">
-        <Icon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+        <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400 text-xs" />
         {children}
       </div>
     </div>

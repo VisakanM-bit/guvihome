@@ -1,158 +1,101 @@
 import { Link } from "react-router-dom";
 import {
   FaBookOpen,
-  FaHeadset,
-  FaTrophy,
-  FaChartLine,
-  FaPlayCircle,
+  FaBriefcase,
+  FaCode,
+  FaGraduationCap,
+  FaRobot,
+  FaSignOutAlt,
 } from "react-icons/fa";
-import Navbar from "../components/Navbar/Navbar";
-import Footer1 from "../components/Footer1/Footer1";
 import { useAuth } from "../context/AuthContext";
-import { IMAGES } from "../config/images";
 
-const WIDGETS = [
+const choices = [
   {
     icon: FaBookOpen,
-    title: "My courses",
-    desc: "Resume where you left off",
-    color: "from-purple-500 to-violet-600",
+    title: "Choose a Course",
+    desc: "Explore HR, Full Stack, Python, AI & ML, DevOps, Testing, and MuleSoft programs.",
+    href: "/programs",
+    action: "Browse Courses",
   },
   {
-    icon: FaHeadset,
-    title: "Expert call",
-    desc: "Your session is scheduled",
-    color: "from-emerald-500 to-green-600",
+    icon: FaBriefcase,
+    title: "Choose a Platform",
+    desc: "Open your learning, internship, placement, mentor, or AI career platform workspace.",
+    href: "/",
+    action: "View Platforms",
   },
-  {
-    icon: FaTrophy,
-    title: "Achievements",
-    desc: "3 badges unlocked",
-    color: "from-amber-500 to-orange-600",
-  },
-  {
-    icon: FaChartLine,
-    title: "Progress",
-    desc: "Track weekly goals",
-    color: "from-blue-500 to-cyan-600",
-  },
+];
+
+const platforms = [
+  { icon: FaGraduationCap, label: "Student Portal" },
+  { icon: FaBriefcase, label: "Internship Hub" },
+  { icon: FaCode, label: "Project Lab" },
+  { icon: FaRobot, label: "AI Career Guide" },
 ];
 
 function Dashboard() {
   const { user, logout } = useAuth();
 
   return (
-    <>
-      <Navbar />
-      <section className="bg-gradient-to-b from-slate-50 to-white min-h-[70vh]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-6">
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-600 to-slate-900 text-white p-8 sm:p-10">
-                <img
-                  src={IMAGES.learner3}
-                  alt=""
-                  className="absolute right-0 bottom-0 w-48 h-48 object-cover opacity-40 rounded-tl-3xl"
-                />
-                <p className="text-emerald-200 text-sm font-bold uppercase tracking-wide">
-                  Member dashboard
-                </p>
-                <h1 className="text-3xl sm:text-4xl font-bold mt-2 relative z-10">
-                  Welcome back, {user?.name?.split(" ")[0]}
-                </h1>
-                <p className="mt-3 text-emerald-100/90 max-w-md relative z-10">
-                  Your account is active. Explore programs and continue your
-                  learning journey.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3 relative z-10">
-                  <Link
-                    to="/programs"
-                    className="inline-flex items-center gap-2 bg-white text-emerald-800 font-bold px-6 py-3 rounded-xl hover:bg-emerald-50 transition"
-                  >
-                    <FaPlayCircle /> Browse programs
-                  </Link>
-                  <Link
-                    to="/"
-                    className="inline-flex items-center gap-2 border border-white/40 font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition"
-                  >
-                    Homepage
-                  </Link>
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {WIDGETS.map(({ icon: Icon, title, desc, color }) => (
-                  <div
-                    key={title}
-                    className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm hover:shadow-md transition"
-                  >
-                    <div
-                      className={`w-11 h-11 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center text-white mb-3`}
-                    >
-                      <Icon />
-                    </div>
-                    <h3 className="font-bold text-slate-900">{title}</h3>
-                    <p className="text-sm text-slate-500 mt-1">{desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-5">
-              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                <h3 className="font-bold text-slate-900 mb-4">Your profile</h3>
-                <dl className="space-y-3 text-sm">
-                  <div>
-                    <dt className="text-slate-400">Name</dt>
-                    <dd className="font-semibold text-slate-800">{user?.name}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-slate-400">Email</dt>
-                    <dd className="font-semibold text-slate-800">{user?.email}</dd>
-                  </div>
-                  {user?.phone && (
-                    <div>
-                      <dt className="text-slate-400">Phone</dt>
-                      <dd className="font-semibold text-slate-800">{user.phone}</dd>
-                    </div>
-                  )}
-                </dl>
-                <button
-                  type="button"
-                  onClick={logout}
-                  className="mt-6 w-full py-2.5 text-red-600 font-semibold border border-red-200 rounded-xl hover:bg-red-50 transition"
-                >
-                  Sign out
-                </button>
-              </div>
-
-              <div className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                <img
-                  src={IMAGES.tech}
-                  alt="Recommended program"
-                  className="w-full h-36 object-cover"
-                />
-                <div className="p-4 bg-white">
-                  <p className="text-xs font-bold text-green-600 uppercase">
-                    Recommended
-                  </p>
-                  <p className="font-bold text-slate-900 mt-1">
-                    AI & Machine Learning
-                  </p>
-                  <Link
-                    to="/programs"
-                    className="text-sm text-green-600 font-semibold mt-2 inline-block hover:underline"
-                  >
-                    View program →
-                  </Link>
-                </div>
-              </div>
-            </div>
+    <main className="min-h-screen bg-[#07162b] px-5 py-8 text-white">
+      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_80%_10%,rgba(37,99,235,0.42),transparent_30%),radial-gradient(circle_at_16%_88%,rgba(14,165,233,0.22),transparent_32%)]" />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-300">
+              Jawa EdTech Dashboard
+            </p>
+            <h1 className="mt-2 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+              Choose your course or platform
+            </h1>
+            <p className="mt-3 text-base font-medium text-slate-300">
+              Welcome, {user?.name?.split(" ")[0] || "learner"}. Select where you want to continue.
+            </p>
           </div>
-        </div>
-      </section>
-      <Footer1 />
-    </>
+          <button
+            type="button"
+            onClick={logout}
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-white/10"
+          >
+            <FaSignOutAlt />
+            Sign out
+          </button>
+        </header>
+
+        <section className="mt-10 grid gap-5 lg:grid-cols-2">
+          {choices.map(({ icon: Icon, title, desc, href, action }) => (
+            <Link
+              key={title}
+              to={href}
+              className="group rounded-[1.6rem] border border-white/10 bg-white/[0.08] p-7 shadow-2xl shadow-black/20 backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.12]"
+            >
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500 text-2xl text-white shadow-xl shadow-blue-500/25">
+                <Icon />
+              </span>
+              <h2 className="mt-6 text-3xl font-black tracking-[-0.03em] text-white">{title}</h2>
+              <p className="mt-3 max-w-lg text-sm font-medium leading-7 text-slate-300">{desc}</p>
+              <span className="mt-6 inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-black text-[#0F172A]">
+                {action}
+              </span>
+            </Link>
+          ))}
+        </section>
+
+        <section className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">
+            Available Platforms
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {platforms.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-3 rounded-2xl bg-white/[0.07] p-4">
+                <Icon className="text-blue-300" />
+                <span className="text-sm font-extrabold text-white">{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
 

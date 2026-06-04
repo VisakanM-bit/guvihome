@@ -1,6 +1,7 @@
+import careerHeroLocal from "../assets/auth/career-hero.png";
+
 export const IMAGES = {
-  authHero:
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop",
+  authHero: careerHeroLocal,
   hero:
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop&crop=faces",
   learner1:

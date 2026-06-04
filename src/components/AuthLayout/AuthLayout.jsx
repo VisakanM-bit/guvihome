@@ -1,135 +1,100 @@
 import { Link } from "react-router-dom";
 import {
-  FaUsers,
-  FaGraduationCap,
-  FaHeadset,
+  FaBookOpen,
+  FaBriefcase,
   FaCheckCircle,
+  FaGraduationCap,
 } from "react-icons/fa";
-import { IMAGES } from "../../config/images";
-import { BRAND } from "../../data/siteContent";
 
-const STATS = [
-  { icon: FaUsers, value: "5000+", label: "Learners empowered" },
-  { icon: FaGraduationCap, value: "300+", label: "Hiring opportunities" },
-  { icon: FaHeadset, value: "100+", label: "Industry mentors" },
+const stats = [
+  { value: "5000+", label: "Learners" },
+  { value: "100+", label: "Mentors" },
+  { value: "300+", label: "Hiring Opportunities" },
+  { value: "95%", label: "Career Readiness" },
 ];
 
-const PERKS = [
-  "1-on-1 career mentorship",
-  "Industry-ready projects",
-  "Placement & interview prep",
-];
+const paths = ["HR Executive", "Full Stack", "Python", "AI & ML", "DevOps"];
 
 function AuthLayout({ title, subtitle, children, badge }) {
   return (
-    <div className="min-h-screen min-h-[100dvh] flex items-center justify-center bg-[#0c1222] p-3 sm:p-5 md:p-8">
-      {/* Premium framed shell — fits portrait & landscape */}
-      <div
-        className="
-          w-full max-w-[1080px]
-          max-h-[min(94dvh,720px)]
-          min-h-[min(88dvh,560px)]
-          grid grid-rows-[auto_1fr] lg:grid-rows-1 lg:grid-cols-[1.05fr_0.95fr]
-          rounded-2xl sm:rounded-[1.75rem]
-          overflow-hidden
-          shadow-[0_25px_80px_-12px_rgba(0,0,0,0.65)]
-          border border-white/[0.08]
-          bg-[#0f172a]
-        "
-      >
-        {/* Left — professional imagery */}
-        <div className="relative min-h-[200px] sm:min-h-[220px] lg:min-h-0 lg:h-full overflow-hidden">
-          <img
-            src={IMAGES.authHero}
-            alt="Professional career mentoring"
-            className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/88 via-emerald-900/75 to-slate-950/90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+    <div className="relative min-h-screen overflow-hidden bg-[#07162b] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_24%,rgba(37,99,235,0.45),transparent_34%),radial-gradient(circle_at_12%_78%,rgba(14,165,233,0.22),transparent_32%),linear-gradient(120deg,#07111f_0%,#0b2140_52%,#0b4a82_100%)]" />
+      <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_42%_22%,rgba(96,165,250,0.12),transparent_18%),radial-gradient(circle_at_66%_70%,rgba(96,165,250,0.13),transparent_20%)]" />
 
-          <div className="relative z-10 h-full flex flex-col justify-between p-5 sm:p-7 lg:p-8">
-            <div>
-              <Link
-                to="/"
-                className="inline-flex text-xs sm:text-sm font-semibold text-emerald-200/90 hover:text-white transition"
-              >
-                ← Back to homepage
-              </Link>
-              {badge && (
-                <p className="mt-4 inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/25 text-emerald-100 border border-emerald-400/30">
-                  {badge}
-                </p>
-              )}
-              <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2rem] font-extrabold text-white leading-snug tracking-tight">
-                Your career journey
-                <span className="text-emerald-400"> starts here</span>
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-slate-200/90 max-w-sm leading-relaxed">
-              {BRAND.tagline} — {BRAND.motto}
-              </p>
-            </div>
+      <div className="relative z-10 grid min-h-screen items-center gap-8 px-6 py-10 lg:grid-cols-[1.18fr_0.82fr] lg:px-11 xl:px-12">
+        <section className="max-w-5xl">
+          <Link to="/" className="mb-10 inline-flex items-center gap-3 text-sm font-extrabold text-blue-200 transition hover:text-white">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+              <FaGraduationCap className="text-[#38BDF8]" />
+            </span>
+            Jawa EdTech
+          </Link>
 
-            <div className="hidden sm:grid grid-cols-3 gap-2 lg:gap-3 mt-4">
-              {STATS.map(({ icon: Icon, value, label }) => (
-                <div
-                  key={label}
-                  className="rounded-xl bg-black/25 backdrop-blur-md border border-white/10 px-3 py-3"
-                >
-                  <Icon className="text-emerald-400 text-sm mb-1.5" />
-                  <p className="text-lg font-bold text-white leading-none">{value}</p>
-                  <p className="text-[10px] text-slate-300 mt-1 leading-tight">{label}</p>
-                </div>
-              ))}
-            </div>
+          {badge && (
+            <p className="mb-4 inline-flex rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-200">
+              {badge}
+            </p>
+          )}
 
-            <ul className="hidden md:flex flex-wrap gap-x-4 gap-y-1.5 mt-3">
-              {PERKS.map((perk) => (
-                <li
-                  key={perk}
-                  className="flex items-center gap-1.5 text-xs text-slate-200"
-                >
-                  <FaCheckCircle className="text-emerald-400 shrink-0 text-[10px]" />
-                  {perk}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          <h1 className="max-w-5xl text-[2.65rem] font-black leading-[1.1] tracking-[-0.04em] text-white sm:text-6xl xl:text-[4.55rem]">
+            Transform Your Career with{" "}
+            <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+              Industry-Focused Programs
+            </span>
+          </h1>
 
-        {/* Right — compact sign-in card, centered */}
-        <div className="relative flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-[#0a0f1a] min-h-[320px] lg:min-h-0">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-40"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(16,185,129,0.12), transparent)",
-            }}
-          />
+          <p className="mt-7 max-w-2xl text-lg font-semibold leading-9 text-slate-300">
+            Learn, practice, intern, build projects, prepare for interviews, and get placement-ready with Jawa EdTech's complete career transformation platform.
+          </p>
 
-          <div className="relative w-full max-w-[380px] mx-auto">
-            {/* Compact structured card */}
-            <div className="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] border border-slate-100/80 px-6 py-7 sm:px-7 sm:py-8">
-              <div className="text-center sm:text-left mb-6 pb-5 border-b border-slate-100">
-                <h1 className="text-xl sm:text-[1.35rem] font-bold text-slate-900 tracking-tight">
-                  {title}
-                </h1>
-                {subtitle && (
-                  <p className="text-slate-500 text-xs sm:text-sm mt-1.5 leading-snug">
-                    {subtitle}
-                  </p>
-                )}
+          <div className="mt-10 grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-3xl font-black tracking-[-0.04em] text-cyan-300 sm:text-4xl">{stat.value}</p>
+                <p className="mt-1 text-sm font-medium text-slate-300">{stat.label}</p>
               </div>
-              {children}
-            </div>
+            ))}
+          </div>
 
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
-              to="/"
-              className="mt-4 block text-center text-xs text-slate-500 hover:text-emerald-400 transition lg:hidden"
+              to="/programs"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-500 px-8 text-base font-extrabold text-white shadow-2xl shadow-blue-500/25 transition hover:bg-blue-600"
             >
-              ← Back to homepage
+              <FaBookOpen />
+              Choose Courses
+            </Link>
+            <Link
+              to="/dashboard"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border border-white/25 bg-white/5 px-8 text-base font-extrabold text-white transition hover:bg-white/10"
+            >
+              <FaBriefcase />
+              Explore Platforms
             </Link>
           </div>
-        </div>
+
+          <p className="mt-9 text-sm font-semibold text-slate-300">
+            Supported Paths:{" "}
+            <span className="font-medium text-slate-400">{paths.join("  |  ")}</span>
+          </p>
+        </section>
+
+        <section className="mx-auto w-full max-w-[526px] rounded-[1.65rem] border border-white/10 bg-[#1d293a]/95 p-6 shadow-2xl shadow-black/35 backdrop-blur-xl sm:p-10">
+          <div className="mb-8">
+            <h2 className="text-3xl font-black tracking-[-0.03em] text-white">{title}</h2>
+            {subtitle && <p className="mt-2 text-base font-medium text-slate-400">{subtitle}</p>}
+          </div>
+          {children}
+          <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold text-slate-400">
+            {["Mentor guidance", "Project learning", "Placement prep"].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5">
+                <FaCheckCircle className="text-blue-400" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

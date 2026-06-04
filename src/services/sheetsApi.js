@@ -47,7 +47,6 @@ export async function saveExpertLead(lead) {
     email: lead.email || "",
     phone: lead.phone || "",
     profile: lead.profile || "",
-    careerInterest: lead.careerInterest || "",
     language: lead.language || "",
     education: lead.education || "",
     graduationYear: lead.graduationYear || "",

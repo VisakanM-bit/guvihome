@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 .env
 dist
+_locked_root_node_modules_delete_after_restart
 dist-ssr
 *.local
 

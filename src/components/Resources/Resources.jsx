@@ -1,63 +1,69 @@
-import { BRAND, CTA_FINAL } from "../../data/siteContent";
-import { openCareerPopup } from "../../utils/careerPopupEvents";
+import {
+  FaReact,
+  FaPython,
+  FaCode,
+  FaFolderOpen,
+} from "react-icons/fa"
 
 function Resources() {
+
   return (
-    <section
-      id="resources"
-      className="section-padding bg-jawa-bg"
-      aria-labelledby="resources-heading"
-    >
-      <div className="container-jawa max-w-4xl">
-        <div className="text-center bg-jawa-card rounded-3xl p-8 sm:p-12 shadow-lg border border-slate-100">
-          <h2
-            id="resources-heading"
-            className="text-2xl sm:text-3xl font-heading font-bold text-jawa-primary mb-4"
-          >
-            Start Your Career Journey Today
-          </h2>
-          <p className="text-jawa-text mb-6 leading-relaxed">
-            Free career resources, program guides, and expert counseling — all in one place.
-          </p>
-          <button
-            type="button"
-            onClick={openCareerPopup}
-            className="inline-block bg-jawa-secondary hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl transition"
-          >
-            {CTA_FINAL.button}
-          </button>
+
+    <section className="bg-[#f7f7f7] py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10">
+
+      <div className="max-w-7xl mx-auto">
+
+        {/* MAIN BOX */}
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-[30px] bg-gradient-to-r from-[#f4f0ff] to-[#ece7ff] py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-16 shadow-xl border border-purple-100">
+
+          {/* LEFT ICONS */}
+          <FaReact className="absolute top-4 sm:top-8 lg:top-10 left-6 sm:left-14 md:left-20 lg:left-28 text-purple-400 text-4xl sm:text-5xl md:text-6xl lg:text-7xl opacity-70 rotate-12" />
+
+          <FaCode className="absolute top-12 sm:top-16 md:top-20 lg:top-28 left-2 sm:left-4 md:left-8 text-purple-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl opacity-60 -rotate-12" />
+
+          <FaFolderOpen className="absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-14 left-4 sm:left-8 md:left-12 lg:left-20 text-purple-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl opacity-60 rotate-12" />
+
+          {/* RIGHT ICONS */}
+          <FaPython className="absolute top-6 sm:top-8 lg:top-16 right-6 sm:right-12 md:right-16 lg:right-24 text-purple-400 text-4xl sm:text-5xl md:text-6xl lg:text-7xl opacity-70 rotate-12" />
+
+          <FaReact className="absolute top-12 sm:top-16 md:top-20 lg:top-28 right-1 sm:right-3 md:right-6 text-purple-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl opacity-60 rotate-12" />
+
+          <FaFolderOpen className="absolute bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-10 right-4 sm:right-8 md:right-12 lg:right-20 text-purple-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl opacity-60 -rotate-12" />
+
+          {/* CENTER CONTENT */}
+          <div className="relative z-10 text-center">
+
+            {/* TITLE */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6 sm:mb-8 md:mb-10">
+
+              Find Our Perfect Free Resources to
+              <br />
+
+              Enhance Your Skills Now!
+
+            </h1>
+
+            {/* BUTTON */}
+            <button className="bg-green-400 hover:bg-green-500 transition-all duration-300 text-black text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg w-full sm:w-auto">
+
+              Explore Now
+
+            </button>
+
+          </div>
+
+          {/* BOTTOM CURVE EFFECT */}
+          <div className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 lg:w-[300px] h-16 sm:h-20 md:h-24 lg:h-[120px] bg-purple-200 opacity-40 rounded-tr-lg sm:rounded-tr-2xl md:rounded-tr-4xl lg:rounded-tr-[100px]"></div>
+
+          <div className="absolute bottom-0 right-0 w-32 sm:w-48 md:w-64 lg:w-[300px] h-16 sm:h-20 md:h-24 lg:h-[120px] bg-purple-200 opacity-40 rounded-tl-lg sm:rounded-tl-2xl md:rounded-tl-4xl lg:rounded-tl-[100px]"></div>
+
         </div>
 
-        <div
-          id="contact"
-          className="mt-8 grid sm:grid-cols-3 gap-4 text-center"
-          aria-labelledby="contact-heading"
-        >
-          <h3 id="contact-heading" className="sr-only">
-            Contact Jawa EdTech
-          </h3>
-          <a
-            href={`mailto:${BRAND.email}`}
-            className="bg-jawa-card rounded-xl p-5 border border-slate-100 hover:border-jawa-secondary/30 transition"
-          >
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Email</p>
-            <p className="text-sm font-semibold text-jawa-secondary">{BRAND.email}</p>
-          </a>
-          <a
-            href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
-            className="bg-jawa-card rounded-xl p-5 border border-slate-100 hover:border-jawa-secondary/30 transition"
-          >
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Phone</p>
-            <p className="text-sm font-semibold text-jawa-secondary">{BRAND.phone}</p>
-          </a>
-          <div className="bg-jawa-card rounded-xl p-5 border border-slate-100">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Location</p>
-            <p className="text-sm text-jawa-text leading-relaxed">Coimbatore, Tamil Nadu</p>
-          </div>
-        </div>
       </div>
+
     </section>
-  );
+
+  )
 }
 
-export default Resources;
+export default Resources
