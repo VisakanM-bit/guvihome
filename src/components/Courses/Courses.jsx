@@ -1,188 +1,171 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Autoplay } from "swiper/modules"
+import {
+  FaBrain,
+  FaBriefcase,
+  FaCheck,
+  FaCode,
+  FaFlask,
+  FaNetworkWired,
+  FaPython,
+  FaUserTie,
+  FaUsers,
+} from "react-icons/fa";
 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import aimlImage from "../../assets/logos/aiml.png";
+import businessImage from "../../assets/logos/businessandmarketing.png";
+import devopsImage from "../../assets/logos/devops.png";
+import hiringImage from "../../assets/logos/hiring.png";
+import pythonImage from "../../assets/logos/python.png";
+import reactImage from "../../assets/logos/react.png";
+import uiuxImage from "../../assets/logos/uiuxdesign.png";
+import masterDataImage from "../../assets/logos/masterdatascience.png";
 
-import aimlImage from "../../assets/logos/aiml.png"
-import businessImage from "../../assets/logos/businessandmarketing.png"
-import devopsImage from "../../assets/logos/devops.png"
-import masterDataImage from "../../assets/logos/masterdatascience.png"
-import pythonImage from "../../assets/logos/python.png"
-import reactImage from "../../assets/logos/react.png"
-import uiuxImage from "../../assets/logos/uiuxdesign.png"
+const programs = [
+  {
+    icon: FaUserTie,
+    image: businessImage,
+    title: "Human Resource Executive & Development Program",
+    subtitle: "Become the HR Professional Every Company Wants",
+    skills: ["HR Operations", "Payroll Processing", "HRMS Tools", "HR Analytics"],
+    support: ["Internship Support", "Placement Assistance"],
+  },
+  {
+    icon: FaUsers,
+    image: hiringImage,
+    title: "Recruitment & Talent Acquisition Program",
+    subtitle: "Master Modern Hiring & Talent Intelligence",
+    skills: [
+      "Talent Sourcing",
+      "LinkedIn Recruiting",
+      "Boolean Search",
+      "Recruitment Analytics",
+    ],
+    support: ["Internship Support", "Placement Assistance"],
+  },
+  {
+    icon: FaCode,
+    image: reactImage,
+    title: "Full Stack Development Program",
+    subtitle: "Build Modern Web Applications from Scratch",
+    skills: ["HTML, CSS, JavaScript", "React.js", "Node.js", "MongoDB"],
+    support: ["Live Projects", "Placement Assistance"],
+  },
+  {
+    icon: FaPython,
+    image: pythonImage,
+    title: "Python Development Program",
+    subtitle: "Master Python for Industry Applications",
+    skills: ["Core Python", "OOP Concepts", "APIs", "Real Projects"],
+    support: ["Mentor Support", "Internship Assistance"],
+  },
+  {
+    icon: FaBrain,
+    image: aimlImage,
+    title: "Artificial Intelligence & Machine Learning",
+    subtitle: "Build Intelligent Systems & AI Solutions",
+    skills: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision"],
+    support: ["Industry Projects", "Career Guidance"],
+  },
+  {
+    icon: FaBriefcase,
+    image: devopsImage,
+    title: "DevOps Engineering Program",
+    subtitle: "Master Modern Software Delivery",
+    skills: ["Linux", "Docker", "Kubernetes", "AWS"],
+    support: ["Live Labs", "Placement Support"],
+  },
+  {
+    icon: FaFlask,
+    image: uiuxImage,
+    title: "Software Testing & QA Program",
+    subtitle: "Become a Quality Assurance Professional",
+    skills: ["Manual Testing", "Automation Testing", "Agile Testing", "Defect Tracking"],
+    support: ["Practical Labs", "Real-Time Testing Projects"],
+  },
+  {
+    icon: FaNetworkWired,
+    image: masterDataImage,
+    title: "MuleSoft Development Program",
+    subtitle: "Master Enterprise API Integration",
+    skills: ["API Development", "Integration Patterns", "CloudHub", "Anypoint Platform"],
+    support: ["Industry Exposure", "Career Support"],
+  },
+];
 
 function Courses() {
-
-  const courses = [
-
-    {
-      image: masterDataImage,
-      title: "Master Data Science Program",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: aimlImage,
-      title: "Artificial Intelligence & Machine Learning",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: reactImage,
-      title: "Full Stack React Development",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: pythonImage,
-      title: "Python Full Stack Development",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: uiuxImage,
-      title: "UI/UX Design Program",
-      language: "Tamil, English, Hindi & Telugu",
-    },
-
-    {
-      image: devopsImage,
-      title: "DevOps & Cloud Engineering",
-      language: "Tamil, English & Hindi",
-    },
-
-    {
-      image: businessImage,
-      title: "Business & Marketing Analytics",
-      language: "Tamil, English & Hindi",
-    },
-
-  ]
-
   return (
+    <section id="courses" className="career-programs-section px-4 py-12 sm:px-6 md:px-8 lg:px-8 lg:py-16 2xl:px-10">
+      <div className="w-full">
+        <div className="mx-auto mb-10 max-w-4xl text-center">
+          <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#00a86b]">
+            Career Accelerator Programs
+          </p>
+          <h1 className="text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl">
+            Explore Career Accelerator Programs
+          </h1>
+          <p className="mt-4 text-base font-medium leading-7 text-slate-600 sm:text-lg">
+            Industry-focused learning paths designed to help you Learn, Practice,
+            Intern & Get Hired.
+          </p>
+        </div>
 
-    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden">
-
-      {/* HEADING */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-3 sm:mb-4 md:mb-6 lg:mb-6">
-
-        🔴 Live Classes + Placement Guidance
-
-      </h1>
-
-      {/* SUBTEXT */}
-      <p className="text-center text-gray-600 text-base sm:text-lg md:text-xl lg:text-2xl max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mb-8 sm:mb-12 md:mb-16 leading-relaxed">
-
-        HCL GUVI offers industry-leading Project Based Career Programs with live classes, certifications and placement guidance.
-
-      </p>
-
-      {/* SWIPER */}
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        slidesPerView={4}
-        spaceBetween={30}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 16,
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 24,
-          },
-          1280: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
-        }}
-        className="pb-12 sm:pb-16 md:pb-20 lg:pb-20 px-2 sm:px-4"
-      >
-
-        {courses.map((course, index) => (
-
-          <SwiperSlide key={index}>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
-
-              {/* IMAGE */}
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-60 object-cover"
-              />
-
-              {/* CONTENT */}
-              <div className="p-6">
-
-                {/* TITLE */}
-                <h2 className="text-2xl font-semibold leading-snug mb-8 min-h-[100px]">
-
-                  {course.title}
-
-                </h2>
-
-                {/* LANGUAGE */}
-                <p className="text-gray-500 text-lg mb-10">
-
-                  🌐 {course.language}
-
-                </p>
-
-                {/* BUTTONS */}
-                <div className="flex gap-4">
-
-                  <button className="border border-gray-400 px-4 py-3 rounded-lg text-lg w-1/2 hover:bg-gray-100 transition">
-
-                    Syllabus
-
-                  </button>
-
-                  <button className="bg-[#00c853] text-white px-4 py-3 rounded-lg text-lg w-1/2 hover:bg-green-600 transition">
-
-                    Know More
-
-                  </button>
-
-                </div>
-
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 2xl:gap-7">
+          {programs.map(({ icon: Icon, image, title, subtitle, skills, support }) => (
+            <article
+              key={title}
+              className="career-program-card group flex min-h-full flex-col overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1"
+            >
+              <div className="relative h-52 overflow-hidden bg-slate-900 2xl:h-60">
+                <img
+                  src={image}
+                  alt={title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
+                <span className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-xl text-[#00a86b] shadow-xl">
+                  <Icon />
+                </span>
               </div>
 
-            </div>
+              <div className="flex flex-1 flex-col p-5 2xl:p-6">
+                <h2 className="min-h-[64px] text-xl font-black leading-snug text-slate-950 2xl:text-2xl">
+                  {title}
+                </h2>
+                <p className="mt-3 min-h-[48px] text-sm font-bold leading-6 text-slate-600 2xl:text-base">
+                  {subtitle}
+                </p>
 
-          </SwiperSlide>
+                <div className="mt-5 grid gap-2">
+                  {skills.map((skill) => (
+                    <span key={skill} className="flex items-center gap-2 text-sm font-semibold text-slate-700 2xl:text-base">
+                      <FaCheck className="shrink-0 text-[#00a86b]" />
+                      {skill}
+                    </span>
+                  ))}
+                </div>
 
-        ))}
+                <div className="mt-5 grid gap-2 border-t border-slate-100 pt-4">
+                  {support.map((item) => (
+                    <span key={item} className="text-sm font-extrabold text-slate-800 2xl:text-base">
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
-      </Swiper>
-
-      {/* EXPLORE BUTTON */}
-      <div className="flex justify-center mt-10">
-
-        <button className="border border-gray-400 px-12 py-5 rounded-xl text-2xl hover:bg-white transition duration-300">
-
-          Explore All Programs
-
-        </button>
-
+                <div className="mt-auto flex gap-3 pt-5">
+                  <button className="min-h-12 flex-1 rounded-xl border border-slate-300 px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 2xl:text-base">
+                    View Curriculum
+                  </button>
+                  <button className="min-h-12 flex-1 rounded-xl bg-[#00c853] px-3 text-sm font-extrabold text-white shadow-lg shadow-green-500/20 transition hover:bg-[#00b84d] 2xl:text-base">
+                    Explore Program
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-
     </section>
-
-  )
+  );
 }
 
-export default Courses
+export default Courses;

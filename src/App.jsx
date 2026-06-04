@@ -26,11 +26,11 @@ function App() {
       {/* HERO SECTION */}
       <Hero />
 
-      {/* PARTNERS */}
-      <Partners />
-
       {/* COURSES */}
       <Courses />
+
+      {/* PARTNERS */}
+      <Partners />
 
       {/* SKILL ASSESSMENT */}
       <Assessments />

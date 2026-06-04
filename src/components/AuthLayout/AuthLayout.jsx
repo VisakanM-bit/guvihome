@@ -8,25 +8,34 @@ import {
 
 const stats = [
   { value: "5000+", label: "Learners" },
-  { value: "100+", label: "Mentors" },
+  { value: "100+", label: "Industry Mentors" },
   { value: "300+", label: "Hiring Opportunities" },
   { value: "95%", label: "Career Readiness" },
 ];
 
-const paths = ["HR Executive", "Full Stack", "Python", "AI & ML", "DevOps"];
+const paths = [
+  "HR Executive",
+  "Recruitment",
+  "Full Stack",
+  "Python",
+  "AI & ML",
+  "DevOps",
+  "Software Testing",
+  "MuleSoft",
+];
 
 function AuthLayout({ title, subtitle, children, badge }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#07162b] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_24%,rgba(37,99,235,0.45),transparent_34%),radial-gradient(circle_at_12%_78%,rgba(14,165,233,0.22),transparent_32%),linear-gradient(120deg,#07111f_0%,#0b2140_52%,#0b4a82_100%)]" />
+    <div className="cybernet-network-bg relative min-h-screen overflow-hidden text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_24%,rgba(34,197,94,0.22),transparent_34%),radial-gradient(circle_at_12%_78%,rgba(16,185,129,0.18),transparent_32%),linear-gradient(120deg,rgba(2,4,3,0.82)_0%,rgba(5,46,22,0.48)_52%,rgba(2,4,3,0.86)_100%)]" />
       <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_42%_22%,rgba(96,165,250,0.12),transparent_18%),radial-gradient(circle_at_66%_70%,rgba(96,165,250,0.13),transparent_20%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_42%_22%,rgba(34,197,94,0.1),transparent_18%),radial-gradient(circle_at_66%_70%,rgba(16,185,129,0.12),transparent_20%)]" />
 
       <div className="relative z-10 grid min-h-screen items-center gap-8 px-6 py-10 lg:grid-cols-[1.18fr_0.82fr] lg:px-11 xl:px-12">
         <section className="max-w-5xl">
-          <Link to="/" className="mb-10 inline-flex items-center gap-3 text-sm font-extrabold text-blue-200 transition hover:text-white">
+          <Link to="/" className="mb-10 inline-flex items-center gap-3 text-sm font-extrabold text-emerald-100 transition hover:text-white">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-              <FaGraduationCap className="text-[#38BDF8]" />
+              <FaGraduationCap className="text-emerald-300" />
             </span>
             Jawa EdTech
           </Link>
@@ -38,14 +47,14 @@ function AuthLayout({ title, subtitle, children, badge }) {
           )}
 
           <h1 className="max-w-5xl text-[2.65rem] font-black leading-[1.1] tracking-[-0.04em] text-white sm:text-6xl xl:text-[4.55rem]">
-            Transform Your Career with{" "}
+            Build Skills. Gain Experience. Launch Your Career.{" "}
             <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              Industry-Focused Programs
+              With Industry-Focused Programs
             </span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg font-semibold leading-9 text-slate-300">
-            Learn, practice, intern, build projects, prepare for interviews, and get placement-ready with Jawa EdTech's complete career transformation platform.
+            Jawa EdTech is India's Career Transformation Platform helping students, graduates, and professionals master in-demand HR and Technology skills through expert-led training, practical projects, internships, mentorship, and placement support.
           </p>
 
           <div className="mt-10 grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-4">
@@ -63,19 +72,19 @@ function AuthLayout({ title, subtitle, children, badge }) {
               className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-blue-500 px-8 text-base font-extrabold text-white shadow-2xl shadow-blue-500/25 transition hover:bg-blue-600"
             >
               <FaBookOpen />
-              Choose Courses
+              Explore Career Programs
             </Link>
             <Link
               to="/dashboard"
               className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border border-white/25 bg-white/5 px-8 text-base font-extrabold text-white transition hover:bg-white/10"
             >
               <FaBriefcase />
-              Explore Platforms
+              Get Free Career Counseling
             </Link>
           </div>
 
           <p className="mt-9 text-sm font-semibold text-slate-300">
-            Supported Paths:{" "}
+            Career Tracks:{" "}
             <span className="font-medium text-slate-400">{paths.join("  |  ")}</span>
           </p>
         </section>

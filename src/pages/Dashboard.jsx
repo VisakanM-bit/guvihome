@@ -37,12 +37,12 @@ function Dashboard() {
   const { user, logout } = useAuth();
 
   return (
-    <main className="min-h-screen bg-[#07162b] px-5 py-8 text-white">
-      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_80%_10%,rgba(37,99,235,0.42),transparent_30%),radial-gradient(circle_at_16%_88%,rgba(14,165,233,0.22),transparent_32%)]" />
+    <main className="cybernet-network-bg min-h-screen px-5 py-8 text-white">
+      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_80%_10%,rgba(34,197,94,0.24),transparent_30%),radial-gradient(circle_at_16%_88%,rgba(16,185,129,0.18),transparent_32%)]" />
       <div className="relative z-10 mx-auto max-w-6xl">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-300">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-emerald-300">
               Jawa EdTech Dashboard
             </p>
             <h1 className="mt-2 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
@@ -69,7 +69,7 @@ function Dashboard() {
               to={href}
               className="group rounded-[1.6rem] border border-white/10 bg-white/[0.08] p-7 shadow-2xl shadow-black/20 backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.12]"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500 text-2xl text-white shadow-xl shadow-blue-500/25">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500 text-2xl text-white shadow-xl shadow-emerald-500/25">
                 <Icon />
               </span>
               <h2 className="mt-6 text-3xl font-black tracking-[-0.03em] text-white">{title}</h2>
@@ -82,13 +82,13 @@ function Dashboard() {
         </section>
 
         <section className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-300">
             Available Platforms
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {platforms.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-3 rounded-2xl bg-white/[0.07] p-4">
-                <Icon className="text-blue-300" />
+                <Icon className="text-emerald-300" />
                 <span className="text-sm font-extrabold text-white">{label}</span>
               </div>
             ))}
