@@ -493,15 +493,18 @@ function CertificateBand({ title, text }) {
   return (
     <Band eyebrow="Certification" title={title} variant="certificate">
       <div className="course-certificate-wrap grid gap-8 rounded-[2rem] border border-sky-200/15 bg-white/[0.055] p-6 backdrop-blur-2xl lg:grid-cols-[0.82fr_1.18fr] lg:p-8">
-        <div className="rounded-3xl border border-sky-200 bg-[linear-gradient(145deg,#ffffff,#dff3ff)] p-6 text-slate-950 shadow-[0_28px_90px_-48px_rgba(14,165,233,0.8)]">
+        <div className="rounded-3xl border border-sky-200 bg-[linear-gradient(145deg,#ffffff,#dff3ff)] p-6 text-black shadow-[0_28px_90px_-48px_rgba(14,165,233,0.8)]">
           <div className="mb-8 flex items-center justify-between gap-4">
             <img src={jawaEdTechLogo} alt="Jawa EdTech logo" className="h-14 w-14 rounded-xl object-contain" />
             <FaCertificate className="text-4xl text-blue-700" />
           </div>
-          <p className="text-sm font-black uppercase tracking-[0.24em] text-slate-950">Certificate Of Achievement</p>
-          <h3 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">Jawa EdTech</h3>
-          <p className="mt-4 text-sm font-bold leading-7 text-slate-900">
-            Awarded in appreciation of strong performance, practical execution, and dedicated completion of the learning journey.
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-black">Certificate Of Achievement</p>
+          <h3 className="mt-3 text-3xl font-black tracking-[-0.04em] text-black">Jawa EdTech</h3>
+          <p className="mt-4 text-sm font-extrabold leading-7 text-black">
+            Awarded for successfully completing the internship program with dedication, discipline, and professional commitment.
+          </p>
+          <p className="mt-2 text-sm font-bold leading-7 text-black">
+            This certificate appreciates practical task execution, mentor-reviewed performance, workplace readiness, and consistent learning progress.
           </p>
         </div>
         <div className="flex flex-col justify-center">

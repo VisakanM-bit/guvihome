@@ -226,14 +226,14 @@ function InvestmentCalculator() {
                 </h3>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-[linear-gradient(135deg,#f8fbff,#dff2ff)] p-4 text-slate-950 shadow-inner">
+              <div className="rounded-xl border border-slate-200 bg-[linear-gradient(135deg,#f8fbff,#dff2ff)] p-4 text-black shadow-inner">
                 <div className="mb-5 flex items-center justify-between">
                   <img src={jawaEdTechLogo} alt="Jawa EdTech logo" className="h-12 w-12 rounded-lg object-contain" />
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Sample</p>
                 </div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-slate-950">Certificate Of Achievement</p>
-                <h4 className="mt-2 text-2xl font-black tracking-[-0.03em] text-slate-950">Jawa EdTech</h4>
-                <p className="mt-2 text-sm font-bold leading-6 text-slate-900">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-black">Certificate Of Achievement</p>
+                <h4 className="mt-2 text-2xl font-black tracking-[-0.03em] text-black">Jawa EdTech</h4>
+                <p className="mt-2 text-sm font-extrabold leading-6 text-black">
                   Awarded for excellent performance, consistent effort, and successful completion of guided career practice.
                 </p>
               </div>
