@@ -60,6 +60,39 @@ html[data-theme="dark"] .border-gray-200 {
   background: transparent;
 }
 
+select {
+  color-scheme: light;
+}
+
+select option,
+select optgroup {
+  background-color: #ffffff !important;
+  color: #020617 !important;
+  font-weight: 700;
+}
+
+select option:checked {
+  background-color: #93c5fd !important;
+  color: #020617 !important;
+}
+
+html[data-theme="dark"] select,
+html[data-theme="dark"] select option,
+html[data-theme="dark"] select option.text-slate-950,
+html[data-theme="dark"] select optgroup {
+  color-scheme: light;
+  background-color: #ffffff !important;
+  color: #020617 !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] select option:checked,
+html[data-theme="dark"] select option:hover,
+html[data-theme="dark"] select option:focus {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
 .network-glass-panel {
   border: 1px solid rgba(34, 197, 94, 0.16);
   background-color: rgba(0, 10, 5, 0.24);
@@ -147,6 +180,17 @@ html[data-theme="dark"] .border-gray-200 {
   width: 2px;
 }
 
+.phone-login-shake {
+  animation: phone-login-shake 0.78s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.phone-login-shake .phone-login-frame {
+  box-shadow:
+    0 38px 110px -42px rgba(34, 197, 94, 0.95),
+    0 0 0 5px rgba(74, 222, 128, 0.22),
+    0 0 46px rgba(34, 197, 94, 0.42);
+}
+
 section:not(.cybernet-network-bg),
 main {
   background-color: transparent !important;
@@ -179,6 +223,282 @@ html[data-theme="dark"] main {
     0 22px 60px rgba(0, 0, 0, 0.28),
     0 0 36px rgba(34, 197, 94, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.course-detail-bg {
+  position: relative;
+  background-color: #020617;
+  background-image:
+    radial-gradient(circle at 78% 10%, rgba(34, 197, 94, 0.18), transparent 32%),
+    radial-gradient(circle at 10% 28%, rgba(14, 165, 233, 0.12), transparent 28%),
+    radial-gradient(circle at 54% 68%, rgba(16, 185, 129, 0.1), transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620' viewBox='0 0 620 620'%3E%3Cg fill='none' stroke='%2334d399' stroke-opacity='.18' stroke-width='1.1'%3E%3Cpath d='M35 420 78 350 124 383 177 325 244 357 288 286 354 312 426 252 512 294 579 220'/%3E%3Cpath d='M78 350 96 270 154 216 177 325 208 166 286 116 288 286'/%3E%3Cpath d='M354 312 374 205 426 252 478 150 512 294'/%3E%3Cpath d='M40 96 118 44 176 86 208 166 154 216 96 270'/%3E%3Cpath d='M410 42 478 150 560 88 604 146 579 220'/%3E%3C/g%3E%3Cg fill='%2334d399'%3E%3Ccircle cx='35' cy='420' r='3.5' fill-opacity='.7'/%3E%3Ccircle cx='124' cy='383' r='3.6' fill-opacity='.85'/%3E%3Ccircle cx='244' cy='357' r='3.4' fill-opacity='.8'/%3E%3Ccircle cx='354' cy='312' r='3.7' fill-opacity='.82'/%3E%3Ccircle cx='512' cy='294' r='3.8' fill-opacity='.78'/%3E%3Ccircle cx='154' cy='216' r='3.5' fill-opacity='.78'/%3E%3Ccircle cx='286' cy='116' r='3.8' fill-opacity='.86'/%3E%3Ccircle cx='478' cy='150' r='3.7' fill-opacity='.82'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(135deg, #020617 0%, #020403 48%, #000 100%);
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+  background-position: center, center, center, 0 0, center;
+  background-size: cover, cover, cover, 760px 760px, cover;
+  animation: course-network-drift 34s ease-in-out infinite alternate;
+}
+
+.course-detail-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle, rgba(52, 211, 153, 0.75) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle, rgba(125, 211, 252, 0.3) 0 1px, transparent 1.7px);
+  background-size: 170px 170px, 290px 290px;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.course-detail-bg > * {
+  position: relative;
+}
+
+.course-hero-panel,
+.course-final-cta,
+.course-glass-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-hero-panel::before,
+.course-final-cta::before,
+.course-glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 32%, rgba(52, 211, 153, 0.1));
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+
+.course-hero-panel:hover::before,
+.course-final-cta:hover::before,
+.course-glass-card:hover::before {
+  opacity: 1;
+}
+
+.course-glass-card {
+  border: 1px solid rgba(167, 243, 208, 0.14);
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(34, 197, 94, 0.1), transparent 34%),
+    rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 24px 70px -52px rgba(34, 197, 94, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+}
+
+.course-section-shell {
+  scroll-margin-top: 7rem;
+}
+
+.course-section-panel {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 28px 100px -70px rgba(34, 197, 94, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.course-section-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.course-section-split .course-section-panel::before {
+  background:
+    linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent 38%),
+    radial-gradient(circle at 92% 18%, rgba(125, 211, 252, 0.14), transparent 28%);
+}
+
+.course-section-mesh .course-section-panel::before {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%2367e8f9' stroke-opacity='.14'%3E%3Cpath d='M16 116 48 74 82 94 126 46 164 72M48 74 58 28 82 94M126 46 138 116 164 72'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at 12% 14%, rgba(34, 197, 94, 0.13), transparent 28%);
+  background-size: 260px 260px, cover;
+}
+
+.course-section-timeline .course-section-panel::before {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.09), transparent 52%, rgba(14, 165, 233, 0.08));
+}
+
+.course-section-showcase .course-section-panel::before {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(168, 85, 247, 0.13), transparent 30%),
+    radial-gradient(circle at 84% 22%, rgba(34, 211, 238, 0.12), transparent 32%);
+}
+
+.course-section-stats .course-section-panel::before,
+.course-section-certificate .course-section-panel::before {
+  background:
+    linear-gradient(115deg, rgba(253, 230, 138, 0.1), transparent 35%),
+    radial-gradient(circle at 84% 12%, rgba(34, 197, 94, 0.16), transparent 32%);
+}
+
+.course-lead-copy {
+  border-left: 3px solid rgba(52, 211, 153, 0.72);
+  border-radius: 1.15rem;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.12), rgba(255, 255, 255, 0.035));
+  padding: 1.25rem 1.35rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.course-device-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-device-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 12% 10% 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.85), transparent);
+  box-shadow: 0 0 26px rgba(52, 211, 153, 0.8);
+}
+
+.course-sparkle-field::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(52, 211, 153, 0.75) 0 1px, transparent 1.9px);
+  background-size: 180px 180px, 260px 260px;
+  opacity: 0.08;
+  animation: course-sparkle-drift 18s linear infinite;
+  pointer-events: none;
+}
+
+.course-tone-emerald {
+  --tone-rgb: 52, 211, 153;
+  --tone-soft: rgba(52, 211, 153, 0.12);
+  --tone-border: rgba(52, 211, 153, 0.28);
+  --tone-text: #a7f3d0;
+}
+
+.course-tone-cyan {
+  --tone-rgb: 103, 232, 249;
+  --tone-soft: rgba(103, 232, 249, 0.11);
+  --tone-border: rgba(103, 232, 249, 0.26);
+  --tone-text: #a5f3fc;
+}
+
+.course-tone-blue {
+  --tone-rgb: 147, 197, 253;
+  --tone-soft: rgba(147, 197, 253, 0.1);
+  --tone-border: rgba(147, 197, 253, 0.24);
+  --tone-text: #bfdbfe;
+}
+
+.course-tone-violet {
+  --tone-rgb: 196, 181, 253;
+  --tone-soft: rgba(196, 181, 253, 0.11);
+  --tone-border: rgba(196, 181, 253, 0.26);
+  --tone-text: #ddd6fe;
+}
+
+.course-tone-amber {
+  --tone-rgb: 253, 230, 138;
+  --tone-soft: rgba(253, 230, 138, 0.11);
+  --tone-border: rgba(253, 230, 138, 0.25);
+  --tone-text: #fef3c7;
+}
+
+.course-tone-rose {
+  --tone-rgb: 253, 164, 175;
+  --tone-soft: rgba(253, 164, 175, 0.1);
+  --tone-border: rgba(253, 164, 175, 0.24);
+  --tone-text: #ffe4e6;
+}
+
+.course-glass-card,
+.course-project-card,
+.course-role-card,
+.course-timeline-card,
+.course-stat-card {
+  border: 1px solid var(--tone-border, rgba(167, 243, 208, 0.14));
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(var(--tone-rgb, 52, 211, 153), 0.16), transparent 34%),
+    linear-gradient(180deg, var(--tone-soft, rgba(255, 255, 255, 0.055)), rgba(255, 255, 255, 0.035));
+  box-shadow:
+    0 24px 76px -58px rgba(var(--tone-rgb, 52, 211, 153), 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.course-project-card {
+  min-height: 23rem;
+}
+
+.course-role-card {
+  min-height: 20rem;
+}
+
+.course-number-chip,
+.course-step-dot {
+  background: linear-gradient(135deg, rgba(var(--tone-rgb, 52, 211, 153), 0.95), rgba(255, 255, 255, 0.72));
+  color: #020617;
+  box-shadow: 0 0 28px rgba(var(--tone-rgb, 52, 211, 153), 0.35);
+}
+
+.course-tool-badge,
+.course-benefit-pill {
+  border: 1px solid var(--tone-border, rgba(167, 243, 208, 0.18));
+  background:
+    linear-gradient(135deg, var(--tone-soft, rgba(52, 211, 153, 0.1)), rgba(255, 255, 255, 0.04));
+  color: var(--tone-text, #ecfdf5);
+  box-shadow: 0 0 24px rgba(var(--tone-rgb, 52, 211, 153), 0.1);
+}
+
+.course-timeline-grid {
+  position: relative;
+}
+
+.course-timeline-grid::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  top: 2.45rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.44), rgba(103, 232, 249, 0.32), transparent);
+  pointer-events: none;
+}
+
+.course-timeline-card {
+  position: relative;
+}
+
+.course-stat-card p:first-child {
+  text-shadow: 0 0 24px rgba(var(--tone-rgb, 52, 211, 153), 0.42);
+}
+
+.course-certificate-wrap {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 110px -72px rgba(52, 211, 153, 0.72);
+}
+
+.course-certificate-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -20% -30%;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.18), transparent 55%);
+  transform: translateX(-45%);
+  animation: course-cert-shine 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
 html[data-theme="dark"] .career-programs-section {
@@ -350,6 +670,39 @@ main .text-gray-500 {
   }
 }
 
+@keyframes course-network-drift {
+  from {
+    background-position: center, center, center, 0 0, center;
+  }
+  to {
+    background-position: center, center, center, 120px 96px, center;
+  }
+}
+
+@keyframes course-sparkle-drift {
+  from {
+    background-position: 0 0, 80px 40px;
+  }
+  to {
+    background-position: 180px 180px, 340px 260px;
+  }
+}
+
+@keyframes course-cert-shine {
+  0%,
+  42% {
+    transform: translateX(-55%) rotate(0deg);
+    opacity: 0;
+  }
+  58% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(55%) rotate(0deg);
+    opacity: 0;
+  }
+}
+
 @keyframes panel-border-glow {
   0%,
   100% {
@@ -359,6 +712,34 @@ main .text-gray-500 {
   50% {
     opacity: 1;
     transform: scaleX(1);
+  }
+}
+
+@keyframes phone-login-shake {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  12% {
+    transform: translate3d(-10px, 0, 0) rotate(-1.2deg);
+  }
+  24% {
+    transform: translate3d(9px, 0, 0) rotate(1deg);
+  }
+  36% {
+    transform: translate3d(-8px, 0, 0) rotate(-0.8deg);
+  }
+  48% {
+    transform: translate3d(7px, 0, 0) rotate(0.7deg);
+  }
+  60% {
+    transform: translate3d(-5px, 0, 0) rotate(-0.45deg);
+  }
+  72% {
+    transform: translate3d(4px, 0, 0) rotate(0.35deg);
+  }
+  84% {
+    transform: translate3d(-2px, 0, 0) rotate(-0.2deg);
   }
 }
 
@@ -412,8 +793,12 @@ main .text-gray-500 {
 @media (prefers-reduced-motion: reduce) {
   body,
   .cybernet-network-bg,
+  .course-detail-bg,
   .hero-moving-dots,
-  .hero-platform-fly {
+  .hero-platform-fly,
+  .phone-login-shake,
+  .course-sparkle-field::after,
+  .course-certificate-wrap::after {
     animation: none;
   }
 }

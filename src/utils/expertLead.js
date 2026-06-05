@@ -19,5 +19,5 @@ export function consumePendingLead() {
 export async function submitExpertLeadAndRedirect(lead, navigate) {
   await saveExpertLead(lead);
   storePendingLead(lead);
-  navigate("/auth?from=expert");
+  navigate("/", { state: { authPrompt: "expert", from: "expert", program: lead.program || "" } });
 }

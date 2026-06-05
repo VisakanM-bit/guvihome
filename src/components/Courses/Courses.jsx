@@ -9,6 +9,7 @@ import {
   FaUserTie,
   FaUsers,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import aimlImage from "../../assets/logos/aiml.png";
 import businessImage from "../../assets/logos/businessandmarketing.png";
@@ -24,6 +25,7 @@ const programs = [
     icon: FaUserTie,
     image: businessImage,
     title: "Human Resource Executive & Development Program",
+    slug: "human-resource-executive-development",
     subtitle: "Become the HR Professional Every Company Wants",
     skills: ["HR Operations", "Payroll Processing", "HRMS Tools", "HR Analytics"],
     support: ["Internship Support", "Placement Assistance"],
@@ -32,6 +34,7 @@ const programs = [
     icon: FaUsers,
     image: hiringImage,
     title: "Recruitment & Talent Acquisition Program",
+    slug: "recruitment-talent-acquisition-development",
     subtitle: "Master Modern Hiring & Talent Intelligence",
     skills: [
       "Talent Sourcing",
@@ -45,6 +48,7 @@ const programs = [
     icon: FaCode,
     image: reactImage,
     title: "Full Stack Development Program",
+    slug: "full-stack-development",
     subtitle: "Build Modern Web Applications from Scratch",
     skills: ["HTML, CSS, JavaScript", "React.js", "Node.js", "MongoDB"],
     support: ["Live Projects", "Placement Assistance"],
@@ -53,6 +57,7 @@ const programs = [
     icon: FaPython,
     image: pythonImage,
     title: "Python Development Program",
+    slug: "python-development",
     subtitle: "Master Python for Industry Applications",
     skills: ["Core Python", "OOP Concepts", "APIs", "Real Projects"],
     support: ["Mentor Support", "Internship Assistance"],
@@ -61,6 +66,7 @@ const programs = [
     icon: FaBrain,
     image: aimlImage,
     title: "Artificial Intelligence & Machine Learning",
+    slug: "artificial-intelligence-machine-learning",
     subtitle: "Build Intelligent Systems & AI Solutions",
     skills: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision"],
     support: ["Industry Projects", "Career Guidance"],
@@ -69,6 +75,7 @@ const programs = [
     icon: FaBriefcase,
     image: devopsImage,
     title: "DevOps Engineering Program",
+    slug: "devops-engineering",
     subtitle: "Master Modern Software Delivery",
     skills: ["Linux", "Docker", "Kubernetes", "AWS"],
     support: ["Live Labs", "Placement Support"],
@@ -77,6 +84,7 @@ const programs = [
     icon: FaFlask,
     image: uiuxImage,
     title: "Software Testing & QA Program",
+    slug: "software-testing-qa",
     subtitle: "Become a Quality Assurance Professional",
     skills: ["Manual Testing", "Automation Testing", "Agile Testing", "Defect Tracking"],
     support: ["Practical Labs", "Real-Time Testing Projects"],
@@ -85,6 +93,7 @@ const programs = [
     icon: FaNetworkWired,
     image: masterDataImage,
     title: "MuleSoft Development Program",
+    slug: "mulesoft-development",
     subtitle: "Master Enterprise API Integration",
     skills: ["API Development", "Integration Patterns", "CloudHub", "Anypoint Platform"],
     support: ["Industry Exposure", "Career Support"],
@@ -109,9 +118,10 @@ function Courses() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 2xl:gap-7">
-          {programs.map(({ icon: Icon, image, title, subtitle, skills, support }) => (
-            <article
+          {programs.map(({ icon: Icon, image, title, subtitle, skills, support, slug }) => (
+            <Link
               key={title}
+              to={`/programs/${slug}`}
               className="career-program-card group flex min-h-full flex-col overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1"
             >
               <div className="relative h-52 overflow-hidden bg-slate-900 2xl:h-60">
@@ -152,15 +162,15 @@ function Courses() {
                 </div>
 
                 <div className="mt-auto flex gap-3 pt-5">
-                  <button className="min-h-12 flex-1 rounded-xl border border-slate-300 px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 2xl:text-base">
+                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl border border-slate-300 px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 2xl:text-base">
                     View Curriculum
-                  </button>
-                  <button className="min-h-12 flex-1 rounded-xl bg-[#00c853] px-3 text-sm font-extrabold text-white shadow-lg shadow-green-500/20 transition hover:bg-[#00b84d] 2xl:text-base">
+                  </span>
+                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl bg-[#00c853] px-3 text-sm font-extrabold text-white shadow-lg shadow-green-500/20 transition hover:bg-[#00b84d] 2xl:text-base">
                     Explore Program
-                  </button>
+                  </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

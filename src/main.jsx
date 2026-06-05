@@ -1,24 +1,25 @@
 import ReactDOM from "react-dom/client"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
+import ScrollToHash from "./components/ScrollToHash/ScrollToHash"
 import App from "./App"
 import Programs from "./pages/Programs"
-import AuthGateway from "./pages/AuthGateway"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
+import CourseDetail from "./pages/CourseDetail"
 import Dashboard from "./pages/Dashboard"
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
+      <ScrollToHash />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/programs" element={<Programs />} />
-        <Route path="/auth" element={<AuthGateway />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/programs/:slug" element={<CourseDetail />} />
+        <Route path="/auth" element={<Navigate to="/?auth=login" replace />} />
+        <Route path="/login" element={<Navigate to="/?auth=login" replace />} />
+        <Route path="/signup" element={<Navigate to="/?auth=signup" replace />} />
         <Route
           path="/dashboard"
           element={

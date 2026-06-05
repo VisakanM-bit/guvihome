@@ -12,7 +12,7 @@ function InvestmentCalculator() {
       );
     } catch (error) {
       console.error(error);
-      navigate("/auth?from=expert");
+      navigate("/?auth=login", { state: { authPrompt: "login", from: "expert" } });
     }
   };
 

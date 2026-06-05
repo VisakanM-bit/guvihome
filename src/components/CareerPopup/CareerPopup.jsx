@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaHeadset,

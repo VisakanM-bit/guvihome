@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaBars,
   FaBookOpen,
@@ -30,6 +30,7 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import adBannerImage from "../../assets/logos/image5.png";
+import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
 
 const navLinks = [
   {
@@ -44,23 +45,25 @@ const navLinks = [
             icon: FaUserTie,
             title: "Human Resource Executive & Development",
             description: "Become an Industry-Ready HR Professional",
+            slug: "human-resource-executive-development",
           },
           {
             icon: FaUsers,
             title: "Recruitment & Talent Acquisition",
             description: "Master Modern Hiring & Talent Intelligence",
+            slug: "recruitment-talent-acquisition-development",
           },
         ],
       },
       {
         title: "Technology Programs",
         items: [
-          { icon: FaLaptopCode, title: "Full Stack Development", description: "MERN & MEAN Stack Training" },
-          { icon: FaCode, title: "Python Development", description: "Industry-Oriented Python Learning" },
-          { icon: FaRobot, title: "Artificial Intelligence & Machine Learning", description: "Build Intelligent Solutions" },
-          { icon: FaTools, title: "DevOps Engineering", description: "Cloud & Deployment Mastery" },
-          { icon: FaCheckCircle, title: "Software Testing & QA", description: "Manual & Automation Testing" },
-          { icon: FaRocket, title: "MuleSoft Development", description: "Enterprise API Integration" },
+          { icon: FaLaptopCode, title: "Full Stack Development", description: "MERN & MEAN Stack Training", slug: "full-stack-development" },
+          { icon: FaCode, title: "Python Development", description: "Industry-Oriented Python Learning", slug: "python-development" },
+          { icon: FaRobot, title: "Artificial Intelligence & Machine Learning", description: "Build Intelligent Solutions", slug: "artificial-intelligence-machine-learning" },
+          { icon: FaTools, title: "DevOps Engineering", description: "Cloud & Deployment Mastery", slug: "devops-engineering" },
+          { icon: FaCheckCircle, title: "Software Testing & QA", description: "Manual & Automation Testing", slug: "software-testing-qa" },
+          { icon: FaRocket, title: "MuleSoft Development", description: "Enterprise API Integration", slug: "mulesoft-development" },
         ],
       },
     ],
@@ -229,6 +232,8 @@ const navLinks = [
 
 function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showAdBanner, setShowAdBanner] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -247,6 +252,18 @@ function Navbar() {
     : "border-[rgba(59,130,246,0.15)] bg-[radial-gradient(circle_at_86%_18%,rgba(0,242,254,0.13),transparent_34%),radial-gradient(circle_at_16%_76%,rgba(243,85,136,0.09),transparent_36%),linear-gradient(90deg,rgba(255,255,255,0.78),rgba(219,234,254,0.58),rgba(191,219,254,0.48))] text-slate-950 shadow-[0_14px_40px_-28px_rgba(37,99,235,0.75)] backdrop-blur-[15px]";
 
   const mutedClass = isDarkMode ? "text-slate-200" : "text-slate-700";
+
+  const focusAuthPhone = (mode = "login") => {
+    setMobileMenuOpen(false);
+    if (location.pathname === "/") {
+      window.dispatchEvent(
+        new CustomEvent("jawa:focus-auth-phone", { detail: { mode } })
+      );
+      return;
+    }
+
+    navigate("/", { state: { authPrompt: mode } });
+  };
 
   return (
     <>
@@ -285,12 +302,12 @@ function Navbar() {
             <p className="sparkle-banner-text hidden min-w-[420px] text-right text-2xl font-black tracking-[-0.035em] text-amber-100 drop-shadow-[0_0_22px_rgba(253,230,138,0.82)] xl:block 2xl:text-[1.85rem]">
               Visit today. Register soon.
             </p>
-            <a
-              href="#courses"
+            <Link
+              to="/#courses"
               className="hidden min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 px-6 text-sm font-black text-slate-950 shadow-[0_0_28px_rgba(34,197,94,0.42)] transition hover:-translate-y-0.5 hover:from-emerald-300 hover:to-green-400 sm:inline-flex"
             >
               Register Soon
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setShowAdBanner(false)}
@@ -310,13 +327,13 @@ function Navbar() {
         <ul className="hidden flex-1 items-center justify-center gap-3 lg:flex xl:gap-5">
           {navLinks.map((link) => (
             <li key={link.label} className="group">
-              <a
-                href={link.href}
+              <Link
+                to={`/${link.href}`}
                 className={`inline-flex items-center gap-2 rounded-xl px-3 py-3 text-[16px] font-bold tracking-[-0.01em] transition hover:-translate-y-0.5 hover:bg-white/20 hover:text-[#60A5FA] ${mutedClass}`}
               >
                 {link.label}
                 <FaChevronDown className="text-xs transition group-hover:rotate-180" />
-              </a>
+              </Link>
               <MegaMenu link={link} isDarkMode={isDarkMode} />
             </li>
           ))}
@@ -362,12 +379,13 @@ function Navbar() {
               </button>
             </>
           ) : (
-            <Link
-              to="/login"
+            <button
+              type="button"
+              onClick={() => focusAuthPhone("login")}
               className="flex h-12 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 px-8 text-[16px] font-extrabold text-white shadow-xl shadow-blue-500/25 transition hover:-translate-y-0.5 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/35"
             >
               Login
-            </Link>
+            </button>
           )}
         </div>
 
@@ -423,13 +441,13 @@ function Navbar() {
                 Sign out
               </button>
             ) : (
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
+              <button
+                type="button"
+                onClick={() => focusAuthPhone("login")}
                 className="rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-3 text-center text-sm font-extrabold text-white"
               >
                 Login
-              </Link>
+              </button>
             )}
           </div>
         </div>
@@ -474,18 +492,18 @@ function MegaMenu({ link, isDarkMode }) {
           <div className="min-w-0">
             <p className={`text-base font-black ${isDarkMode ? "text-white" : "text-slate-950"}`}>{link.ctaLabel}</p>
             {link.ctaText && (
-              <a href="#career-counseling" className="mt-1 inline-flex items-center gap-2 text-sm font-bold text-emerald-500 hover:text-emerald-400">
+              <Link to="/#career-counseling" className="mt-1 inline-flex items-center gap-2 text-sm font-bold text-emerald-500 hover:text-emerald-400">
                 <FaPhoneAlt />
                 {link.ctaText}
-              </a>
+              </Link>
             )}
           </div>
-          <a
-            href={link.ctaHref}
+          <Link
+            to={`/${link.ctaHref}`}
             className="inline-flex min-h-12 items-center justify-center rounded-xl bg-slate-950 px-7 text-sm font-black text-white shadow-xl shadow-slate-950/25 transition hover:-translate-y-0.5 hover:bg-emerald-600"
           >
             {link.ctaButton} <span className="ml-2">-&gt;</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -496,8 +514,8 @@ function DropdownItem({ item, isDarkMode }) {
   const Icon = item.icon;
 
   return (
-    <a
-      href="#"
+    <Link
+      to={item.slug ? `/programs/${item.slug}` : "/#courses"}
       className={`group/item flex min-w-0 items-center gap-4 rounded-xl py-1.5 transition hover:-translate-y-0.5 ${
         isDarkMode ? "hover:bg-white/[0.06]" : "hover:bg-blue-50/80"
       }`}
@@ -521,7 +539,7 @@ function DropdownItem({ item, isDarkMode }) {
           </span>
         )}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -543,9 +561,9 @@ function MobileMenuGroup({ link, mutedClass, onNavigate }) {
                 const Icon = item.icon;
 
                 return (
-                  <a
+                  <Link
                     key={item.title}
-                    href="#"
+                    to={item.slug ? `/programs/${item.slug}` : `/${link.href}`}
                     onClick={onNavigate}
                     className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm font-bold text-inherit transition hover:bg-blue-500/10"
                   >
@@ -553,19 +571,19 @@ function MobileMenuGroup({ link, mutedClass, onNavigate }) {
                       <Icon />
                     </span>
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 );
               })}
             </div>
           </div>
         ))}
-        <a
-          href={link.ctaHref}
+        <Link
+          to={`/${link.ctaHref}`}
           onClick={onNavigate}
           className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-emerald-500 px-4 text-sm font-black text-white"
         >
           {link.ctaButton} <span className="ml-2">-&gt;</span>
-        </a>
+        </Link>
       </div>
     </details>
   );
@@ -605,9 +623,13 @@ function JawanexisMark() {
 function Logo({ isDarkMode }) {
   return (
     <Link to="/" className="group flex min-w-0 items-center gap-3" aria-label="Jawa EdTech home">
-      <span className="relative h-[58px] w-[54px] shrink-0 transition duration-300 group-hover:-translate-y-0.5">
-        <span className={`absolute inset-0 blur-xl ${isDarkMode ? "bg-emerald-300/16" : "bg-emerald-400/16"}`} />
-        <JawaEdTechMark />
+      <span className="relative h-[66px] w-[58px] shrink-0 transition duration-300 group-hover:-translate-y-0.5">
+        <span className={`absolute inset-0 rounded-2xl blur-xl ${isDarkMode ? "bg-emerald-300/20" : "bg-emerald-400/18"}`} />
+        <img
+          src={jawaEdTechLogo}
+          alt="Jawa EdTech logo"
+          className="relative h-full w-full scale-125 object-contain object-center drop-shadow-[0_14px_22px_rgba(16,185,129,0.42)]"
+        />
       </span>
 
       <span className="min-w-0 whitespace-nowrap leading-[0.9]">
@@ -622,27 +644,6 @@ function Logo({ isDarkMode }) {
         </span>
       </span>
     </Link>
-  );
-}
-
-function JawaEdTechMark() {
-  return (
-    <svg viewBox="0 0 96 110" className="relative h-full w-full drop-shadow-[0_12px_22px_rgba(16,185,129,0.22)]" aria-hidden="true">
-      <defs>
-        <linearGradient id="jawa-main" x1="18" y1="13" x2="77" y2="95" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#10b981" />
-          <stop offset="0.52" stopColor="#047857" />
-          <stop offset="1" stopColor="#065f46" />
-        </linearGradient>
-        <linearGradient id="jawa-light" x1="20" y1="10" x2="78" y2="52" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#7dd3fc" stopOpacity="0.35" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d="M15 16h45L47 30H31v40l17 10 17-10V28l16-16v67L48 99 15 79V48l16 14v8l17 10V30H28L15 16Z" fill="url(#jawa-main)" />
-      <path d="M66 28 81 13v31L66 54V28Z" fill="#0f8f64" />
-      <path d="M15 16h45L47 30H31v40l17 10 17-10V28l16-16v67L48 99 15 79V48l16 14v8l17 10V30H28L15 16Z" fill="url(#jawa-light)" />
-    </svg>
   );
 }
 

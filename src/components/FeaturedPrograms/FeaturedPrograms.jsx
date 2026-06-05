@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 import {
   FaSearch,
@@ -14,6 +15,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "Data Science Program",
+      slug: "artificial-intelligence-machine-learning",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
       certification: "IITM Pravartak, HCL GUVI",
@@ -21,6 +23,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "Intel AIML Program",
+      slug: "artificial-intelligence-machine-learning",
       duration: "6 Month - weekend",
       language: "English",
       certification: "Intel, IITM Pravartak, HCL GUVI",
@@ -28,6 +31,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "Gen AI Software Development",
+      slug: "artificial-intelligence-machine-learning",
       duration: "9 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
       certification: "IITM Pravartak, HCL GUVI",
@@ -35,6 +39,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "MERN Full Stack Program",
+      slug: "full-stack-development",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
       certification: "IITM Pravartak, HCL GUVI",
@@ -56,6 +61,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "AIML Program",
+      slug: "artificial-intelligence-machine-learning",
       duration: "5 Month - weekend",
       language: "English",
       certification: "HCL GUVI",
@@ -63,6 +69,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
     {
       title: "DevOps & Cloud Program",
+      slug: "devops-engineering",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "English",
       certification: "HCL GUVI",
@@ -100,7 +107,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
   return (
 
-    <section className="max-w-full lg:max-w-7xl mx-auto py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-0">
+    <section className="mx-auto w-full max-w-[1780px] px-5 py-8 sm:px-8 sm:py-12 md:py-16 lg:px-10 lg:py-20">
 
       {/* HEADER */}
 
@@ -472,6 +479,14 @@ const [openFilter, setOpenFilter] = useState(null)
 
               <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 mt-4 sm:mt-5 md:mt-6">
 
+                {course.slug ? (
+                  <Link
+                    to={`/programs/${course.slug}`}
+                    className="flex items-center justify-center rounded-lg bg-green-500 py-2 text-xs font-semibold text-white transition hover:bg-green-600 sm:py-2.5 sm:text-sm md:py-3 md:text-base lg:py-4"
+                  >
+                    Know More &raquo;
+                  </Link>
+                ) : (
                 <button
                   className="
                   bg-green-500
@@ -486,6 +501,7 @@ const [openFilter, setOpenFilter] = useState(null)
                 >
                   Know More »
                 </button>
+                )}
 
                 <button
                   className="

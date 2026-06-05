@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { SESSION_KEY, USERS_KEY } from "../config/sheets";
 import {
@@ -103,7 +104,7 @@ export function AuthProvider({ children }) {
     try {
       account = await verifyLoginWithSheet(normalizedEmail, password);
     } catch {
-      account = null;
+      /* Fall back to local accounts if the sheet cannot be reached. */
     }
 
     if (!account) {
