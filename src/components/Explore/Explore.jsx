@@ -1,4 +1,5 @@
-import { FaArrowRight, FaBriefcase, FaChartLine, FaCode, FaDatabase, FaPenNib } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaArrowRight, FaBriefcase, FaChartLine, FaCode, FaDatabase, FaPenNib, FaStar } from "react-icons/fa";
 
 const categories = [
   {
@@ -6,51 +7,84 @@ const categories = [
     title: "Business & Management",
     intro: "Workplace communication, team coordination, reporting, and business operations for first-job confidence.",
     items: ["Email Etiquette", "HR Operations Basics", "Business Reports"],
+    href: "/programs/recruitment-talent-acquisition-development",
   },
   {
     icon: FaDatabase,
     title: "Data Science & AI",
     intro: "Short practice tracks for analytics thinking, AI workflows, dashboards, and data-backed decisions.",
     items: ["Python for Data", "AI Use Cases", "Dashboard Practice"],
+    href: "/programs/artificial-intelligence-machine-learning",
   },
   {
     icon: FaPenNib,
     title: "Engineering & Design",
     intro: "Design thinking, product workflow, UI foundations, and practical documentation for portfolio-ready output.",
     items: ["UI/UX Foundations", "Product Design", "Design Reviews"],
+    href: "/projects/industry-project-lab",
   },
   {
     icon: FaChartLine,
     title: "IT & Software",
     intro: "Hands-on basics for tools, testing, cloud workflows, support processes, and software delivery habits.",
     items: ["Software Testing", "DevOps Basics", "Tool Workflows"],
+    href: "/programs/software-testing-qa",
   },
   {
     icon: FaCode,
     title: "Programming",
     intro: "Build coding confidence with guided exercises, mini projects, debugging habits, and interview preparation.",
     items: ["JavaScript Practice", "Python Projects", "API Basics"],
+    href: "/programs/full-stack-development",
   },
+];
+
+const learnerReviews = [
+  ["4.9/5", "Mentor clarity made every short task feel useful."],
+  ["96%", "Learners said the tracks helped them explain projects better."],
+  ["1:1", "Review support for resumes, portfolios, and interview stories."],
 ];
 
 function Explore() {
   return (
     <section className="bg-[#f5f7f6] px-4 py-10 sm:px-6 sm:py-14 md:px-8 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-[1540px]">
-        <div className="mx-auto mb-10 max-w-4xl text-center">
-          <p className="mb-3 text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
-            Skill Practice Library
-          </p>
-          <h1 className="text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl">
-            Explore Short Learning Tracks
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-base font-semibold leading-7 text-slate-600 sm:text-lg">
-            Pick a focused track, learn the essentials, complete guided tasks, and connect the work to your internship or career plan.
-          </p>
+        <div className="mb-10 grid gap-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+          <div className="max-w-4xl">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.2em] text-sky-600">
+              Skill Practice Library
+            </p>
+            <h1 className="text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl">
+              Explore Short Learning Tracks
+            </h1>
+            <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-slate-600 sm:text-lg">
+              Pick a focused track, learn the essentials, complete guided tasks, and connect the work to your internship or career plan.
+            </p>
+          </div>
+
+          <aside className="rounded-2xl border border-sky-100 bg-white p-5 shadow-[0_24px_80px_-58px_rgba(37,99,235,0.75)]">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-sky-600">User Reviews</p>
+                <h2 className="mt-1 text-2xl font-black tracking-[-0.03em] text-slate-950">Learners love the practice flow</h2>
+              </div>
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                <FaStar />
+              </div>
+            </div>
+            <div className="grid gap-3">
+              {learnerReviews.map(([score, text]) => (
+                <div key={score} className="grid grid-cols-[4.5rem_1fr] items-center gap-3 rounded-xl bg-slate-50 p-3">
+                  <p className="text-lg font-black text-slate-950">{score}</p>
+                  <p className="text-sm font-bold leading-5 text-slate-600">{text}</p>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-          {categories.map(({ icon: Icon, title, intro, items }, index) => (
+          {categories.map(({ icon: Icon, title, intro, items, href }, index) => (
             <article
               key={title}
               className={`flex min-h-full flex-col rounded-2xl border bg-white p-5 shadow-[0_20px_70px_-54px_rgba(15,23,42,0.65)] transition hover:-translate-y-1 hover:shadow-[0_26px_80px_-52px_rgba(16,185,129,0.7)] ${
@@ -71,13 +105,13 @@ function Explore() {
                 ))}
               </div>
 
-              <button
-                type="button"
-                className="mt-auto flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-sky-600"
+              <Link
+                to={href}
+                className="mt-auto flex min-h-11 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 text-sm font-black text-white transition hover:from-sky-400 hover:to-blue-500"
               >
                 View Tracks
                 <FaArrowRight />
-              </button>
+              </Link>
             </article>
           ))}
         </div>

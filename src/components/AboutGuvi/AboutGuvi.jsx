@@ -255,8 +255,8 @@ function AboutGuvi() {
               disabled={submitting}
               className="
               w-full
-              bg-green-500
-              hover:bg-green-600
+              bg-blue-600
+              hover:bg-blue-700
               disabled:opacity-60
               text-white
               font-bold

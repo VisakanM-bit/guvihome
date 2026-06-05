@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
 import GoogleMapsIcon from "../GoogleMapsIcon/GoogleMapsIcon";
+import GoogleMapsPreview from "../GoogleMapsPreview/GoogleMapsPreview";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
@@ -15,7 +16,6 @@ import {
   MAPS_URL,
   WHATSAPP_NUMBER,
 } from "../../config/sheets";
-import GoogleMapsPreview from "../GoogleMapsPreview/GoogleMapsPreview";
 
 const exploreLinks = [
   ["Home", "/"],
@@ -74,8 +74,8 @@ function Footer1() {
           <div className="mt-7 space-y-3 text-sm font-black text-slate-200">
             <p>© 2026 Jawa EdTech. All rights reserved.</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2">
-              <Link to="/about-edtech" className="transition hover:text-emerald-300">Privacy Policy</Link>
-              <Link to="/about-edtech" className="transition hover:text-emerald-300">Terms of Service</Link>
+              <Link to="/privacy-policy" className="transition hover:text-emerald-300">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="transition hover:text-emerald-300">Terms of Service</Link>
             </div>
           </div>
         </div>
@@ -106,10 +106,6 @@ function Footer1() {
                 Saibaba Colony, Coimbatore, Tamil Nadu 641043, India
               </span>
             </p>
-            <a href={MAPS_URL} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 px-4 text-sm font-black text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5">
-              <GoogleMapsIcon className="h-6 w-6" />
-              Google Maps Live Location
-            </a>
           </div>
         </div>
 

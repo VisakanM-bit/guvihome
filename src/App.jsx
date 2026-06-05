@@ -8,7 +8,6 @@ import Explore from "./components/Explore/Explore"
 import Corporate from "./components/Corporate/Corporate"
 import About from "./components/About/About"
 import ContactActions from "./components/ContactActions/ContactActions"
-import FloatingWhatsapp from "./components/FloatingWhatsapp/FloatingWhatsapp"
 import Footer1 from "./components/Footer1/Footer1"
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
     <>
       {/* NAVBAR */}
       <Navbar />
-      <FloatingWhatsapp />
 
       {/* HERO SECTION */}
       <Hero />

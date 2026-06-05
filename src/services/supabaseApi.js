@@ -1,7 +1,18 @@
-import { ADMIN_EMAILS } from "../config/sheets";
+import { ADMIN_CREDENTIALS, ADMIN_EMAILS, ADMIN_PASSWORD, ADMIN_PASSWORDS } from "../config/sheets";
 import { isSupabaseConfigured, supabase } from "./supabaseClient";
 
 export { isSupabaseConfigured };
+
+const ADMIN_RECORDS_CACHE_KEY = "jawa_admin_records_cache_v1";
+const ADMIN_TABLES = [
+  "students",
+  "course_applications",
+  "internship_applications",
+  "career_counselling_requests",
+  "contact_us",
+  "newsletter_subscribers",
+  "visitor_events",
+];
 
 function requireSupabase() {
   if (!isSupabaseConfigured || !supabase) {
@@ -19,6 +30,63 @@ function splitName(name = "") {
 
 function normalizeEmail(email = "") {
   return email.trim().toLowerCase();
+}
+
+function readAdminCache() {
+  if (typeof localStorage === "undefined") return {};
+  try {
+    return JSON.parse(localStorage.getItem(ADMIN_RECORDS_CACHE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeAdminCache(cache) {
+  if (typeof localStorage === "undefined") return;
+  localStorage.setItem(ADMIN_RECORDS_CACHE_KEY, JSON.stringify(cache));
+}
+
+function cacheRow(table, row) {
+  if (!table || !row) return row;
+  const cache = readAdminCache();
+  const rows = Array.isArray(cache[table]) ? cache[table] : [];
+  const cachedRow = {
+    ...row,
+    id: row.id || `local-${table}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    cached_at: row.cached_at || new Date().toISOString(),
+  };
+  const key = getCacheKey(cachedRow);
+  const nextRows = [cachedRow, ...rows.filter((item) => getCacheKey(item) !== key)].slice(0, 500);
+  writeAdminCache({ ...cache, [table]: nextRows });
+  return cachedRow;
+}
+
+function updateCachedRow(table, id, patch) {
+  const cache = readAdminCache();
+  const rows = Array.isArray(cache[table]) ? cache[table] : [];
+  writeAdminCache({
+    ...cache,
+    [table]: rows.map((row) => String(row.id) === String(id) ? { ...row, ...patch } : row),
+  });
+}
+
+function deleteCachedRow(table, id) {
+  const cache = readAdminCache();
+  const rows = Array.isArray(cache[table]) ? cache[table] : [];
+  writeAdminCache({ ...cache, [table]: rows.filter((row) => String(row.id) !== String(id)) });
+}
+
+function getCacheKey(row) {
+  return String(row.id || row.email || row.phone || JSON.stringify(row));
+}
+
+function mergeRows(remoteRows = [], cachedRows = []) {
+  const map = new Map();
+  [...cachedRows, ...remoteRows].forEach((row) => {
+    if (!row) return;
+    map.set(getCacheKey(row), row);
+  });
+  return [...map.values()];
 }
 
 export async function getCurrentSupabaseUser() {
@@ -93,8 +161,45 @@ export async function signOutSupabase() {
 }
 
 export async function signInAdmin({ email, password }) {
-  requireSupabase();
   const normalizedEmail = normalizeEmail(email);
+  const allowListed = ADMIN_EMAILS.includes(normalizedEmail);
+  const envCredential = ADMIN_CREDENTIALS.find((credential) => credential.email === normalizedEmail);
+  const envPasswordIndex = ADMIN_EMAILS.indexOf(normalizedEmail);
+  const envPasswordMatches =
+    Boolean(allowListed && ADMIN_PASSWORD && password === ADMIN_PASSWORD) ||
+    Boolean(allowListed && ADMIN_PASSWORDS[envPasswordIndex] && password === ADMIN_PASSWORDS[envPasswordIndex]) ||
+    Boolean(envCredential && password === envCredential.password);
+
+  if (envPasswordMatches) {
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: normalizedEmail,
+          password,
+        });
+        if (!error && data.user) {
+          return {
+            id: data.user.id,
+            email: normalizedEmail,
+            name: data.user.user_metadata?.full_name || "Organization Admin",
+            role: "admin",
+            authProvider: "supabase",
+          };
+        }
+      } catch {
+        /* fall back to env-authenticated admin */
+      }
+    }
+    return {
+      id: `env-admin-${normalizedEmail}`,
+      email: normalizedEmail,
+      name: "Organization Admin",
+      role: "admin",
+      authProvider: "env",
+    };
+  }
+
+  requireSupabase();
   const { data, error } = await supabase.auth.signInWithPassword({
     email: normalizedEmail,
     password,
@@ -102,7 +207,6 @@ export async function signInAdmin({ email, password }) {
   if (error) throw error;
 
   const role = data.user?.user_metadata?.role;
-  const allowListed = ADMIN_EMAILS.includes(normalizedEmail);
   const { data: profile } = await supabase
     .from("admin_profiles")
     .select("role,is_active")
@@ -123,7 +227,6 @@ export async function signInAdmin({ email, password }) {
 }
 
 export async function upsertStudent(student) {
-  if (!isSupabaseConfigured) return null;
   const email = normalizeEmail(student.email);
   if (!email) return null;
 
@@ -141,6 +244,9 @@ export async function upsertStudent(student) {
   };
   if (student.id) payload.id = student.id;
 
+  cacheRow("students", payload);
+
+  if (!isSupabaseConfigured) return payload.id || null;
   const { data, error } = await supabase
     .from("students")
     .upsert(payload, { onConflict: "email" })
@@ -163,13 +269,40 @@ async function resolveStudentId(lead) {
 }
 
 export async function saveLeadToSupabase(lead) {
-  if (!isSupabaseConfigured) return null;
   const source = lead.source || "";
-  const studentId = await resolveStudentId(lead);
   const fullName = lead.name || `${lead.firstName || ""} ${lead.lastName || ""}`.trim();
   const email = normalizeEmail(lead.email);
   const phone = lead.phone || "";
   const interest = lead.program || lead.course_interest || lead.profile || "";
+
+  const cachedLead = {
+    name: fullName,
+    email,
+    phone,
+    course_interest: interest,
+    message: lead.message || lead.profile || source,
+    status: "new",
+    request_date: new Date().toISOString(),
+  };
+  cacheRow("career_counselling_requests", cachedLead);
+  if (source.includes("course_enroll") || source.includes("program")) {
+    cacheRow("course_applications", {
+      course_name: interest || "Career Program",
+      status: "new",
+      remarks: lead.message || source,
+      application_date: new Date().toISOString(),
+    });
+  } else if (source.includes("internship")) {
+    cacheRow("internship_applications", {
+      internship_name: interest || "Internship Program",
+      status: "new",
+      remarks: lead.message || source,
+      application_date: new Date().toISOString(),
+    });
+  }
+
+  if (!isSupabaseConfigured) return null;
+  const studentId = await resolveStudentId(lead);
 
   if (source.includes("course_enroll") || source.includes("program")) {
     const { error } = await supabase.from("course_applications").insert({
@@ -204,6 +337,13 @@ export async function saveLeadToSupabase(lead) {
 }
 
 export async function saveContactToSupabase({ name, email, phone, message }) {
+  cacheRow("contact_us", {
+    name: name || "",
+    email: normalizeEmail(email),
+    phone: phone || "",
+    message: message || "",
+    submitted_at: new Date().toISOString(),
+  });
   if (!isSupabaseConfigured) return null;
   const { error } = await supabase.from("contact_us").insert({
     name: name || "",
@@ -216,6 +356,10 @@ export async function saveContactToSupabase({ name, email, phone, message }) {
 }
 
 export async function subscribeNewsletter(email) {
+  cacheRow("newsletter_subscribers", {
+    email: normalizeEmail(email),
+    subscribed_at: new Date().toISOString(),
+  });
   if (!isSupabaseConfigured) return null;
   const { error } = await supabase
     .from("newsletter_subscribers")
@@ -245,6 +389,13 @@ export async function logLoginActivity(studentId) {
 }
 
 export async function logPageVisit(pathname) {
+  cacheRow("visitor_events", {
+    path: pathname,
+    visited_at: new Date().toISOString(),
+    device_type: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+    browser: navigator.userAgent.slice(0, 180),
+    referrer: document.referrer || "",
+  });
   if (!isSupabaseConfigured) return;
   await supabase.from("visitor_events").insert({
     path: pathname,
@@ -255,42 +406,48 @@ export async function logPageVisit(pathname) {
 }
 
 export async function fetchAdminDashboardData() {
-  requireSupabase();
-  const tables = [
-    "students",
-    "course_applications",
-    "internship_applications",
-    "career_counselling_requests",
-    "contact_us",
-    "newsletter_subscribers",
-    "visitor_events",
-  ];
+  const cache = readAdminCache();
+  if (!isSupabaseConfigured || !supabase) {
+    return Object.fromEntries(ADMIN_TABLES.map((table) => [table, { data: cache[table] || [], count: (cache[table] || []).length }]));
+  }
 
-  const results = await Promise.all(
-    tables.map(async (table) => {
-      const { data, error, count } = await supabase
-        .from(table)
-        .select("*", { count: "exact" })
-        .order(table === "students" ? "created_at" : table === "visitor_events" ? "visited_at" : "id", { ascending: false })
-        .limit(500);
-      if (error) throw error;
-      return [table, { data: data || [], count: count || 0 }];
-    })
-  );
-
-  return Object.fromEntries(results);
+  try {
+    const results = await Promise.all(
+      ADMIN_TABLES.map(async (table) => {
+        const { data, error, count } = await supabase
+          .from(table)
+          .select("*", { count: "exact" })
+          .order(table === "students" ? "created_at" : table === "visitor_events" ? "visited_at" : "id", { ascending: false })
+          .limit(500);
+        if (error) throw error;
+        const merged = mergeRows(data || [], cache[table] || []);
+        return [table, { data: merged, count: Math.max(count || 0, merged.length) }];
+      })
+    );
+    const result = Object.fromEntries(results);
+    writeAdminCache(Object.fromEntries(ADMIN_TABLES.map((table) => [table, result[table]?.data || []])));
+    return result;
+  } catch (error) {
+    const cachedResult = Object.fromEntries(ADMIN_TABLES.map((table) => [table, { data: cache[table] || [], count: (cache[table] || []).length }]));
+    if (Object.values(cachedResult).some((entry) => entry.count > 0)) return cachedResult;
+    throw error;
+  }
 }
 
 export async function updateRecordStatus(table, id, status) {
-  requireSupabase();
+  updateCachedRow(table, id, { status });
+  if (String(id).startsWith("local-")) return;
+  if (!isSupabaseConfigured || !supabase) return;
   const { error } = await supabase.from(table).update({ status }).eq("id", id);
-  if (error) throw error;
+  if (error) console.warn("Supabase status update failed; cached status was updated.", error);
 }
 
 export async function deleteAdminRecord(table, id) {
-  requireSupabase();
+  deleteCachedRow(table, id);
+  if (String(id).startsWith("local-")) return;
+  if (!isSupabaseConfigured || !supabase) return;
   const { error } = await supabase.from(table).delete().eq("id", id);
-  if (error) throw error;
+  if (error) console.warn("Supabase delete failed; cached record was removed.", error);
 }
 
 export function exportRowsToCsv(filename, rows) {

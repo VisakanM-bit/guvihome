@@ -482,17 +482,21 @@ const [openFilter, setOpenFilter] = useState(null)
                 {course.slug ? (
                   <Link
                     to={`/programs/${course.slug}`}
-                    className="flex items-center justify-center rounded-lg bg-green-500 py-2 text-xs font-semibold text-white transition hover:bg-green-600 sm:py-2.5 sm:text-sm md:py-3 md:text-base lg:py-4"
+                    className="flex items-center justify-center rounded-lg bg-blue-600 py-2 text-xs font-semibold text-white transition hover:bg-blue-700 sm:py-2.5 sm:text-sm md:py-3 md:text-base lg:py-4"
                   >
                     Know More &raquo;
                   </Link>
                 ) : (
-                <button
+                <Link
+                  to="/programs"
                   className="
-                  bg-green-500
-                  hover:bg-green-600
+                  bg-blue-600
+                  hover:bg-blue-700
                   text-white
                   font-semibold
+                  flex
+                  items-center
+                  justify-center
                   py-2 sm:py-2.5 md:py-3 lg:py-4
                   rounded-lg
                   text-xs sm:text-sm md:text-base
@@ -500,7 +504,7 @@ const [openFilter, setOpenFilter] = useState(null)
                   "
                 >
                   Know More »
-                </button>
+                </Link>
                 )}
 
                 <button

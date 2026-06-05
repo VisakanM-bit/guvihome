@@ -29,6 +29,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer1 from "../components/Footer1/Footer1";
 import { useAuth } from "../context/AuthContext";
 import { courseProgramMap } from "../data/coursePrograms";
+import jawaEdTechLogo from "../assets/logos/jawa-edtech-logo-clean.png";
 import {
   expertCareerGoals,
   expertLanguages,
@@ -392,15 +393,20 @@ function CourseDetail() {
         </ContentBand>
 
         <ContentBand eyebrow="Certification" title="Industry Recognized Certification" variant="certificate">
-          <div className="course-certificate-wrap grid gap-8 rounded-[2rem] border border-emerald-200/15 bg-white/[0.055] p-6 backdrop-blur-2xl lg:grid-cols-[0.82fr_1.18fr] lg:p-8">
-            <div className="rounded-3xl border border-emerald-300/20 bg-[linear-gradient(145deg,rgba(236,253,245,0.95),rgba(167,243,208,0.86))] p-6 text-slate-950 shadow-[0_28px_90px_-48px_rgba(34,197,94,0.95)]">
-              <FaCertificate className="mb-10 text-5xl text-emerald-700" />
-              <p className="text-sm font-black uppercase tracking-[0.24em] text-emerald-800">Certificate</p>
-              <h3 className="mt-3 text-3xl font-black tracking-[-0.04em]">Jawa EdTech</h3>
-              <p className="mt-4 text-sm font-bold leading-7 text-slate-700">{program.title}</p>
+          <div className="course-certificate-wrap grid gap-8 rounded-[2rem] border border-sky-200/15 bg-white/[0.055] p-6 backdrop-blur-2xl lg:grid-cols-[0.82fr_1.18fr] lg:p-8">
+            <div className="rounded-3xl border border-sky-200 bg-[linear-gradient(145deg,#ffffff,#dff3ff)] p-6 text-slate-950 shadow-[0_28px_90px_-48px_rgba(14,165,233,0.8)]">
+              <div className="mb-8 flex items-center justify-between gap-4">
+                <img src={jawaEdTechLogo} alt="Jawa EdTech logo" className="h-14 w-14 rounded-xl object-contain" />
+                <FaCertificate className="text-4xl text-blue-700" />
+              </div>
+              <p className="text-sm font-black uppercase tracking-[0.24em] text-slate-950">Certificate Of Achievement</p>
+              <h3 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">Jawa EdTech</h3>
+              <p className="mt-4 text-sm font-bold leading-7 text-slate-900">
+                Awarded for excellent performance, consistent participation, and successful completion of {program.title}.
+              </p>
             </div>
             <div className="flex flex-col justify-center">
-              <FaAward className="mb-5 text-4xl text-emerald-200" />
+              <FaAward className="mb-5 text-4xl text-sky-200" />
               <p className="text-lg font-semibold leading-9 text-slate-200">
                 Upon successful completion, learners receive professional certification validating industry-ready skills, practical project experience, and readiness for career opportunities in {program.shortTitle}.
               </p>

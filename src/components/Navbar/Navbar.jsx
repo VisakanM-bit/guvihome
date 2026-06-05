@@ -705,7 +705,7 @@ function MobileMenuGroup({ link, mutedClass, onNavigate }) {
 
 function JawanexisMark() {
   return (
-    <span className="relative h-14 w-16 shrink-0 drop-shadow-[0_0_18px_rgba(168,85,247,0.58)]">
+    <span className="relative h-16 w-[4.6rem] shrink-0 drop-shadow-[0_0_18px_rgba(168,85,247,0.58)]">
       <svg viewBox="0 0 96 96" className="h-full w-full" aria-hidden="true">
         <defs>
           <linearGradient id="jawanexis-left" x1="11" y1="78" x2="46" y2="11" gradientUnits="userSpaceOnUse">

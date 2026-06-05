@@ -207,8 +207,8 @@ function SuccessStories() {
 
         <button
           className="
-            bg-green-500
-            hover:bg-green-600
+            bg-blue-600
+            hover:bg-blue-700
             text-white
             font-bold
             px-10

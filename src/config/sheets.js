@@ -5,6 +5,22 @@ export const ADMIN_EMAILS = `${import.meta.env.VITE_ADMIN_EMAIL || ""},${import.
   .split(",")
   .map((email) => email.trim().toLowerCase())
   .filter(Boolean);
+export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_ADMIN_PASS || "";
+export const ADMIN_PASSWORDS = `${import.meta.env.VITE_ADMIN_PASSWORDS || ""}`
+  .split(",")
+  .map((password) => password.trim())
+  .filter(Boolean);
+export const ADMIN_CREDENTIALS = `${import.meta.env.VITE_ADMIN_CREDENTIALS || ""}`
+  .split(",")
+  .map((pair) => {
+    const separatorIndex = pair.indexOf(":");
+    if (separatorIndex === -1) return null;
+    return {
+      email: pair.slice(0, separatorIndex).trim().toLowerCase(),
+      password: pair.slice(separatorIndex + 1).trim(),
+    };
+  })
+  .filter((entry) => entry?.email && entry.password);
 export const CONTACT_PHONE = import.meta.env.VITE_CONTACT_PHONE || "+919790631286";
 export const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || "hr@jawaedtech.com";
 export const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER || CONTACT_PHONE).replace(/[^\d]/g, "");

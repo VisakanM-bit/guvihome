@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { submitExpertLeadAndRedirect } from "../../utils/expertLead";
+import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
 
 function InvestmentCalculator() {
   const navigate = useNavigate();
@@ -211,36 +212,29 @@ function InvestmentCalculator() {
 
           {/* Certificate */}
 
-          <div
-            className="
-            border
-            rounded-xl
-            p-8
-            h-[140px]
-            bg-[linear-gradient(#f1f5f9_1px,transparent_1px),linear-gradient(90deg,#f1f5f9_1px,transparent_1px)]
-            bg-[size:24px_24px]
-            "
-          >
+          <div className="border rounded-xl bg-white p-6 shadow-sm">
 
-            <div className="flex items-center justify-between h-full">
+            <div className="grid gap-5 md:grid-cols-[1fr_0.9fr] md:items-center">
 
               <div>
-                <h3 className="text-3xl leading-relaxed">
-                  A globally recognised
-                  <span className="text-purple-600 font-bold">
-                    {" "}Certificate
+                <h3 className="text-3xl font-bold leading-tight text-slate-950">
+                  A career-ready
+                  <span className="text-blue-600">
+                    {" "}professional certificate
                   </span>
-                  {" "}that works as hard as you do.
+                  {" "}that looks professional and clear.
                 </h3>
               </div>
 
-              <div className="text-center">
-                <p className="font-semibold text-gray-500">
-                  Certificate Provided By
-                </p>
-
-                <p className="font-bold text-xl mt-2">
-                  Jawa EdTech | Career Programs | Mentor Support
+              <div className="rounded-xl border border-slate-200 bg-[linear-gradient(135deg,#f8fbff,#dff2ff)] p-4 text-slate-950 shadow-inner">
+                <div className="mb-5 flex items-center justify-between">
+                  <img src={jawaEdTechLogo} alt="Jawa EdTech logo" className="h-12 w-12 rounded-lg object-contain" />
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Sample</p>
+                </div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-slate-950">Certificate Of Achievement</p>
+                <h4 className="mt-2 text-2xl font-black tracking-[-0.03em] text-slate-950">Jawa EdTech</h4>
+                <p className="mt-2 text-sm font-bold leading-6 text-slate-900">
+                  Awarded for excellent performance, consistent effort, and successful completion of guided career practice.
                 </p>
               </div>
 
@@ -300,9 +294,11 @@ function InvestmentCalculator() {
         </button>
 
         <button
+          type="button"
+          onClick={() => navigate("/programs/artificial-intelligence-machine-learning")}
           className="
-          bg-green-500
-          hover:bg-green-600
+          bg-blue-600
+          hover:bg-blue-700
           text-white
           px-10
           py-4
