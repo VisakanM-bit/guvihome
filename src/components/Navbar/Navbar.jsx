@@ -16,11 +16,13 @@ import {
   FaLightbulb,
   FaMapMarkedAlt,
   FaMedal,
+  FaMobileAlt,
   FaMoon,
   FaPhone,
   FaPhoneAlt,
   FaRobot,
   FaRocket,
+  FaShieldAlt,
   FaSignOutAlt,
   FaSun,
   FaTools,
@@ -29,6 +31,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
+import { useAdminAuth } from "../../context/AdminAuthContext";
 import adBannerImage from "../../assets/logos/image5.png";
 import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
 
@@ -74,93 +77,93 @@ const navLinks = [
   },
   {
     label: "Internships",
-    href: "#internships",
+    href: "internships",
     width: "w-[min(760px,calc(100vw-32px))]",
     columns: [
       {
         title: "Internship Tracks",
         items: [
-          { icon: FaBuilding, title: "HR Internship" },
-          { icon: FaUsers, title: "Recruitment Internship" },
-          { icon: FaLaptopCode, title: "Full Stack Internship" },
-          { icon: FaCode, title: "Python Internship" },
-          { icon: FaRobot, title: "AI & ML Internship" },
-          { icon: FaTools, title: "DevOps Internship" },
-          { icon: FaCheckCircle, title: "Software Testing Internship" },
-          { icon: FaRocket, title: "MuleSoft Internship" },
+          { icon: FaBuilding, title: "HR Internship", href: "/internships/human-resource-internship" },
+          { icon: FaUsers, title: "Recruitment Internship", href: "/internships/recruitment-internship" },
+          { icon: FaLaptopCode, title: "Full Stack Internship", href: "/internships/full-stack-internship" },
+          { icon: FaCode, title: "Python Internship", href: "/internships/python-internship" },
+          { icon: FaRobot, title: "AI & ML Internship", href: "/internships/ai-ml-internship" },
+          { icon: FaTools, title: "DevOps Internship", href: "/internships/devops-internship" },
+          { icon: FaCheckCircle, title: "Software Testing Internship", href: "/internships/software-testing-internship" },
+          { icon: FaRocket, title: "MuleSoft Internship", href: "/internships/mulesoft-internship" },
         ],
       },
       {
         title: "Learning Experience",
         items: [
-          { icon: FaBriefcase, title: "Live Projects" },
-          { icon: FaUserTie, title: "Mentor Guidance" },
-          { icon: FaFileAlt, title: "Weekly Assessments" },
-          { icon: FaMedal, title: "Internship Certification" },
+          { icon: FaBriefcase, title: "Live Projects", href: "/projects/industry-project-lab" },
+          { icon: FaUserTie, title: "Mentor Guidance", href: "/mentorship" },
+          { icon: FaFileAlt, title: "Weekly Assessments", href: "/internships/human-resource-internship" },
+          { icon: FaMedal, title: "Internship Certification", href: "/internships/human-resource-internship" },
         ],
       },
     ],
     ctaLabel: "Gain Real Industry Experience",
     ctaButton: "Apply for Internship",
-    ctaHref: "#internships",
+    ctaHref: "internships",
   },
   {
     label: "Practice Hub",
-    href: "#practice",
+    href: "practice-hub",
     width: "w-[min(760px,calc(100vw-32px))]",
     columns: [
       {
         title: "Skill Building",
         items: [
-          { icon: FaBookOpen, title: "Learning Hub" },
-          { icon: FaFileAlt, title: "Assignments" },
-          { icon: FaChartLine, title: "Case Studies" },
-          { icon: FaLightbulb, title: "Practical Activities" },
-          { icon: FaBriefcase, title: "Project Lab" },
+          { icon: FaBookOpen, title: "Learning Hub", href: "/projects/industry-project-lab" },
+          { icon: FaFileAlt, title: "Assignments", href: "/projects/industry-project-lab" },
+          { icon: FaChartLine, title: "Case Studies", href: "/projects/industry-project-lab" },
+          { icon: FaLightbulb, title: "Practical Activities", href: "/projects/industry-project-lab" },
+          { icon: FaBriefcase, title: "Project Lab", href: "/projects/industry-project-lab" },
         ],
       },
       {
         title: "Career Preparation",
         items: [
-          { icon: FaUserTie, title: "Mock Interviews" },
-          { icon: FaFileAlt, title: "Resume Builder" },
-          { icon: FaUsers, title: "LinkedIn Profile Builder" },
-          { icon: FaLightbulb, title: "Aptitude Preparation" },
-          { icon: FaChartLine, title: "Career Readiness Assessment" },
+          { icon: FaUserTie, title: "Mock Interviews", href: "/placement-assistance" },
+          { icon: FaFileAlt, title: "Resume Builder", href: "/career-services" },
+          { icon: FaUsers, title: "LinkedIn Profile Builder", href: "/career-services" },
+          { icon: FaLightbulb, title: "Aptitude Preparation", href: "/placement-assistance" },
+          { icon: FaChartLine, title: "Career Readiness Assessment", href: "/career-services" },
         ],
       },
     ],
     ctaLabel: "Practice. Build. Grow.",
     ctaButton: "Start Learning",
-    ctaHref: "#practice",
+    ctaHref: "practice-hub",
   },
   {
     label: "Career Services",
-    href: "#platform",
+    href: "career-services",
     width: "w-[min(760px,calc(100vw-32px))]",
     columns: [
       {
         title: "Career Development",
         items: [
-          { icon: FaFileAlt, title: "Resume Review" },
-          { icon: FaUserTie, title: "Interview Preparation" },
-          { icon: FaGraduationCap, title: "One-to-One Mentorship" },
-          { icon: FaMapMarkedAlt, title: "Career Roadmap" },
+          { icon: FaFileAlt, title: "Resume Review", href: "/career-services" },
+          { icon: FaUserTie, title: "Interview Preparation", href: "/placement-assistance" },
+          { icon: FaGraduationCap, title: "One-to-One Mentorship", href: "/mentorship" },
+          { icon: FaMapMarkedAlt, title: "Career Roadmap", href: "/career-services" },
         ],
       },
       {
         title: "Placement Support",
         items: [
-          { icon: FaBriefcase, title: "Placement Assistance" },
-          { icon: FaBuilding, title: "Hiring Opportunities" },
-          { icon: FaUsers, title: "Industry Connections" },
-          { icon: FaChartLine, title: "Career Guidance" },
+          { icon: FaBriefcase, title: "Placement Assistance", href: "/placement-assistance" },
+          { icon: FaBuilding, title: "Hiring Opportunities", href: "/placement-assistance" },
+          { icon: FaUsers, title: "Industry Connections", href: "/mentorship" },
+          { icon: FaChartLine, title: "Career Guidance", href: "/career-services" },
         ],
       },
     ],
     ctaLabel: "Get Job Ready",
     ctaButton: "Book Career Counseling",
-    ctaHref: "#career-counseling",
+    ctaHref: "career-services",
   },
   {
     label: "Success Stories",
@@ -170,19 +173,19 @@ const navLinks = [
       {
         title: "Student Success",
         items: [
-          { icon: FaMedal, title: "Placement Success Stories" },
-          { icon: FaGraduationCap, title: "Career Transformation Stories" },
-          { icon: FaLaptopCode, title: "Tech Career Success" },
-          { icon: FaUserTie, title: "HR Career Success" },
+          { icon: FaMedal, title: "Placement Success Stories", href: "/placement-assistance" },
+          { icon: FaGraduationCap, title: "Career Transformation Stories", href: "/career-services" },
+          { icon: FaLaptopCode, title: "Tech Career Success", href: "/projects/industry-project-lab" },
+          { icon: FaUserTie, title: "HR Career Success", href: "/internships/human-resource-internship" },
         ],
       },
       {
         title: "Community",
         items: [
-          { icon: FaCheckCircle, title: "Student Testimonials" },
-          { icon: FaMedal, title: "Learner Achievements" },
-          { icon: FaBriefcase, title: "Internship Success Stories" },
-          { icon: FaChartLine, title: "Career Growth Journeys" },
+          { icon: FaCheckCircle, title: "Student Testimonials", href: "/career-services" },
+          { icon: FaMedal, title: "Learner Achievements", href: "/placement-assistance" },
+          { icon: FaBriefcase, title: "Internship Success Stories", href: "/internships/human-resource-internship" },
+          { icon: FaChartLine, title: "Career Growth Journeys", href: "/career-services" },
         ],
       },
     ],
@@ -192,49 +195,61 @@ const navLinks = [
   },
   {
     label: "About Us",
-    href: "#about",
+    href: "about-edtech",
     width: "w-[min(820px,calc(100vw-32px))]",
     columns: [
       {
         title: "Company",
         items: [
-          { icon: FaBuilding, title: "About Jawa EdTech" },
-          { icon: FaRocket, title: "Our Mission" },
-          { icon: FaCheckCircle, title: "Why Choose Jawa EdTech" },
-          { icon: FaUserTie, title: "Industry Mentors" },
+          { icon: FaBuilding, title: "About Jawa EdTech", href: "/about-edtech" },
+          { icon: FaRocket, title: "Our Mission", href: "/about-edtech" },
+          { icon: FaCheckCircle, title: "Why Choose Jawa EdTech", href: "/about-edtech" },
+          { icon: FaUserTie, title: "Industry Mentors", href: "/mentorship" },
         ],
       },
       {
         title: "Ecosystem",
         items: [
-          { icon: FaBookOpen, title: "Learn" },
-          { icon: FaTools, title: "Practice" },
-          { icon: FaBuilding, title: "Intern" },
-          { icon: FaRocket, title: "Build" },
-          { icon: FaBriefcase, title: "Get Hired" },
+          { icon: FaBookOpen, title: "Learn", href: "/programs" },
+          { icon: FaTools, title: "Practice", href: "/practice-hub" },
+          { icon: FaBuilding, title: "Intern", href: "/internships" },
+          { icon: FaRocket, title: "Build", href: "/projects/industry-project-lab" },
+          { icon: FaBriefcase, title: "Get Hired", href: "/placement-assistance" },
         ],
       },
       {
         title: "Contact",
         items: [
-          { icon: FaPhone, title: "Contact Us" },
-          { icon: FaMapMarkedAlt, title: "Locations" },
-          { icon: FaEnvelope, title: "Support" },
-          { icon: FaUsers, title: "Partner With Us" },
+          { icon: FaPhone, title: "Contact Us", href: "/about-edtech" },
+          { icon: FaMapMarkedAlt, title: "Locations", href: "/about-edtech" },
+          { icon: FaEnvelope, title: "Support", href: "/about-edtech" },
+          { icon: FaUsers, title: "Partner With Us", href: "/about-edtech" },
         ],
       },
     ],
     ctaLabel: "Build Your Career With Jawa",
     ctaButton: "Talk to Our Team",
-    ctaHref: "#contact",
+    ctaHref: "about-edtech",
   },
 ];
 
+const navTo = (target = "") => {
+  if (target.startsWith("/")) return target;
+  if (target.startsWith("#")) return `/${target}`;
+  return `/${target}`;
+};
+
 function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
+  const { loginAdmin, isAdminAuthenticated } = useAdminAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [orgLoginOpen, setOrgLoginOpen] = useState(false);
+  const [orgEmail, setOrgEmail] = useState("");
+  const [orgPassword, setOrgPassword] = useState("");
+  const [orgLoading, setOrgLoading] = useState(false);
+  const [orgError, setOrgError] = useState("");
   const [showAdBanner, setShowAdBanner] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -246,6 +261,12 @@ function Navbar() {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("jawa-theme", theme);
   }, [isDarkMode]);
+
+  useEffect(() => {
+    if (location.state?.adminLogin) {
+      setOrgLoginOpen(true);
+    }
+  }, [location.state?.adminLogin]);
 
   const themeClass = isDarkMode
     ? "border-cyan-300/15 bg-[radial-gradient(circle_at_82%_18%,rgba(0,242,254,0.12),transparent_34%),radial-gradient(circle_at_18%_80%,rgba(243,85,136,0.1),transparent_36%),linear-gradient(90deg,rgba(13,17,23,0.9),rgba(15,23,42,0.84),rgba(7,36,55,0.82))] text-white shadow-[0_14px_44px_-24px_rgba(0,242,254,0.42)] backdrop-blur-[15px]"
@@ -263,6 +284,23 @@ function Navbar() {
     }
 
     navigate("/", { state: { authPrompt: mode } });
+  };
+
+  const handleOrgLogin = async (event) => {
+    event.preventDefault();
+    setOrgError("");
+    setOrgLoading(true);
+    try {
+      await loginAdmin({ email: orgEmail, password: orgPassword });
+      setOrgLoginOpen(false);
+      setOrgEmail("");
+      setOrgPassword("");
+      navigate("/admin");
+    } catch (err) {
+      setOrgError(err.message || "Unable to login as organization admin.");
+    } finally {
+      setOrgLoading(false);
+    }
   };
 
   return (
@@ -328,7 +366,7 @@ function Navbar() {
           {navLinks.map((link) => (
             <li key={link.label} className="group">
               <Link
-                to={`/${link.href}`}
+                to={navTo(link.href)}
                 className={`inline-flex items-center gap-2 rounded-xl px-3 py-3 text-[16px] font-bold tracking-[-0.01em] transition hover:-translate-y-0.5 hover:bg-white/20 hover:text-[#60A5FA] ${mutedClass}`}
               >
                 {link.label}
@@ -387,6 +425,64 @@ function Navbar() {
               Login
             </button>
           )}
+
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => {
+                if (isAdminAuthenticated) {
+                  navigate("/admin");
+                  return;
+                }
+                setOrgLoginOpen((current) => !current);
+              }}
+              className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-lg transition hover:-translate-y-0.5 ${
+                orgLoginOpen
+                  ? "rotate-180 border-emerald-200/40 bg-emerald-300 text-slate-950 shadow-[0_0_26px_rgba(52,211,153,0.45)]"
+                  : isDarkMode
+                    ? "border-emerald-200/20 bg-white/10 text-emerald-100"
+                    : "border-blue-200/70 bg-white/35 text-slate-700"
+              }`}
+              aria-label="Organization login"
+              title="Organization Login"
+            >
+              <FaMobileAlt />
+            </button>
+
+            {orgLoginOpen && (
+              <form onSubmit={handleOrgLogin} className="absolute right-0 top-15 z-[70] w-[min(360px,calc(100vw-32px))] rounded-[1.6rem] border border-emerald-200/18 bg-slate-950/96 p-5 text-white shadow-[0_28px_100px_-50px_rgba(34,197,94,0.95)] backdrop-blur-2xl">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-300 text-slate-950">
+                    <FaShieldAlt />
+                  </span>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-200">2FA Ready</p>
+                    <h3 className="text-xl font-black tracking-[-0.03em]">Organization Login</h3>
+                  </div>
+                </div>
+                <input
+                  type="email"
+                  required
+                  value={orgEmail}
+                  onChange={(event) => setOrgEmail(event.target.value)}
+                  className="mb-3 w-full rounded-2xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
+                  placeholder="Organization email"
+                />
+                <input
+                  type="password"
+                  required
+                  value={orgPassword}
+                  onChange={(event) => setOrgPassword(event.target.value)}
+                  className="w-full rounded-2xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
+                  placeholder="Password"
+                />
+                {orgError && <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-200">{orgError}</p>}
+                <button disabled={orgLoading} className="mt-4 min-h-12 w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 text-sm font-black text-slate-950 transition hover:-translate-y-0.5 disabled:opacity-60">
+                  {orgLoading ? "Verifying..." : "Open Admin Dashboard"}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
 
         <button
@@ -499,7 +595,7 @@ function MegaMenu({ link, isDarkMode }) {
             )}
           </div>
           <Link
-            to={`/${link.ctaHref}`}
+            to={navTo(link.ctaHref)}
             className="inline-flex min-h-12 items-center justify-center rounded-xl bg-slate-950 px-7 text-sm font-black text-white shadow-xl shadow-slate-950/25 transition hover:-translate-y-0.5 hover:bg-emerald-600"
           >
             {link.ctaButton} <span className="ml-2">-&gt;</span>
@@ -515,7 +611,7 @@ function DropdownItem({ item, isDarkMode }) {
 
   return (
     <Link
-      to={item.slug ? `/programs/${item.slug}` : "/#courses"}
+      to={item.href || (item.slug ? `/programs/${item.slug}` : "/#courses")}
       className={`group/item flex min-w-0 items-center gap-4 rounded-xl py-1.5 transition hover:-translate-y-0.5 ${
         isDarkMode ? "hover:bg-white/[0.06]" : "hover:bg-blue-50/80"
       }`}
@@ -563,7 +659,7 @@ function MobileMenuGroup({ link, mutedClass, onNavigate }) {
                 return (
                   <Link
                     key={item.title}
-                    to={item.slug ? `/programs/${item.slug}` : `/${link.href}`}
+                    to={item.href || (item.slug ? `/programs/${item.slug}` : navTo(link.href))}
                     onClick={onNavigate}
                     className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm font-bold text-inherit transition hover:bg-blue-500/10"
                   >
@@ -578,7 +674,7 @@ function MobileMenuGroup({ link, mutedClass, onNavigate }) {
           </div>
         ))}
         <Link
-          to={`/${link.ctaHref}`}
+          to={navTo(link.ctaHref)}
           onClick={onNavigate}
           className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-emerald-500 px-4 text-sm font-black text-white"
         >

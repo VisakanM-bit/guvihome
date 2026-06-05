@@ -1,317 +1,142 @@
+import { Link } from "react-router-dom";
 import {
+  FaEnvelope,
+  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaYoutube,
-  FaTelegramPlane,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
   FaTwitter,
-  FaFacebookF,
-} from "react-icons/fa"
+  FaYoutube,
+} from "react-icons/fa";
+import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
+
+const exploreLinks = [
+  ["Home", "/"],
+  ["Career Programs", "/programs"],
+  ["Internship Hub", "/internships/human-resource-internship"],
+  ["Practice Hub", "/practice-hub"],
+  ["Placement Assistance", "/placement-assistance"],
+  ["Mentorship", "/mentorship"],
+  ["Career Services", "/career-services"],
+  ["About Jawa EdTech", "/about-edtech"],
+];
+
+const courseLinks = [
+  ["HR Executive & Development", "/programs/human-resource-executive-development"],
+  ["Recruitment & Talent Acquisition", "/programs/recruitment-talent-acquisition-development"],
+  ["Full Stack Web Development", "/programs/full-stack-development"],
+  ["Python Development", "/programs/python-development"],
+  ["Artificial Intelligence & ML", "/programs/artificial-intelligence-machine-learning"],
+  ["DevOps & Cloud Computing", "/programs/devops-engineering"],
+  ["Software Testing & QA", "/programs/software-testing-qa"],
+  ["MuleSoft Development", "/programs/mulesoft-development"],
+];
+
+const socialLinks = [
+  ["YouTube", FaYoutube, "https://www.youtube.com/"],
+  ["LinkedIn", FaLinkedinIn, "https://www.linkedin.com/"],
+  ["Instagram", FaInstagram, "https://www.instagram.com/"],
+  ["Facebook", FaFacebookF, "https://www.facebook.com/"],
+  ["Twitter", FaTwitter, "https://twitter.com/"],
+];
 
 function Footer1() {
-
   return (
-
-    <footer className="bg-[#111111] text-white pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-4 sm:pb-6 md:pb-8 px-4 sm:px-6 md:px-8 lg:px-10 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-
-      <div className="max-w-full lg:max-w-[1500px] mx-auto">
-
-        {/* TOP LINKS */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 pb-8 sm:pb-10 md:pb-12 lg:pb-16 border-b border-gray-700">
-
-          {/* COLUMN 1 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-4 sm:mb-5 md:mb-6 uppercase tracking-wide text-xs sm:text-sm md:text-base">
-
-              Zen Class
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Full Stack Development</li>
-              <li>Data Science</li>
-              <li>Software Development</li>
-              <li>Intel AIML</li>
-              <li>Automation & Testing</li>
-              <li>UI/UX</li>
-              <li>DevOps</li>
-              <li>Business Analytics</li>
-              <li>All Programs</li>
-
-            </ul>
-
-          </div>
-
-          {/* COLUMN 2 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Popular Courses
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Python</li>
-              <li>Java</li>
-              <li>Mobile Hacking</li>
-              <li>C Programming</li>
-              <li>AWS</li>
-              <li>Angular</li>
-              <li>Dark Web</li>
-              <li>All Courses</li>
-
-            </ul>
-
-          </div>
-
-          {/* COLUMN 3 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Self-Paced Courses
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300 mb-10">
-
-              <li>Premium Pass</li>
-              <li>Paid Courses</li>
-              <li>Free Courses</li>
-              <li>Combos</li>
-
-            </ul>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Practice Platforms
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>CodeKata</li>
-              <li>WebKata</li>
-              <li>SQLKata</li>
-              <li>FixTheCode</li>
-              <li>IDE</li>
-
-            </ul>
-
-          </div>
-
-          {/* COLUMN 4 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Products
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300 mb-10">
-
-              <li>HackerKID</li>
-              <li>Placement Preparation</li>
-              <li>HCL GUVI for Corporates</li>
-
-            </ul>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Community
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Campus Ambassador</li>
-              <li>Industrial Visit</li>
-
-            </ul>
-
-          </div>
-
-          {/* COLUMN 5 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Resources
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Success Stories</li>
-              <li>Learn Hub</li>
-              <li>Free Resources</li>
-              <li>Blog</li>
-              <li>Web Stories</li>
-              <li>Rewards</li>
-              <li>Refer a friend</li>
-              <li>Become an Affiliate</li>
-              <li>Resume Builder</li>
-
-            </ul>
-
-          </div>
-
-          {/* COLUMN 6 */}
-          <div>
-
-            <h2 className="font-bold text-white mb-6">
-
-              Company
-
-            </h2>
-
-            <ul className="space-y-4 text-gray-300">
-
-              <li>Refund Policy</li>
-              <li>FAQs</li>
-              <li>Contact Us</li>
-              <li>About Us</li>
-
-            </ul>
-
-          </div>
-
-        </div>
-
-        {/* BOTTOM SECTION */}
-        <div className="grid lg:grid-cols-3 gap-12 pt-14">
-
-          {/* LEFT */}
-          <div className="lg:col-span-2">
-
-            {/* DESCRIPTION */}
-            <p className="text-gray-300 text-lg leading-9 mb-8">
-
-              HCL GUVI (Grab Your Vernacular Imprint) Geek Network Private Limited is a leading online learning and skills development company, incubated by IIT Madras and IIM Ahmedabad.
-
-            </p>
-
-            <p className="text-gray-300 text-lg leading-9">
-
-              Established in 2014 and acquired by the HCL Group in 2022, HCL GUVI provides effective and high-quality learning and skilling programs that transcend language barriers in technology education.
-
-            </p>
-
-          </div>
-
-          {/* RIGHT */}
-          <div>
-
-            <h2 className="text-2xl font-bold mb-8">
-
-              Follow us on
-
-            </h2>
-
-            {/* SOCIAL ICONS */}
-            <div className="flex flex-wrap gap-5 mb-12">
-
-              <div className="w-14 h-14 rounded-full bg-[#1877f2] flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaFacebookF />
-
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaInstagram />
-
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-[#0077b5] flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaLinkedinIn />
-
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaTwitter />
-
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-[#229ED9] flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaTelegramPlane />
-
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-[#ff0000] flex items-center justify-center text-2xl cursor-pointer hover:scale-110 transition">
-
-                <FaYoutube />
-
-              </div>
-
-            </div>
-
-            {/* BUTTONS */}
-            <div className="flex flex-col gap-5">
-
-              <button className="border border-gray-500 py-4 rounded-xl hover:bg-white hover:text-black transition font-semibold">
-
-                Download on App Store
-
-              </button>
-
-              <button className="border border-gray-500 py-4 rounded-xl hover:bg-white hover:text-black transition font-semibold">
-
-                Get it on Google Play
-
-              </button>
-
-              <button className="bg-white text-black py-4 rounded-xl font-bold hover:bg-green-500 hover:text-white transition">
-
-                Refer & Earn
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* COPYRIGHT */}
-        <div className="border-t border-gray-700 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
-
-          <div className="flex gap-8 mb-4 md:mb-0">
-
-            <p className="cursor-pointer hover:text-white transition">
-
-              Terms and Conditions
-
-            </p>
-
-            <p className="cursor-pointer hover:text-white transition">
-
-              Privacy Policy
-
-            </p>
-
-          </div>
-
-          <p>
-
-            © HCL GUVI Geek Network Pvt. Ltd.
-
+    <footer className="relative overflow-hidden border-t border-emerald-300/10 bg-[linear-gradient(135deg,rgba(2,6,23,0.98),rgba(5,18,12,0.96),rgba(0,0,0,0.98))] px-5 py-10 text-white shadow-[0_-30px_100px_-70px_rgba(34,197,94,0.8)] sm:px-8 lg:px-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(34,197,94,0.18),transparent_26%),radial-gradient(circle_at_88%_18%,rgba(34,211,238,0.12),transparent_28%)]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/80 to-transparent shadow-[0_0_22px_rgba(52,211,153,0.9)]" />
+
+      <div className="relative z-10 mx-auto grid max-w-[1780px] gap-10 lg:grid-cols-[1.22fr_1fr_1.25fr_1.2fr_0.55fr]">
+        <div>
+          <Link to="/" className="inline-flex items-center gap-3" aria-label="Jawa EdTech home">
+            <span className="relative flex h-16 w-14 items-center justify-center">
+              <span className="absolute inset-0 rounded-2xl bg-emerald-300/18 blur-xl" />
+              <img src={jawaEdTechLogo} alt="Jawa EdTech logo" className="relative h-full w-full scale-125 object-contain drop-shadow-[0_12px_28px_rgba(16,185,129,0.55)]" />
+            </span>
+            <span>
+              <span className="block text-2xl font-black tracking-[-0.04em] text-emerald-400 sm:text-3xl">JAWA EDTECH</span>
+              <span className="mt-1 block text-[11px] font-black uppercase tracking-[0.2em] text-emerald-100/70">Learn. Lead. Innovate.</span>
+            </span>
+          </Link>
+
+          <p className="mt-6 max-w-sm text-base font-semibold leading-7 text-slate-300">
+            Explore learning, practical projects, internships, mentorship, placement support, and limitless career opportunities.
           </p>
 
+          <div className="mt-7 h-px max-w-sm bg-gradient-to-r from-emerald-300/40 via-white/10 to-transparent" />
+
+          <div className="mt-7 space-y-3 text-sm font-black text-slate-200">
+            <p>© 2026 Jawa EdTech. All rights reserved.</p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <Link to="/about-edtech" className="transition hover:text-emerald-300">Privacy Policy</Link>
+              <Link to="/about-edtech" className="transition hover:text-emerald-300">Terms of Service</Link>
+            </div>
+          </div>
         </div>
 
+        <FooterColumn title="Explore Jawa EdTech" links={exploreLinks} />
+        <FooterColumn title="Our Courses" links={courseLinks} />
+
+        <div>
+          <h2 className="mb-5 text-xl font-black tracking-[-0.02em] text-white">Contact Us</h2>
+          <div className="space-y-5 text-base font-semibold leading-7 text-slate-200">
+            <a href="tel:+919790631286" className="flex items-center gap-4 transition hover:text-emerald-300">
+              <FaPhoneAlt className="shrink-0 text-emerald-300" />
+              +91 97906 31286
+            </a>
+            <a href="mailto:hr@jawaedtech.com" className="flex items-center gap-4 transition hover:text-emerald-300">
+              <FaEnvelope className="shrink-0 text-emerald-300" />
+              hr@jawaedtech.com
+            </a>
+            <p className="flex items-start gap-4">
+              <FaMapMarkerAlt className="mt-1 shrink-0 text-emerald-300" />
+              <span>
+                Jawa Incubation Centre<br />
+                No: 54 Bharathi Park 7th Cross, Near ICICI Bank,<br />
+                Saibaba Colony, Coimbatore, Tamil Nadu 641043, India
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:text-right">
+          <h2 className="mb-5 text-xl font-black tracking-[-0.02em] text-white">Follow Us</h2>
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            {socialLinks.map(([label, Icon, href]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-200/14 bg-white/[0.08] text-lg text-white shadow-[0_12px_40px_-28px_rgba(34,197,94,0.75)] transition hover:-translate-y-0.5 hover:border-emerald-200/35 hover:bg-emerald-300 hover:text-slate-950"
+                aria-label={label}
+              >
+                <Icon />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-
     </footer>
-
-  )
+  );
 }
 
-export default Footer1
+function FooterColumn({ title, links }) {
+  return (
+    <div>
+      <h2 className="mb-5 text-xl font-black tracking-[-0.02em] text-white">{title}</h2>
+      <ul className="space-y-3">
+        {links.map(([label, href]) => (
+          <li key={label}>
+            <Link to={href} className="text-base font-semibold leading-6 text-slate-200 transition hover:translate-x-1 hover:text-emerald-300">
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Footer1;

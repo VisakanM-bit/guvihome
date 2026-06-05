@@ -6,6 +6,7 @@ import {
   logAccountLogin,
   verifyLoginWithSheet,
 } from "../services/sheetsApi";
+import { signOutSupabase } from "../services/supabaseApi";
 import { clearCareerPopupSeen } from "../utils/popupStorage";
 
 const AuthContext = createContext(null);
@@ -138,7 +139,12 @@ export function AuthProvider({ children }) {
     return account;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await signOutSupabase();
+    } catch {
+      /* local logout should still complete */
+    }
     clearCareerPopupSeen();
     setUser(null);
   };

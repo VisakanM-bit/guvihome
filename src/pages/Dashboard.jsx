@@ -21,16 +21,16 @@ const choices = [
     icon: FaBriefcase,
     title: "Choose a Platform",
     desc: "Open your learning, internship, placement, mentor, or AI career platform workspace.",
-    href: "/",
+    href: "/career-services",
     action: "View Platforms",
   },
 ];
 
 const platforms = [
-  { icon: FaGraduationCap, label: "Student Portal" },
-  { icon: FaBriefcase, label: "Internship Hub" },
-  { icon: FaCode, label: "Project Lab" },
-  { icon: FaRobot, label: "AI Career Guide" },
+  { icon: FaGraduationCap, label: "Career Services", href: "/career-services" },
+  { icon: FaBriefcase, label: "Internship Hub", href: "/internships/human-resource-internship" },
+  { icon: FaCode, label: "Project Lab", href: "/projects/industry-project-lab" },
+  { icon: FaRobot, label: "Mentorship", href: "/mentorship" },
 ];
 
 function Dashboard() {
@@ -86,11 +86,11 @@ function Dashboard() {
             Available Platforms
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {platforms.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3 rounded-2xl bg-white/[0.07] p-4">
+            {platforms.map(({ icon: Icon, label, href }) => (
+              <Link key={label} to={href} className="flex items-center gap-3 rounded-2xl bg-white/[0.07] p-4 transition hover:-translate-y-0.5 hover:bg-white/[0.12]">
                 <Icon className="text-emerald-300" />
                 <span className="text-sm font-extrabold text-white">{label}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

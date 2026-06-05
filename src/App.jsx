@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar"
 import Hero from "./components/Hero/Hero"
 import Partners from "./components/Partners/Partners"
 import Courses from "./components/Courses/Courses"
+import EcosystemGateway from "./components/EcosystemGateway/EcosystemGateway"
 import Assessments from "./components/Assessments/Assessments"
 import Learners from "./components/Learners/Learners"
 import Testimonials from "./components/Testimonials/Testimonials"
@@ -28,6 +29,9 @@ function App() {
 
       {/* COURSES */}
       <Courses />
+
+      {/* CAREER ECOSYSTEM ENTRY POINTS */}
+      <EcosystemGateway />
 
       {/* PARTNERS */}
       <Partners />

@@ -1,4 +1,12 @@
 import { GOOGLE_SCRIPT_URL } from "../config/sheets";
+import {
+  isSupabaseConfigured,
+} from "./supabaseClient";
+import {
+  saveLeadToSupabase,
+  signInStudent,
+  signUpStudent,
+} from "./supabaseApi";
 
 function hasScriptUrl() {
   return Boolean(GOOGLE_SCRIPT_URL?.trim());
@@ -38,6 +46,14 @@ async function postToSheetWithResponse(payload) {
 }
 
 export async function saveExpertLead(lead) {
+  if (isSupabaseConfigured) {
+    try {
+      await saveLeadToSupabase(lead);
+    } catch (err) {
+      console.warn("Supabase lead write failed; falling back to Google Sheets.", err);
+    }
+  }
+
   await postToSheetSilent({
     action: "expert_lead",
     source: lead.source || "career_popup",
@@ -55,6 +71,10 @@ export async function saveExpertLead(lead) {
 }
 
 export async function saveAccountSignup(user) {
+  if (isSupabaseConfigured) {
+    return signUpStudent(user);
+  }
+
   const payload = {
     action: "signup",
     name: user.name,
@@ -82,6 +102,10 @@ export async function logAccountLogin(user) {
 
 /** Verify credentials against Accounts sheet (POST, then GET fallback) */
 export async function verifyLoginWithSheet(email, password) {
+  if (isSupabaseConfigured) {
+    return signInStudent({ email, password });
+  }
+
   const normalizedEmail = email.trim().toLowerCase();
 
   const postResult = await postToSheetWithResponse({
