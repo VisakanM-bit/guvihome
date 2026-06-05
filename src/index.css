@@ -643,12 +643,42 @@ main .text-gray-500 {
   pointer-events: none;
 }
 
+.logo-twinkle-card::after {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  background:
+    radial-gradient(circle at 42% 46%, rgba(255, 255, 255, 0.52) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 58% 52%, rgba(125, 211, 252, 0.44) 0 1.2px, transparent 2.4px),
+    linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.2) 48%, transparent 58%);
+  opacity: 0;
+  transform: translateX(-18%) rotate(8deg);
+  animation: logo-twinkle 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
 @keyframes hero-dots-drift {
   from {
     background-position: 0 0, 0 0, 0 0;
   }
   to {
     background-position: 68px 34px, 72px 72px, 72px 72px;
+  }
+}
+
+@keyframes logo-twinkle {
+  0%,
+  45%,
+  100% {
+    opacity: 0;
+    transform: translateX(-24%) rotate(8deg) scale(0.96);
+  }
+  62% {
+    opacity: 0.85;
+  }
+  78% {
+    opacity: 0.16;
+    transform: translateX(24%) rotate(8deg) scale(1.02);
   }
 }
 

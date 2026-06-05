@@ -287,6 +287,12 @@ export async function updateRecordStatus(table, id, status) {
   if (error) throw error;
 }
 
+export async function deleteAdminRecord(table, id) {
+  requireSupabase();
+  const { error } = await supabase.from(table).delete().eq("id", id);
+  if (error) throw error;
+}
+
 export function exportRowsToCsv(filename, rows) {
   if (!rows?.length) return;
   const columns = Object.keys(rows[0]);

@@ -1,269 +1,208 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  FaArrowRight,
+  FaBriefcase,
+  FaCertificate,
+  FaCode,
+  FaComments,
+  FaGraduationCap,
+  FaHandshake,
+  FaLaptopCode,
+  FaTrophy,
+} from "react-icons/fa";
+
+const learningTabs = [
+  {
+    title: "Career Programs",
+    icon: FaGraduationCap,
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Choose guided HR, recruitment, full stack, Python, AI, DevOps, QA, and MuleSoft paths.",
+      "Learn with a structured roadmap, weekly progress checks, and mentor-led clarity.",
+      "Build strong foundations before moving into projects, internships, and placement prep.",
+      "Keep every track focused on real workplace outcomes, not random theory.",
+    ],
+    button: "Explore Career Programs",
+    href: "/programs",
+  },
+  {
+    title: "Internship Hub",
+    icon: FaBriefcase,
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Work through internship-style tasks with clear responsibilities and review points.",
+      "Create practical reports, workflow notes, project documents, and proof of execution.",
+      "Get exposure to real HR, tech, testing, cloud, and business delivery scenarios.",
+      "Turn internship work into confident interview stories and portfolio evidence.",
+    ],
+    button: "View Internships",
+    href: "/internships/human-resource-internship",
+  },
+  {
+    title: "Practice Lab",
+    icon: FaLaptopCode,
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Practice assignments, case studies, coding tasks, tool workflows, and documentation.",
+      "Repeat important skills until you can explain, apply, and present them clearly.",
+      "Track practical improvement through reviews, checkpoints, and completion outcomes.",
+      "Build discipline with focused tasks that connect directly to career goals.",
+    ],
+    button: "Start Practice",
+    href: "/practice-hub",
+  },
+  {
+    title: "Project Studio",
+    icon: FaCode,
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Create portfolio-ready projects with clean requirements, execution, and demo flow.",
+      "Build web apps, automation tools, dashboards, QA plans, and business workflows.",
+      "Receive mentor feedback on structure, presentation, and practical quality.",
+      "Show employers clear evidence of what you can build and deliver.",
+    ],
+    button: "Open Project Studio",
+    href: "/projects/industry-project-lab",
+  },
+  {
+    title: "Mentor Desk",
+    icon: FaHandshake,
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Get guidance for career direction, project doubts, interview planning, and next steps.",
+      "Discuss your profile, skill gaps, and the most useful path for your target role.",
+      "Use mentor support to avoid confusion and stay consistent with your roadmap.",
+      "Make every learning week more focused, practical, and measurable.",
+    ],
+    button: "Talk To Mentor",
+    href: "/mentorship",
+  },
+  {
+    title: "Placement Prep",
+    icon: FaCertificate,
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Prepare resumes, LinkedIn profiles, interview answers, and role-specific talking points.",
+      "Practice technical rounds, HR rounds, communication, and project explanation.",
+      "Understand hiring expectations and convert your learning into a stronger profile.",
+      "Move toward interviews with confidence, clarity, and proof of practical work.",
+    ],
+    button: "Prepare For Jobs",
+    href: "/placement-assistance",
+  },
+  {
+    title: "Rewards",
+    icon: FaTrophy,
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Celebrate milestones for completing tasks, projects, internships, and assessments.",
+      "Use progress badges to keep your learning visible and motivating.",
+      "Build confidence by seeing each practical step turn into a completed achievement.",
+      "Stay consistent with small wins that support your bigger career goal.",
+    ],
+    button: "View Milestones",
+    href: "/career-services",
+  },
+  {
+    title: "Community",
+    icon: FaComments,
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop",
+    description: [
+      "Discuss doubts, projects, workflows, and interview preparation with peers.",
+      "Share useful resources, progress updates, project ideas, and practical wins.",
+      "Learn from people moving through similar career and internship paths.",
+      "Build a supportive circle while you grow your skills and confidence.",
+    ],
+    button: "Join Community",
+    href: "/about-edtech",
+  },
+];
 
 function Learning() {
-
-  const sections = [
-
-    {
-      title: "CodeKata",
-
-      image:
-        "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "CodeKata helps improve problem-solving skills.",
-        "Practice coding with real interview questions.",
-        "Track your progress with AI evaluation.",
-        "Improve logical thinking and coding speed.",
-      ],
-
-      button: "Explore CodeKata",
-    },
-
-    {
-      title: "WebKata",
-
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "Master frontend and backend development.",
-        "Practice real-world web projects.",
-        "Build responsive applications.",
-        "Enhance web development skills.",
-      ],
-
-      button: "Explore WebKata",
-    },
-
-    {
-      title: "SQLKata",
-
-      image:
-        "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "SQLKata is a powerful tool for mastering SQL and relational databases.",
-        "Focuses on concept-driven exercises for skill enhancement.",
-        "Helps improve query formulation and optimization.",
-        "Provides a structured learning approach.",
-      ],
-
-      button: "Explore SQLKata",
-    },
-
-    {
-      title: "FixTheCode",
-
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "FixTheCode is curated by industry experts.",
-        "Helps you become familiar with programming.",
-        "Improves debugging and logical thinking.",
-        "Enhances interview preparation skills.",
-      ],
-
-      button: "Explore FixTheCode",
-    },
-
-    {
-      title: "IDE",
-
-      image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "Code directly inside the browser.",
-        "Supports multiple programming languages.",
-        "Fast and responsive coding environment.",
-        "Perfect for practice and assessments.",
-      ],
-
-      button: "Explore IDE",
-    },
-
-    {
-      title: "Rewards",
-
-      image:
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "Redeem exciting rewards using Geekoins.",
-        "Earn points from CodeKata and referrals.",
-        "Unlock vouchers and special gifts.",
-        "Compete with learners worldwide.",
-      ],
-
-      button: "Explore Rewards",
-    },
-
-    {
-      title: "Referral",
-
-      image:
-        "https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "Invite friends and earn rewards.",
-        "Track your referral performance.",
-        "Unlock bonus learning benefits.",
-        "Grow with the learning community.",
-      ],
-
-      button: "Explore Referral",
-    },
-
-    {
-      title: "Forum",
-
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop",
-
-      description: [
-        "Discuss coding and projects with learners.",
-        "Get help from mentors and peers.",
-        "Share knowledge and ideas.",
-        "Build your developer community.",
-      ],
-
-      button: "Explore Forum",
-    },
-
-  ]
-
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(0);
+  const selected = learningTabs[active];
+  const SelectedIcon = selected.icon;
 
   return (
-
-    <section className="bg-[#f7f7f7] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12">
-
-      {/* TITLE */}
-      <div className="text-center mb-14">
-
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-5">
-
-          Learn. Practice. Earn. Have Fun!
-
-        </h1>
-
-      </div>
-
-      {/* TABS */}
-      <div className="flex justify-center mb-12 sm:mb-16 lg:mb-20 overflow-x-auto">
-
-        <div className="flex bg-[#f1f1f1] rounded-md overflow-hidden flex-wrap sm:flex-nowrap gap-1 sm:gap-0">
-
-          {sections.map((item, index) => (
-
-            <button
-              key={index}
-              onClick={() => setActive(index)}
-              className={`px-10 py-5 text-xl font-medium transition-all duration-300 border-b-4
-
-              ${
-                active === index
-                  ? "bg-[#e7f7eb] border-green-500 text-gray-900"
-                  : "border-transparent text-gray-600 hover:bg-white"
-              }`}
-            >
-
-              {item.title}
-
-            </button>
-
-          ))}
-
+    <section className="cybernet-network-bg px-4 py-12 text-white sm:px-6 md:px-8 lg:px-10 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-[1540px]">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="mb-3 text-sm font-black uppercase tracking-[0.22em] text-sky-300">
+            Jawa EdTech Career Workspace
+          </p>
+          <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
+            Learn. Practice. Earn. Have Fun!
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">
+            A clean, connected space for learning, internships, projects, mentorship, placement preparation, milestones, and community support.
+          </p>
         </div>
 
-      </div>
+        <div className="mt-9 overflow-x-auto rounded-xl border border-sky-200/12 bg-black/38 p-1 shadow-[0_24px_90px_-58px_rgba(56,189,248,0.75)] backdrop-blur-xl">
+          <div className="flex min-w-max">
+            {learningTabs.map(({ title, icon: Icon }, index) => (
+              <button
+                key={title}
+                type="button"
+                onClick={() => setActive(index)}
+                className={`flex min-h-16 min-w-[10.5rem] items-center justify-center gap-2 border-b-4 px-5 text-sm font-black transition sm:text-base ${
+                  active === index
+                    ? "border-sky-400 bg-sky-400/16 text-sky-100 shadow-[inset_0_0_28px_rgba(56,189,248,0.18)]"
+                    : "border-transparent text-slate-300 hover:bg-white/[0.07] hover:text-white"
+                }`}
+              >
+                <Icon className="text-base" />
+                {title}
+              </button>
+            ))}
+          </div>
+        </div>
 
-      {/* MAIN CONTENT */}
-      <div className="max-w-full lg:max-w-7xl mx-auto">
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-24 items-center">
-
-          {/* LEFT SIDE */}
-          <div className="flex justify-center">
-
-            {/* LAPTOP */}
-            <div className="relative">
-
-              {/* SCREEN */}
-              <div className="bg-black rounded-lg sm:rounded-2xl md:rounded-3xl lg:rounded-[28px] p-2 sm:p-3 md:p-4 shadow-2xl">
-
-                <div className="bg-white rounded-lg sm:rounded-2xl md:rounded-3xl lg:rounded-[18px] overflow-hidden w-full max-w-xs sm:max-w-md md:max-w-lg h-auto aspect-video">
-
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+          <div className="flex justify-center lg:justify-start">
+            <div className="relative w-full max-w-[640px]">
+              <div className="absolute -inset-4 rounded-[2rem] bg-sky-400/12 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[1.7rem] border border-sky-200/18 bg-black p-3 shadow-[0_30px_100px_-46px_rgba(56,189,248,0.78)]">
+                <div className="overflow-hidden rounded-[1.2rem] bg-slate-950">
                   <img
-                    src={sections[active].image}
-                    alt={sections[active].title}
-                    className="w-full h-full object-cover"
+                    src={selected.image}
+                    alt={selected.title}
+                    className="aspect-[16/10] w-full object-cover transition duration-500"
                   />
-
                 </div>
-
-                {/* CAMERA */}
-                <div className="w-3 h-3 bg-gray-700 rounded-full absolute top-3 left-1/2 -translate-x-1/2"></div>
-
+                <div className="mx-auto h-5 w-[88%] rounded-b-2xl bg-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]" />
               </div>
-
-              {/* BOTTOM */}
-              <div className="h-5 bg-gray-800 rounded-b-[25px] mx-8"></div>
-
             </div>
-
           </div>
 
-          {/* RIGHT SIDE */}
-<div className="relative">
-
-            {/* TITLE */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4">
-
-              {sections[active].title}
-
-            </h2>
-
-            {/* DESCRIPTION */}
-            <ul className="space-y-6 mb-14">
-
-              {sections[active].description.map((item, index) => (
-
-                <li
-                  key={index}
-                  className="flex gap-5 text-2xl text-gray-600 leading-relaxed"
-                >
-
-                  <span className="mt-2 text-gray-500">
-                    •
-                  </span>
-
-                  {item}
-
+          <div className="mx-auto w-full max-w-2xl lg:mx-0">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-400 text-2xl text-slate-950 shadow-[0_0_34px_rgba(56,189,248,0.55)]">
+              <SelectedIcon />
+            </div>
+            <h3 className="text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
+              {selected.title}
+            </h3>
+            <ul className="mt-7 grid gap-5">
+              {selected.description.map((point) => (
+                <li key={point} className="flex gap-4 text-base font-semibold leading-7 text-slate-200 sm:text-lg">
+                  <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-sky-400 shadow-[0_0_16px_rgba(56,189,248,0.9)]" />
+                  <span>{point}</span>
                 </li>
-
               ))}
-
             </ul>
-
-            {/* BUTTON */}
-            <button className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white text-sm sm:text-base md:text-lg lg:text-xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg w-full sm:w-auto">
-
-              {sections[active].button}
-
-            </button>
-
+            <Link
+              to={selected.href}
+              className="mt-9 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 to-violet-600 px-8 text-base font-black text-white shadow-[0_20px_70px_-36px_rgba(56,189,248,0.95)] transition hover:-translate-y-0.5 hover:from-sky-400 hover:to-violet-500 sm:w-auto"
+            >
+              {selected.button}
+              <FaArrowRight />
+            </Link>
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-  )
+  );
 }
 
-export default Learning
+export default Learning;

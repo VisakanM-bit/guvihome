@@ -23,7 +23,7 @@ function AboutGuvi() {
     try {
       await submitExpertLeadAndRedirect(
         {
-          source: "about_guvi_form",
+          source: "about_jawa_edtech_form",
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
@@ -52,21 +52,19 @@ function AboutGuvi() {
         <div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 mb-4 sm:mb-5 md:mb-6 lg:mb-8">
-            Get to know about HCL GUVI
+            Get to know about Jawa EdTech
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-7 sm:leading-8 md:leading-9 lg:leading-10 text-slate-600">
-            HCL GUVI (Grab Your Vernacular Imprint) Geek Network
-            Private Limited is a leading online learning and skills
-            development company, incubated by IIT Madras and IIM Ahmedabad.
+            Jawa EdTech is a career-focused learning and skills
+            development platform built for students, freshers, and
+            working professionals.
           </p>
 
           <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-7 sm:leading-8 md:leading-9 lg:leading-10 text-slate-600 mt-4 sm:mt-5 md:mt-6 lg:mt-8">
-            Established in 2014 and acquired by the HCL Group in 2022,
-            HCL GUVI is dedicated to providing effective and high-quality
-            learning and skilling programs that transcend language barriers
-            in technology education. HCL GUVI today is trusted by over
-            4.8 million users, 20 languages and 2500+ corporate partners.
+            Our programs combine structured learning, internships, mentor
+            guidance, practical assignments, project exposure, and placement
+            readiness so learners can move from training to confident action.
           </p>
 
           {/* AWARDS BOX */}

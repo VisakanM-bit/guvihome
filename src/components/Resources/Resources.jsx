@@ -44,7 +44,7 @@ function Resources() {
             </h1>
 
             {/* BUTTON */}
-            <button className="bg-green-400 hover:bg-green-500 transition-all duration-300 text-black text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg w-full sm:w-auto">
+            <button className="bg-gradient-to-r from-sky-500 to-violet-600 transition-all duration-300 hover:from-sky-400 hover:to-violet-500 text-white text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg shadow-sky-500/20 w-full sm:w-auto">
 
               Explore Now
 

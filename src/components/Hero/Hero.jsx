@@ -373,7 +373,7 @@ function Hero() {
                         }}
                         className={`rounded-xl px-3 py-2.5 text-xs font-black transition ${
                           authMode === "login"
-                            ? "bg-emerald-300 text-slate-950"
+                            ? "bg-sky-300 text-slate-950"
                             : "text-emerald-50/80 hover:bg-white/[0.08]"
                         }`}
                       >
@@ -388,7 +388,7 @@ function Hero() {
                         }}
                         className={`rounded-xl px-3 py-2.5 text-xs font-black transition ${
                           authMode === "signup"
-                            ? "bg-emerald-300 text-slate-950"
+                            ? "bg-sky-300 text-slate-950"
                             : "text-emerald-50/80 hover:bg-white/[0.08]"
                         }`}
                       >
@@ -458,7 +458,7 @@ function Hero() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="mt-2 w-full rounded-2xl bg-gradient-to-r from-emerald-400 via-cyan-400 to-green-500 py-4 text-base font-black text-slate-950 shadow-xl shadow-emerald-400/25 transition hover:-translate-y-0.5 hover:shadow-emerald-300/35 disabled:opacity-60"
+                        className="mt-2 w-full rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-violet-600 py-4 text-base font-black text-white shadow-xl shadow-sky-400/25 transition hover:-translate-y-0.5 hover:shadow-sky-300/35 disabled:opacity-60"
                       >
                         {loading
                           ? authMode === "login"
@@ -639,7 +639,7 @@ function ExpertForm({
       <button
         type="submit"
         disabled={loading}
-        className="mt-2 w-full rounded-2xl bg-gradient-to-r from-emerald-400 via-cyan-400 to-green-500 py-4 text-base font-black text-slate-950 shadow-xl shadow-emerald-400/25 transition hover:-translate-y-0.5 hover:shadow-emerald-300/35 disabled:opacity-60"
+        className="mt-2 w-full rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-violet-600 py-4 text-base font-black text-white shadow-xl shadow-sky-400/25 transition hover:-translate-y-0.5 hover:shadow-sky-300/35 disabled:opacity-60"
       >
         {loading ? "Saving request..." : "Request expert call"}
       </button>

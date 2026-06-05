@@ -1,154 +1,89 @@
-import image1 from "../../assets/logos/image1.png"
-import image2 from "../../assets/logos/image2.png"
-import image3 from "../../assets/logos/image3.png"
-import image4 from "../../assets/logos/image4.png"
+import { FaArrowRight, FaBriefcase, FaChartLine, FaCode, FaDatabase, FaPenNib } from "react-icons/fa";
+
+const categories = [
+  {
+    icon: FaBriefcase,
+    title: "Business & Management",
+    intro: "Workplace communication, team coordination, reporting, and business operations for first-job confidence.",
+    items: ["Email Etiquette", "HR Operations Basics", "Business Reports"],
+  },
+  {
+    icon: FaDatabase,
+    title: "Data Science & AI",
+    intro: "Short practice tracks for analytics thinking, AI workflows, dashboards, and data-backed decisions.",
+    items: ["Python for Data", "AI Use Cases", "Dashboard Practice"],
+  },
+  {
+    icon: FaPenNib,
+    title: "Engineering & Design",
+    intro: "Design thinking, product workflow, UI foundations, and practical documentation for portfolio-ready output.",
+    items: ["UI/UX Foundations", "Product Design", "Design Reviews"],
+  },
+  {
+    icon: FaChartLine,
+    title: "IT & Software",
+    intro: "Hands-on basics for tools, testing, cloud workflows, support processes, and software delivery habits.",
+    items: ["Software Testing", "DevOps Basics", "Tool Workflows"],
+  },
+  {
+    icon: FaCode,
+    title: "Programming",
+    intro: "Build coding confidence with guided exercises, mini projects, debugging habits, and interview preparation.",
+    items: ["JavaScript Practice", "Python Projects", "API Basics"],
+  },
+];
 
 function Explore() {
-
-  const courses = [
-
-    {
-      image: image1,
-      title: "SAP S/4 HANA",
-      hours: "3 Hrs",
-      language: "English",
-    },
-
-    {
-      image: image2,
-      title: "Email Etiquette",
-      hours: "4 Hrs",
-      language: "English",
-    },
-
-    {
-      image: image3,
-      title: "Resume Building",
-      hours: "2 Hrs",
-      language: "English",
-    },
-
-    {
-      image: image4,
-      title: "Confluence",
-      hours: "10 Hrs",
-      language: "English",
-    },
-
-  ]
-
   return (
+    <section className="bg-[#f5f7f6] px-4 py-10 sm:px-6 sm:py-14 md:px-8 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1540px]">
+        <div className="mx-auto mb-10 max-w-4xl text-center">
+          <p className="mb-3 text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
+            Skill Practice Library
+          </p>
+          <h1 className="text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl">
+            Explore Short Learning Tracks
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-base font-semibold leading-7 text-slate-600 sm:text-lg">
+            Pick a focused track, learn the essentials, complete guided tasks, and connect the work to your internship or career plan.
+          </p>
+        </div>
 
-    <section className="bg-[#f5f5f5] py-8 sm:py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {categories.map(({ icon: Icon, title, intro, items }, index) => (
+            <article
+              key={title}
+              className={`flex min-h-full flex-col rounded-2xl border bg-white p-5 shadow-[0_20px_70px_-54px_rgba(15,23,42,0.65)] transition hover:-translate-y-1 hover:shadow-[0_26px_80px_-52px_rgba(16,185,129,0.7)] ${
+                index === 0 ? "border-emerald-200 ring-1 ring-emerald-100" : "border-slate-200"
+              }`}
+            >
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-xl text-emerald-600">
+                <Icon />
+              </div>
+              <h2 className="text-xl font-black leading-snug text-slate-950">{title}</h2>
+              <p className="mt-3 min-h-[96px] text-sm font-semibold leading-6 text-slate-600">{intro}</p>
 
-      {/* TITLE */}
-      <div className="text-center mb-16">
-
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#172b4d] mb-2 sm:mb-3 md:mb-4">
-
-          Your Learning, Your Pace: Explore, Master, Succeed
-
-        </h1>
-
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500">
-
-          Choose from 1250+ exclusive courses with new courses being published every month.
-
-        </p>
-
-      </div>
-
-      {/* CATEGORY TABS */}
-      <div className="flex flex-col sm:flex-row justify-center flex-wrap gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-12 lg:mb-16 max-w-full">
-
-        <button className="bg-[#e9f8ec] text-[#16c247] px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-t-lg border-b-4 border-[#16c247] text-sm sm:text-base md:text-lg lg:text-xl font-semibold hover:bg-[#d4f0dd] transition">
-
-          Business & Management
-
-        </button>
-
-        <button className="bg-white px-8 py-4 text-xl text-gray-600">
-
-          Data Science & AI
-
-        </button>
-
-        <button className="bg-white px-8 py-4 text-xl text-gray-600">
-
-          Engineering & Design
-
-        </button>
-
-        <button className="bg-white px-8 py-4 text-xl text-gray-600">
-
-          IT & Software
-
-        </button>
-
-        <button className="bg-white px-8 py-4 text-xl text-gray-600">
-
-          Programming
-
-        </button>
-
-      </div>
-
-      {/* COURSE CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-
-        {courses.map((course, index) => (
-
-          <div
-            key={index}
-            className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-
-            {/* IMAGE */}
-            <div className="relative">
-
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-[250px] object-cover"
-              />
-
-              {/* PAID TAG */}
-              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-[#ff4d4f] text-white px-3 sm:px-4 md:px-5 py-1 sm:py-2 rounded text-xs sm:text-sm md:text-base lg:text-lg font-semibold">
-
-                Paid
-
+              <div className="mt-5 grid gap-2">
+                {items.map((item) => (
+                  <span key={item} className="rounded-xl bg-slate-50 px-3 py-2 text-sm font-bold text-slate-700">
+                    {item}
+                  </span>
+                ))}
               </div>
 
-            </div>
-
-            {/* CONTENT */}
-            <div className="p-4 sm:p-5 md:p-6">
-
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#2b2b2b] mb-6 sm:mb-8 md:mb-10">
-
-                {course.title}
-
-              </h2>
-
-              <div className="flex items-center gap-3 sm:gap-4 text-gray-500 text-xs sm:text-sm md:text-base lg:text-xl">
-
-                <span>⏱ {course.hours}</span>
-
-                <span>🌐 {course.language}</span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
+              <button
+                type="button"
+                className="mt-auto flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-sky-600"
+              >
+                View Tracks
+                <FaArrowRight />
+              </button>
+            </article>
+          ))}
+        </div>
       </div>
-
     </section>
-
-  )
+  );
 }
 
-export default Explore
+export default Explore;

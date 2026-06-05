@@ -18,7 +18,7 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "artificial-intelligence-machine-learning",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
-      certification: "IITM Pravartak, HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
@@ -26,7 +26,7 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "artificial-intelligence-machine-learning",
       duration: "6 Month - weekend",
       language: "English",
-      certification: "Intel, IITM Pravartak, HCL GUVI",
+      certification: "Intel-ready AI Practice Certificate",
     },
 
     {
@@ -34,7 +34,7 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "artificial-intelligence-machine-learning",
       duration: "9 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
-      certification: "IITM Pravartak, HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
@@ -42,21 +42,21 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "full-stack-development",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
-      certification: "IITM Pravartak, HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
       title: "UI/UX Design Program",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "Tamil, English, Hindi, Telugu",
-      certification: "HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
       title: "Business & Marketing Analytics",
       duration: "3 Month - weekday, 6 Month - weekend",
       language: "Tamil, English, Hindi",
-      certification: "HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
@@ -64,7 +64,7 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "artificial-intelligence-machine-learning",
       duration: "5 Month - weekend",
       language: "English",
-      certification: "HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
@@ -72,13 +72,13 @@ const [openFilter, setOpenFilter] = useState(null)
       slug: "devops-engineering",
       duration: "3 Month - weekday, 5 Month - weekend",
       language: "English",
-      certification: "HCL GUVI",
+      certification: "Jawa EdTech Career Certificate",
     },
 
     {
       title: "Automotive and Product Design Program",
       language: "Tamil, English, Hindi",
-      certification: "Autodesk, HCL GUVI",
+      certification: "Design Practice Certificate",
       duration: "4.5 Month - weekend",
     },
 
@@ -254,7 +254,7 @@ const [openFilter, setOpenFilter] = useState(null)
 
         {[
           "IITM Pravartak",
-          "HCL GUVI",
+          "Jawa EdTech",
           "Intel",
           "MongoDB",
           "Autodesk",

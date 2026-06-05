@@ -46,7 +46,7 @@ function Corporate() {
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 lg:mb-5">
 
-          HCL GUVI for Corporates
+          Jawa EdTech for Corporates
 
         </h1>
 
@@ -97,7 +97,7 @@ function Corporate() {
       {/* BUTTON */}
       <div className="flex justify-center mt-12 sm:mt-16 md:mt-20 lg:mt-24">
 
-        <button className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-lg shadow-lg">
+        <button className="bg-gradient-to-r from-sky-500 to-violet-600 transition-all duration-300 hover:from-sky-400 hover:to-violet-500 text-white text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-lg shadow-lg shadow-sky-500/20">
 
           Learn More
 

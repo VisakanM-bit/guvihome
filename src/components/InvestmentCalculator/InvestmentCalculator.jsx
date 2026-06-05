@@ -240,7 +240,7 @@ function InvestmentCalculator() {
                 </p>
 
                 <p className="font-bold text-xl mt-2">
-                  IITM PRAVARTAK | GUVI | HCL
+                  Jawa EdTech | Career Programs | Mentor Support
                 </p>
               </div>
 
@@ -269,7 +269,7 @@ function InvestmentCalculator() {
 
             <p className="text-xl">
               What if 7 weeks could make you a Data Scientist?
-              HCL GUVI can.
+              Jawa EdTech can.
             </p>
 
           </div>

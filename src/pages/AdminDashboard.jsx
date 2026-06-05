@@ -6,13 +6,18 @@ import {
   FaEnvelope,
   FaFileCsv,
   FaGraduationCap,
+  FaPhoneAlt,
   FaSearch,
   FaSignOutAlt,
   FaSyncAlt,
+  FaTrash,
   FaUserGraduate,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { useAdminAuth } from "../context/AdminAuthContext";
+import { WHATSAPP_NUMBER } from "../config/sheets";
 import {
+  deleteAdminRecord,
   exportRowsToCsv,
   fetchAdminDashboardData,
   isSupabaseConfigured,
@@ -29,7 +34,7 @@ const tableLabels = {
   visitor_events: "Visitor Events",
 };
 
-const statusOptions = ["new", "reviewing", "contacted", "converted", "closed"];
+const statusOptions = ["new", "reviewing", "contacted", "called", "converted", "closed"];
 
 function AdminDashboard() {
   const { admin, logoutAdmin } = useAdminAuth();
@@ -92,6 +97,17 @@ function AdminDashboard() {
 
   const handleStatusChange = async (row, status) => {
     await updateRecordStatus(activeTable, row.id, status);
+    await loadData();
+  };
+
+  const handleDeleteRecord = async (row) => {
+    if (!row.id) {
+      alert("This record does not have an id, so it cannot be removed safely.");
+      return;
+    }
+    const label = row.email || row.phone || row.name || row.full_name || row.id;
+    if (!window.confirm(`Remove this record permanently?\n\n${label}`)) return;
+    await deleteAdminRecord(activeTable, row.id);
     await loadData();
   };
 
@@ -198,7 +214,9 @@ function AdminDashboard() {
                   {getColumns(visibleRows).map((column) => (
                     <th key={column} className="px-4 py-4">{formatColumn(column)}</th>
                   ))}
-                  {hasStatus(activeTable) && <th className="px-4 py-4">Update</th>}
+                  {hasStatus(activeTable) && <th className="px-4 py-4">Status</th>}
+                  <th className="px-4 py-4">Contact</th>
+                  <th className="px-4 py-4">Remove</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
@@ -212,11 +230,36 @@ function AdminDashboard() {
                       ))}
                       {hasStatus(activeTable) && (
                         <td className="px-4 py-4">
-                          <select value={row.status || "new"} onChange={(event) => handleStatusChange(row, event.target.value)} className="rounded-xl border border-emerald-200/18 bg-white/[0.08] px-3 py-2 text-xs font-black text-white">
+                          <div className="flex min-w-[190px] flex-col gap-2">
+                            <span className={`w-fit rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] ${statusBadgeClass(row.status)}`}>
+                              {row.status || "new"}
+                            </span>
+                            <select value={row.status || "new"} onChange={(event) => handleStatusChange(row, event.target.value)} className="rounded-xl border border-emerald-200/18 bg-slate-950 px-3 py-2 text-xs font-black text-white">
                             {statusOptions.map((status) => <option key={status} value={status}>{status}</option>)}
-                          </select>
+                            </select>
+                            <button
+                              type="button"
+                              onClick={() => handleStatusChange(row, "called")}
+                              className="rounded-xl bg-sky-300 px-3 py-2 text-xs font-black text-slate-950 transition hover:bg-sky-200"
+                            >
+                              Mark Call Confirmed
+                            </button>
+                          </div>
                         </td>
                       )}
+                      <td className="px-4 py-4">
+                        <ContactCell row={row} />
+                      </td>
+                      <td className="px-4 py-4">
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteRecord(row)}
+                          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-red-300/25 bg-red-500/12 px-3 text-xs font-black text-red-100 transition hover:bg-red-500/22"
+                        >
+                          <FaTrash />
+                          Remove
+                        </button>
+                      </td>
                     </tr>
                   ))
                 ) : (
@@ -284,6 +327,65 @@ function formatColumn(column) {
 
 function hasStatus(table) {
   return ["course_applications", "internship_applications", "career_counselling_requests"].includes(table);
+}
+
+function getPhone(row) {
+  return String(row.phone || row.mobile || row.mobile_number || "").replace(/[^\d+]/g, "");
+}
+
+function getEmail(row) {
+  return row.email || row.student_email || "";
+}
+
+function ContactCell({ row }) {
+  const rawPhone = getPhone(row);
+  const phoneDigits = rawPhone.replace(/[^\d]/g, "");
+  const whatsappTarget = phoneDigits || WHATSAPP_NUMBER;
+  const email = getEmail(row);
+
+  return (
+    <div className="flex min-w-[132px] gap-2">
+      {whatsappTarget && (
+        <a
+          href={`https://wa.me/${whatsappTarget}`}
+          target="_blank"
+          rel="noreferrer"
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-white transition hover:-translate-y-0.5"
+          aria-label="Open WhatsApp"
+        >
+          <FaWhatsapp />
+        </a>
+      )}
+      {rawPhone && (
+        <a
+          href={`tel:${rawPhone}`}
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500 text-white transition hover:-translate-y-0.5"
+          aria-label="Call lead"
+        >
+          <FaPhoneAlt />
+        </a>
+      )}
+      {email && (
+        <a
+          href={`mailto:${email}`}
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500 text-white transition hover:-translate-y-0.5"
+          aria-label="Email lead"
+        >
+          <FaEnvelope />
+        </a>
+      )}
+    </div>
+  );
+}
+
+function statusBadgeClass(status = "new") {
+  const normalized = String(status).toLowerCase();
+  if (normalized === "called") return "bg-sky-300 text-slate-950";
+  if (normalized === "converted") return "bg-violet-300 text-slate-950";
+  if (normalized === "contacted") return "bg-cyan-300 text-slate-950";
+  if (normalized === "closed") return "bg-slate-500 text-white";
+  if (normalized === "reviewing") return "bg-amber-300 text-slate-950";
+  return "bg-white/[0.12] text-slate-100";
 }
 
 export default AdminDashboard;

@@ -118,7 +118,8 @@ as $$
     where admin.id = auth.uid()
       and admin.role = 'admin'
       and admin.is_active = true
-  );
+  )
+  or coalesce(auth.jwt() -> 'user_metadata' ->> 'role', '') = 'admin';
 $$;
 
 create policy "students can read own profile"
@@ -133,6 +134,10 @@ create policy "students can update own profile"
 on public.students for update
 using (id = auth.uid() or public.is_admin())
 with check (id = auth.uid() or public.is_admin());
+
+create policy "students admin delete"
+on public.students for delete
+using (public.is_admin());
 
 create policy "admins manage admin profiles"
 on public.admin_profiles for all
@@ -160,6 +165,10 @@ on public.course_applications for update
 using (public.is_admin())
 with check (public.is_admin());
 
+create policy "course applications admin delete"
+on public.course_applications for delete
+using (public.is_admin());
+
 create policy "internship applications insert"
 on public.internship_applications for insert
 with check (student_id = auth.uid() or student_id is null or student_id is not null);
@@ -172,6 +181,10 @@ create policy "internship applications admin update"
 on public.internship_applications for update
 using (public.is_admin())
 with check (public.is_admin());
+
+create policy "internship applications admin delete"
+on public.internship_applications for delete
+using (public.is_admin());
 
 create policy "career counselling public insert"
 on public.career_counselling_requests for insert
@@ -186,12 +199,20 @@ on public.career_counselling_requests for update
 using (public.is_admin())
 with check (public.is_admin());
 
+create policy "career counselling admin delete"
+on public.career_counselling_requests for delete
+using (public.is_admin());
+
 create policy "contact public insert"
 on public.contact_us for insert
 with check (true);
 
 create policy "contact admin read"
 on public.contact_us for select
+using (public.is_admin());
+
+create policy "contact admin delete"
+on public.contact_us for delete
 using (public.is_admin());
 
 create policy "newsletter public insert"
@@ -202,12 +223,20 @@ create policy "newsletter admin read"
 on public.newsletter_subscribers for select
 using (public.is_admin());
 
+create policy "newsletter admin delete"
+on public.newsletter_subscribers for delete
+using (public.is_admin());
+
 create policy "visitor event public insert"
 on public.visitor_events for insert
 with check (true);
 
 create policy "visitor event admin read"
 on public.visitor_events for select
+using (public.is_admin());
+
+create policy "visitor event admin delete"
+on public.visitor_events for delete
 using (public.is_admin());
 
 -- After creating your admin user in Supabase Auth, run:

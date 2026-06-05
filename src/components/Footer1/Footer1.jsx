@@ -1,15 +1,21 @@
 import { Link } from "react-router-dom";
 import {
   FaEnvelope,
-  FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
   FaMapMarkerAlt,
   FaPhoneAlt,
-  FaTwitter,
-  FaYoutube,
+  FaWhatsapp,
 } from "react-icons/fa";
 import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
+import GoogleMapsIcon from "../GoogleMapsIcon/GoogleMapsIcon";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  INSTAGRAM_URL,
+  MAPS_URL,
+  WHATSAPP_NUMBER,
+} from "../../config/sheets";
+import GoogleMapsPreview from "../GoogleMapsPreview/GoogleMapsPreview";
 
 const exploreLinks = [
   ["Home", "/"],
@@ -34,11 +40,10 @@ const courseLinks = [
 ];
 
 const socialLinks = [
-  ["YouTube", FaYoutube, "https://www.youtube.com/"],
-  ["LinkedIn", FaLinkedinIn, "https://www.linkedin.com/"],
-  ["Instagram", FaInstagram, "https://www.instagram.com/"],
-  ["Facebook", FaFacebookF, "https://www.facebook.com/"],
-  ["Twitter", FaTwitter, "https://twitter.com/"],
+  ["Mobile", FaPhoneAlt, `tel:${CONTACT_PHONE}`],
+  ["Instagram", FaInstagram, INSTAGRAM_URL],
+  ["Mail", FaEnvelope, `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}`],
+  ["Google Maps", GoogleMapsIcon, MAPS_URL],
 ];
 
 function Footer1() {
@@ -81,13 +86,17 @@ function Footer1() {
         <div>
           <h2 className="mb-5 text-xl font-black tracking-[-0.02em] text-white">Contact Us</h2>
           <div className="space-y-5 text-base font-semibold leading-7 text-slate-200">
-            <a href="tel:+919790631286" className="flex items-center gap-4 transition hover:text-emerald-300">
-              <FaPhoneAlt className="shrink-0 text-emerald-300" />
-              +91 97906 31286
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 transition hover:text-sky-300">
+              <FaWhatsapp className="shrink-0 text-sky-300" />
+              WhatsApp Us
             </a>
-            <a href="mailto:hr@jawaedtech.com" className="flex items-center gap-4 transition hover:text-emerald-300">
+            <a href={`tel:${CONTACT_PHONE}`} className="flex items-center gap-4 transition hover:text-sky-300">
+              <FaPhoneAlt className="shrink-0 text-emerald-300" />
+              {CONTACT_PHONE}
+            </a>
+            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 transition hover:text-sky-300">
               <FaEnvelope className="shrink-0 text-emerald-300" />
-              hr@jawaedtech.com
+              {CONTACT_EMAIL}
             </a>
             <p className="flex items-start gap-4">
               <FaMapMarkerAlt className="mt-1 shrink-0 text-emerald-300" />
@@ -97,6 +106,10 @@ function Footer1() {
                 Saibaba Colony, Coimbatore, Tamil Nadu 641043, India
               </span>
             </p>
+            <a href={MAPS_URL} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center gap-3 rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 px-4 text-sm font-black text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5">
+              <GoogleMapsIcon className="h-6 w-6" />
+              Google Maps Live Location
+            </a>
           </div>
         </div>
 
@@ -107,14 +120,17 @@ function Footer1() {
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-200/14 bg-white/[0.08] text-lg text-white shadow-[0_12px_40px_-28px_rgba(34,197,94,0.75)] transition hover:-translate-y-0.5 hover:border-emerald-200/35 hover:bg-emerald-300 hover:text-slate-950"
+                target={href.startsWith("tel:") ? undefined : "_blank"}
+                rel={href.startsWith("tel:") ? undefined : "noreferrer"}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-sky-200/14 bg-white/[0.08] text-lg text-white shadow-[0_12px_40px_-28px_rgba(56,189,248,0.75)] transition hover:-translate-y-0.5 hover:border-sky-200/35 hover:bg-white/15"
                 aria-label={label}
               >
                 <Icon />
               </a>
             ))}
+          </div>
+          <div className="mt-6 flex justify-start lg:justify-end">
+            <GoogleMapsPreview href={MAPS_URL} />
           </div>
         </div>
       </div>

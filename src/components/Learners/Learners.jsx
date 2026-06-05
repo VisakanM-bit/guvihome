@@ -155,7 +155,7 @@ function Learners() {
                   {/* TEXT */}
                   <p className="text-[16px] text-gray-700 font-medium">
 
-                    After HCL GUVI
+                    After Jawa EdTech
 
                   </p>
 

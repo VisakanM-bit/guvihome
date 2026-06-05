@@ -42,8 +42,8 @@ function Partners() {
           </p>
         </div>
 
-        <div className="mt-11 grid gap-6 xl:grid-cols-[0.86fr_1.14fr] xl:items-stretch">
-          <article className="relative overflow-hidden rounded-[2rem] border border-emerald-200/14 bg-[linear-gradient(145deg,rgba(255,255,255,0.075),rgba(255,255,255,0.035))] p-7 shadow-[0_30px_110px_-70px_rgba(34,197,94,0.95)] backdrop-blur-2xl">
+        <div className="mt-11 grid gap-6 xl:grid-cols-[0.72fr_1.28fr] xl:items-stretch">
+          <article className="relative overflow-hidden rounded-[1.4rem] border border-emerald-200/14 bg-[linear-gradient(145deg,rgba(255,255,255,0.075),rgba(255,255,255,0.035))] p-6 shadow-[0_30px_110px_-70px_rgba(34,197,94,0.95)] backdrop-blur-2xl">
             <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-emerald-300/12 blur-3xl" />
             <div className="relative z-10 flex min-h-full flex-col justify-between">
               <div>
@@ -58,33 +58,32 @@ function Partners() {
                 </p>
               </div>
 
-              <div className="mt-8 flex items-center justify-center rounded-[1.6rem] border border-emerald-200/12 bg-black/28 p-8 shadow-inner shadow-emerald-950/30">
-                <div className="relative flex aspect-square w-full max-w-[310px] items-center justify-center">
-                  <span className="absolute inset-8 rounded-full bg-emerald-300/18 blur-3xl" />
+              <div className="mt-8 flex items-center justify-center rounded-2xl border border-emerald-200/12 bg-black/28 p-6 shadow-inner shadow-emerald-950/30">
+                <div className="relative flex aspect-square w-full max-w-[190px] items-center justify-center">
+                  <span className="absolute inset-7 rounded-full bg-emerald-300/18 blur-3xl" />
                   <img
                     src={jawaMark}
                     alt="Jawa EdTech logo mark"
-                    className="relative h-full w-full object-contain drop-shadow-[0_26px_46px_rgba(16,185,129,0.48)]"
+                    className="relative h-full w-full object-contain drop-shadow-[0_18px_32px_rgba(16,185,129,0.42)]"
                   />
                 </div>
               </div>
             </div>
           </article>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {trustedCompanies.map((company) => (
-              <article
+              <div
                 key={company.name}
-                className="group relative flex min-h-[7.4rem] items-center justify-center overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#090b0a] p-5 shadow-[0_18px_60px_-45px_rgba(34,197,94,0.78)] transition duration-300 hover:-translate-y-1 hover:border-emerald-200/32 hover:bg-[#0c1110]"
+                className="logo-twinkle-card group relative flex min-h-[6.8rem] items-center justify-center overflow-visible px-3 py-4 transition duration-300 hover:-translate-y-1"
               >
-                <span className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-60" />
-                <span className="absolute h-20 w-36 rounded-full bg-emerald-300/0 blur-2xl transition group-hover:bg-emerald-300/10" />
+                <span className="absolute h-24 w-[95%] rounded-full bg-cyan-300/10 blur-2xl transition group-hover:bg-fuchsia-300/16" />
                 <img
                   src={company.logo}
                   alt={`${company.name} logo`}
-                  className={`relative max-w-[86%] object-contain brightness-0 invert drop-shadow-[0_12px_24px_rgba(255,255,255,0.12)] transition duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_16px_34px_rgba(52,211,153,0.24)] ${company.size}`}
+                  className={`relative max-w-[100%] scale-[1.48] object-contain brightness-0 invert drop-shadow-[0_0_26px_rgba(255,255,255,0.42)] transition duration-300 group-hover:scale-[1.62] group-hover:drop-shadow-[0_0_36px_rgba(125,211,252,0.68)] ${company.size}`}
                 />
-              </article>
+              </div>
             ))}
           </div>
         </div>

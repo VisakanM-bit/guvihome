@@ -32,8 +32,10 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import { useAdminAuth } from "../../context/AdminAuthContext";
+import { MAPS_URL } from "../../config/sheets";
 import adBannerImage from "../../assets/logos/image5.png";
 import jawaEdTechLogo from "../../assets/logos/jawa-edtech-logo-clean.png";
+import GoogleMapsIcon from "../GoogleMapsIcon/GoogleMapsIcon";
 
 const navLinks = [
   {
@@ -164,34 +166,6 @@ const navLinks = [
     ctaLabel: "Get Job Ready",
     ctaButton: "Book Career Counseling",
     ctaHref: "career-services",
-  },
-  {
-    label: "Success Stories",
-    href: "#success-stories",
-    width: "w-[min(760px,calc(100vw-32px))]",
-    columns: [
-      {
-        title: "Student Success",
-        items: [
-          { icon: FaMedal, title: "Placement Success Stories", href: "/placement-assistance" },
-          { icon: FaGraduationCap, title: "Career Transformation Stories", href: "/career-services" },
-          { icon: FaLaptopCode, title: "Tech Career Success", href: "/projects/industry-project-lab" },
-          { icon: FaUserTie, title: "HR Career Success", href: "/internships/human-resource-internship" },
-        ],
-      },
-      {
-        title: "Community",
-        items: [
-          { icon: FaCheckCircle, title: "Student Testimonials", href: "/career-services" },
-          { icon: FaMedal, title: "Learner Achievements", href: "/placement-assistance" },
-          { icon: FaBriefcase, title: "Internship Success Stories", href: "/internships/human-resource-internship" },
-          { icon: FaChartLine, title: "Career Growth Journeys", href: "/career-services" },
-        ],
-      },
-    ],
-    ctaLabel: "See Real Transformations",
-    ctaButton: "View All Success Stories",
-    ctaHref: "#success-stories",
   },
   {
     label: "About Us",
@@ -342,7 +316,7 @@ function Navbar() {
             </p>
             <Link
               to="/#courses"
-              className="hidden min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 px-6 text-sm font-black text-slate-950 shadow-[0_0_28px_rgba(34,197,94,0.42)] transition hover:-translate-y-0.5 hover:from-emerald-300 hover:to-green-400 sm:inline-flex"
+              className="hidden min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 px-6 text-sm font-black text-white shadow-[0_0_28px_rgba(56,189,248,0.34)] transition hover:-translate-y-0.5 hover:from-sky-400 hover:to-violet-500 sm:inline-flex"
             >
               Register Soon
             </Link>
@@ -399,90 +373,68 @@ function Navbar() {
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
 
-          {isAuthenticated ? (
-            <>
-              <Link
-                to="/dashboard"
-                className={`text-[16px] font-bold transition hover:text-[#60A5FA] ${mutedClass}`}
-              >
-                {user?.name?.split(" ")[0] || "Dashboard"}
-              </Link>
-              <button
-                type="button"
-                onClick={logout}
-                className="flex h-12 items-center gap-2 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 px-7 text-[16px] font-extrabold text-white shadow-xl shadow-blue-500/25 transition hover:-translate-y-0.5 hover:shadow-blue-500/35"
-              >
-                <FaSignOutAlt className="text-sm" />
-                Sign out
-              </button>
-            </>
-          ) : (
-            <button
-              type="button"
-              onClick={() => focusAuthPhone("login")}
-              className="flex h-12 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 px-8 text-[16px] font-extrabold text-white shadow-xl shadow-blue-500/25 transition hover:-translate-y-0.5 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/35"
-            >
-              Login
-            </button>
-          )}
-
           <div className="relative">
-            <button
-              type="button"
-              onClick={() => {
-                if (isAdminAuthenticated) {
-                  navigate("/admin");
-                  return;
-                }
-                setOrgLoginOpen((current) => !current);
-              }}
-              className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-lg transition hover:-translate-y-0.5 ${
-                orgLoginOpen
-                  ? "rotate-180 border-emerald-200/40 bg-emerald-300 text-slate-950 shadow-[0_0_26px_rgba(52,211,153,0.45)]"
-                  : isDarkMode
-                    ? "border-emerald-200/20 bg-white/10 text-emerald-100"
-                    : "border-blue-200/70 bg-white/35 text-slate-700"
-              }`}
-              aria-label="Organization login"
-              title="Organization Login"
-            >
-              <FaMobileAlt />
-            </button>
-
-            {orgLoginOpen && (
-              <form onSubmit={handleOrgLogin} className="absolute right-0 top-15 z-[70] w-[min(360px,calc(100vw-32px))] rounded-[1.6rem] border border-emerald-200/18 bg-slate-950/96 p-5 text-white shadow-[0_28px_100px_-50px_rgba(34,197,94,0.95)] backdrop-blur-2xl">
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-300 text-slate-950">
-                    <FaShieldAlt />
-                  </span>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-200">2FA Ready</p>
-                    <h3 className="text-xl font-black tracking-[-0.03em]">Organization Login</h3>
-                  </div>
-                </div>
-                <input
-                  type="email"
-                  required
-                  value={orgEmail}
-                  onChange={(event) => setOrgEmail(event.target.value)}
-                  className="mb-3 w-full rounded-2xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
-                  placeholder="Organization email"
-                />
-                <input
-                  type="password"
-                  required
-                  value={orgPassword}
-                  onChange={(event) => setOrgPassword(event.target.value)}
-                  className="w-full rounded-2xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
-                  placeholder="Password"
-                />
-                {orgError && <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-200">{orgError}</p>}
-                <button disabled={orgLoading} className="mt-4 min-h-12 w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 text-sm font-black text-slate-950 transition hover:-translate-y-0.5 disabled:opacity-60">
-                  {orgLoading ? "Verifying..." : "Open Admin Dashboard"}
+            {isAuthenticated ? (
+              <div className="flex items-center gap-4">
+                <Link
+                  to="/dashboard"
+                  className={`text-[16px] font-bold transition hover:text-[#60A5FA] ${mutedClass}`}
+                >
+                  {user?.name?.split(" ")[0] || "Dashboard"}
+                </Link>
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="flex h-12 items-center gap-2 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 px-7 text-[16px] font-extrabold text-white shadow-xl shadow-blue-500/25 transition hover:-translate-y-0.5 hover:shadow-blue-500/35"
+                >
+                  <FaSignOutAlt className="text-sm" />
+                  Sign out
                 </button>
-              </form>
+              </div>
+            ) : (
+              <div className="flex h-12 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-[16px] font-extrabold text-white shadow-xl shadow-blue-500/25 transition hover:-translate-y-0.5 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/35">
+                <button
+                  type="button"
+                  onClick={() => focusAuthPhone("login")}
+                  className="flex min-w-28 items-center justify-center px-6"
+                >
+                  Login
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isAdminAuthenticated) {
+                      navigate("/admin");
+                      return;
+                    }
+                    setOrgLoginOpen((current) => !current);
+                  }}
+                  className={`flex w-12 items-center justify-center border-l border-white/20 bg-white/12 transition ${orgLoginOpen ? "rotate-180 bg-sky-300 text-slate-950" : ""}`}
+                  aria-label="Admin login"
+                  title="Admin Login"
+                >
+                  <FaMobileAlt />
+                </button>
+              </div>
             )}
+
+            {orgLoginOpen && <AdminLoginForm handleOrgLogin={handleOrgLogin} orgEmail={orgEmail} setOrgEmail={setOrgEmail} orgPassword={orgPassword} setOrgPassword={setOrgPassword} orgError={orgError} orgLoading={orgLoading} />}
           </div>
+
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noreferrer"
+            className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-lg transition hover:-translate-y-0.5 ${
+              isDarkMode
+                ? "border-sky-200/25 bg-white/10 text-sky-100 hover:bg-white/15"
+                : "border-blue-200/70 bg-white/35 text-sky-700 hover:bg-white/60"
+            }`}
+            aria-label="Open Jawa EdTech location on Google Maps"
+            title="Live Location"
+          >
+            <GoogleMapsIcon className="h-6 w-6" />
+          </a>
         </div>
 
         <button
@@ -525,6 +477,15 @@ function Navbar() {
               <FaPhoneAlt className="text-[#60A5FA]" />
               +91 97906 31286
             </a>
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noreferrer"
+              className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold ${mutedClass}`}
+            >
+              <GoogleMapsIcon className="h-5 w-5" />
+              Live Location
+            </a>
             {isAuthenticated ? (
               <button
                 type="button"
@@ -537,19 +498,76 @@ function Navbar() {
                 Sign out
               </button>
             ) : (
-              <button
-                type="button"
-                onClick={() => focusAuthPhone("login")}
-                className="rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-3 text-center text-sm font-extrabold text-white"
-              >
-                Login
-              </button>
+              <div className="relative">
+                <div className="flex min-h-12 w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-center text-sm font-extrabold text-white">
+                  <button
+                    type="button"
+                    onClick={() => focusAuthPhone("login")}
+                    className="flex flex-1 items-center justify-center px-4"
+                  >
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isAdminAuthenticated) {
+                        navigate("/admin");
+                        setMobileMenuOpen(false);
+                        return;
+                      }
+                      setOrgLoginOpen((current) => !current);
+                    }}
+                    className={`flex w-12 items-center justify-center border-l border-white/20 bg-white/12 transition ${orgLoginOpen ? "rotate-180 bg-sky-300 text-slate-950" : ""}`}
+                    aria-label="Admin login"
+                    title="Admin Login"
+                  >
+                    <FaMobileAlt />
+                  </button>
+                </div>
+                {orgLoginOpen && <AdminLoginForm handleOrgLogin={handleOrgLogin} orgEmail={orgEmail} setOrgEmail={setOrgEmail} orgPassword={orgPassword} setOrgPassword={setOrgPassword} orgError={orgError} orgLoading={orgLoading} />}
+              </div>
             )}
           </div>
         </div>
       )}
     </nav>
     </>
+  );
+}
+
+function AdminLoginForm({ handleOrgLogin, orgEmail, setOrgEmail, orgPassword, setOrgPassword, orgError, orgLoading }) {
+  return (
+    <form onSubmit={handleOrgLogin} className="absolute right-0 top-14 z-[70] w-[min(360px,calc(100vw-32px))] rounded-[1.3rem] border border-emerald-200/18 bg-slate-950/96 p-5 text-white shadow-[0_28px_100px_-50px_rgba(34,197,94,0.95)] backdrop-blur-2xl">
+      <div className="mb-4 flex items-center gap-3">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-300 text-slate-950">
+          <FaShieldAlt />
+        </span>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-200">Admin Access</p>
+          <h3 className="text-xl font-black tracking-[-0.03em]">Organization Login</h3>
+        </div>
+      </div>
+      <input
+        type="email"
+        required
+        value={orgEmail}
+        onChange={(event) => setOrgEmail(event.target.value)}
+        className="mb-3 w-full rounded-xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
+        placeholder="Organization email"
+      />
+      <input
+        type="password"
+        required
+        value={orgPassword}
+        onChange={(event) => setOrgPassword(event.target.value)}
+        className="w-full rounded-xl border border-emerald-200/18 bg-white/[0.08] px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-slate-400"
+        placeholder="Password"
+      />
+      {orgError && <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-200">{orgError}</p>}
+      <button disabled={orgLoading} className="mt-4 min-h-12 w-full rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 text-sm font-black text-white transition hover:-translate-y-0.5 disabled:opacity-60">
+        {orgLoading ? "Verifying..." : "Open Admin Dashboard"}
+      </button>
+    </form>
   );
 }
 
@@ -596,7 +614,7 @@ function MegaMenu({ link, isDarkMode }) {
           </div>
           <Link
             to={navTo(link.ctaHref)}
-            className="inline-flex min-h-12 items-center justify-center rounded-xl bg-slate-950 px-7 text-sm font-black text-white shadow-xl shadow-slate-950/25 transition hover:-translate-y-0.5 hover:bg-emerald-600"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl bg-slate-950 px-7 text-sm font-black text-white shadow-xl shadow-slate-950/25 transition hover:-translate-y-0.5 hover:bg-sky-600"
           >
             {link.ctaButton} <span className="ml-2">-&gt;</span>
           </Link>

@@ -11,19 +11,21 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import aimlImage from "../../assets/logos/aiml.png";
-import businessImage from "../../assets/logos/businessandmarketing.png";
-import devopsImage from "../../assets/logos/devops.png";
-import hiringImage from "../../assets/logos/hiring.png";
-import pythonImage from "../../assets/logos/python.png";
-import reactImage from "../../assets/logos/react.png";
-import uiuxImage from "../../assets/logos/uiuxdesign.png";
-import masterDataImage from "../../assets/logos/masterdatascience.png";
+const programImages = {
+  hr: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop",
+  recruitment: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop",
+  fullStack: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+  python: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop",
+  aiml: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop",
+  devops: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1200&auto=format&fit=crop",
+  qa: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop",
+  mulesoft: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
+};
 
 const programs = [
   {
     icon: FaUserTie,
-    image: businessImage,
+    image: programImages.hr,
     title: "Human Resource Executive & Development Program",
     slug: "human-resource-executive-development",
     subtitle: "Become the HR Professional Every Company Wants",
@@ -32,7 +34,7 @@ const programs = [
   },
   {
     icon: FaUsers,
-    image: hiringImage,
+    image: programImages.recruitment,
     title: "Recruitment & Talent Acquisition Program",
     slug: "recruitment-talent-acquisition-development",
     subtitle: "Master Modern Hiring & Talent Intelligence",
@@ -46,7 +48,7 @@ const programs = [
   },
   {
     icon: FaCode,
-    image: reactImage,
+    image: programImages.fullStack,
     title: "Full Stack Development Program",
     slug: "full-stack-development",
     subtitle: "Build Modern Web Applications from Scratch",
@@ -55,7 +57,7 @@ const programs = [
   },
   {
     icon: FaPython,
-    image: pythonImage,
+    image: programImages.python,
     title: "Python Development Program",
     slug: "python-development",
     subtitle: "Master Python for Industry Applications",
@@ -64,7 +66,7 @@ const programs = [
   },
   {
     icon: FaBrain,
-    image: aimlImage,
+    image: programImages.aiml,
     title: "Artificial Intelligence & Machine Learning",
     slug: "artificial-intelligence-machine-learning",
     subtitle: "Build Intelligent Systems & AI Solutions",
@@ -73,7 +75,7 @@ const programs = [
   },
   {
     icon: FaBriefcase,
-    image: devopsImage,
+    image: programImages.devops,
     title: "DevOps Engineering Program",
     slug: "devops-engineering",
     subtitle: "Master Modern Software Delivery",
@@ -82,7 +84,7 @@ const programs = [
   },
   {
     icon: FaFlask,
-    image: uiuxImage,
+    image: programImages.qa,
     title: "Software Testing & QA Program",
     slug: "software-testing-qa",
     subtitle: "Become a Quality Assurance Professional",
@@ -91,7 +93,7 @@ const programs = [
   },
   {
     icon: FaNetworkWired,
-    image: masterDataImage,
+    image: programImages.mulesoft,
     title: "MuleSoft Development Program",
     slug: "mulesoft-development",
     subtitle: "Master Enterprise API Integration",
@@ -165,7 +167,7 @@ function Courses() {
                   <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl border border-slate-300 px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 2xl:text-base">
                     View Curriculum
                   </span>
-                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl bg-[#00c853] px-3 text-sm font-extrabold text-white shadow-lg shadow-green-500/20 transition hover:bg-[#00b84d] 2xl:text-base">
+                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 px-3 text-sm font-extrabold text-white shadow-lg shadow-sky-500/20 transition hover:from-sky-400 hover:to-violet-500 2xl:text-base">
                     Explore Program
                   </span>
                 </div>

@@ -16,7 +16,7 @@ function Testimonials() {
       name: "SRI HARI K",
       role: "Full Stack Developer",
       review:
-        "I've been a non-IT professional for six years and switched to IT through HCL GUVI's Full Stack Development course. The flexible schedule, expert instructors, and mock interviews were invaluable, helping me secure my first IT role in Chennai. I would highly recommend HCL GUVI.",
+        "I've been a non-IT professional for six years and switched to IT through Jawa EdTech's Full Stack Development program. The flexible schedule, expert instructors, and mock interviews helped me secure my first IT role in Chennai.",
     },
 
     {
@@ -29,7 +29,7 @@ function Testimonials() {
       name: "Vinitha G",
       role: "Node Js developer",
       review:
-        "I completed HCL GUVI's Full Stack Development (MERN) Program, and their teaching with query resolution was excellent. My mentors used to explain concepts in Tamil in really clear-cut ways. Placement support along with mock interviews and job-specific prep sessions was very useful.",
+        "I completed Jawa EdTech's Full Stack Development program, and the teaching with query resolution was excellent. Placement support, mock interviews, and job-specific prep sessions were very useful.",
     },
 
   ]

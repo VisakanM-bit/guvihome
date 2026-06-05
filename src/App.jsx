@@ -3,27 +3,21 @@ import Hero from "./components/Hero/Hero"
 import Partners from "./components/Partners/Partners"
 import Courses from "./components/Courses/Courses"
 import EcosystemGateway from "./components/EcosystemGateway/EcosystemGateway"
-import Assessments from "./components/Assessments/Assessments"
-import Learners from "./components/Learners/Learners"
-import Testimonials from "./components/Testimonials/Testimonials"
-import Companies from "./components/Companies/Companies"
-import Proud from "./components/Proud/Proud"
-import Explore from "./components/Explore/Explore"
-import Awards from "./components/Awards/Awards"
 import Learning from "./components/Learning/Learning"
+import Explore from "./components/Explore/Explore"
 import Corporate from "./components/Corporate/Corporate"
 import About from "./components/About/About"
-import Resources from "./components/Resources/Resources"
+import ContactActions from "./components/ContactActions/ContactActions"
+import FloatingWhatsapp from "./components/FloatingWhatsapp/FloatingWhatsapp"
 import Footer1 from "./components/Footer1/Footer1"
-import CareerPopup from "./components/CareerPopup/CareerPopup"
 
 function App() {
   return (
     <>
       {/* NAVBAR */}
       <Navbar />
+      <FloatingWhatsapp />
 
-      <CareerPopup />
       {/* HERO SECTION */}
       <Hero />
 
@@ -36,38 +30,23 @@ function App() {
       {/* PARTNERS */}
       <Partners />
 
-      {/* SKILL ASSESSMENT */}
-      <Assessments />
+      {/* CAREER WORKSPACE */}
+      <Learning />
 
-      {/* LEARNERS JOURNEY */}
-      <Learners />
-
-      {/* TESTIMONIALS */}
-      <Testimonials />
-
-      {/* COMPANIES */}
-      <Companies />
-
-      {/* PROUD SECTION */}
-      <Proud />
+      <section className="bg-[#050706] px-4 pb-10 sm:px-6 md:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1540px] rounded-2xl border border-sky-200/12 bg-white/[0.045] p-5 backdrop-blur-xl">
+          <ContactActions />
+        </div>
+      </section>
 
       {/* EXPLORE COURSES */}
       <Explore />
-
-      {/* LEARNING PLATFORM */}
-      <Learning />
 
       {/* CORPORATE SECTION */}
       <Corporate />
 
       {/* ABOUT SECTION */}
       <About />
-
-      {/* AWARDS SECTION */}
-      <Awards />
-
-      {/* FREE RESOURCES */}
-      <Resources />
 
       {/* FOOTER */}
       <Footer1 />
