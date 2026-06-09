@@ -488,7 +488,7 @@ const [openFilter, setOpenFilter] = useState(null)
                   </Link>
                 ) : (
                 <Link
-                  to="/programs"
+                  to="/#courses"
                   className="
                   bg-blue-600
                   hover:bg-blue-700

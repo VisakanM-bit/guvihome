@@ -112,13 +112,13 @@ function PremiumInternshipPage() {
 
       <Band eyebrow="Live Project Experience" title={internship.liveProject.title} variant="showcase">
         <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <article className="course-glass-card p-6">
+          <article className="course-glass-card p-4">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-200">Business Problem</p>
             <p className="mt-3 text-base font-semibold leading-8 text-slate-200">{internship.liveProject.problem}</p>
             <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Your Role</p>
             <p className="mt-3 text-base font-semibold leading-8 text-slate-200">{internship.liveProject.role}</p>
           </article>
-          <article className="course-glass-card p-6">
+          <article className="course-glass-card p-4">
             <LabelList label="Tools Used" items={internship.liveProject.tools} />
             <LabelList label="Expected Outcomes" items={internship.liveProject.outcomes} />
           </article>
@@ -338,9 +338,9 @@ function PremiumShell({ children, backTo, backLabel, actionContext }) {
     <>
       <Navbar />
       <main className="course-detail-bg min-h-screen overflow-hidden text-white">
-        <section className="relative px-6 pt-10 sm:px-10 lg:px-16 xl:px-24 2xl:px-32">
+        <section className="relative px-5 pt-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
           <div className="relative z-10 mx-auto max-w-[1540px]">
-            <Link to={backTo} className="mb-8 inline-flex items-center gap-2 text-sm font-black text-emerald-200 transition hover:text-white">
+            <Link to={backTo} className="mb-4 inline-flex items-center gap-2 text-sm font-black text-emerald-200 transition hover:text-white">
               <FaArrowLeft />
               {backLabel}
             </Link>
@@ -357,28 +357,28 @@ function PremiumShell({ children, backTo, backLabel, actionContext }) {
 
 function HeroPanel({ eyebrow, title, headline, description, chips, highlights, actions, visualTitle, visualStats }) {
   return (
-    <section className="relative px-6 pb-16 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:pb-24">
+    <section className="relative px-5 pb-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:pb-6">
       <div className="relative z-10 mx-auto max-w-[1540px]">
-        <div className="course-hero-panel course-sparkle-field grid gap-10 rounded-[2.25rem] border border-emerald-200/15 bg-white/[0.055] p-6 shadow-[0_30px_120px_-70px_rgba(34,197,94,0.8)] backdrop-blur-2xl sm:p-9 lg:grid-cols-[1.06fr_0.94fr] lg:p-12 xl:p-14">
+        <div className="course-hero-panel course-sparkle-field grid gap-4 rounded-2xl border border-emerald-200/15 bg-white/[0.055] p-5 shadow-[0_30px_120px_-70px_rgba(34,197,94,0.8)] backdrop-blur-2xl sm:p-6 lg:grid-cols-[1.06fr_0.94fr] lg:p-6 xl:p-7">
           <div className="relative z-10">
-            <p className="mb-5 inline-flex rounded-full border border-emerald-200/20 bg-emerald-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-100">{eyebrow}</p>
+            <p className="mb-4 inline-flex rounded-full border border-emerald-200/20 bg-emerald-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-100">{eyebrow}</p>
             <h1 className="max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">{title}</h1>
-            <p className="mt-5 max-w-4xl text-2xl font-black tracking-[-0.02em] text-emerald-200">{headline}</p>
-            <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">{description}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <p className="mt-4 max-w-4xl text-2xl font-black tracking-[-0.02em] text-emerald-200">{headline}</p>
+            <p className="mt-4 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">{description}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
               {chips.map((chip) => <span key={chip} className="rounded-full border border-cyan-200/20 bg-cyan-300/10 px-4 py-2 text-xs font-black text-cyan-100">{chip}</span>)}
             </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {highlights.map((item) => <span key={item} className="flex items-center gap-3 text-sm font-black text-slate-100"><FaCheck className="text-emerald-300" />{item}</span>)}
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("jawa:open-lead-phone"))} className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-400 via-cyan-400 to-green-500 px-6 text-sm font-black text-slate-950 shadow-xl shadow-emerald-400/25 transition hover:-translate-y-0.5"><FaRocket />{actions[0]}</button>
               <a href="#faq" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl border border-emerald-200/20 bg-white/[0.08] px-6 text-sm font-black text-white backdrop-blur-xl transition hover:-translate-y-0.5"><FaCloudDownloadAlt />{actions[1]}</a>
               <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("jawa:open-lead-phone"))} className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl border border-cyan-200/25 bg-cyan-300/10 px-6 text-sm font-black text-cyan-100 transition hover:-translate-y-0.5"><FaPhoneAlt />{actions[2]}</button>
             </div>
           </div>
-          <div className="relative z-10 rounded-[1.9rem] border border-emerald-200/15 bg-slate-950/42 p-5 shadow-inner shadow-emerald-950/30">
-            <div className="course-device-card flex min-h-[29rem] flex-col justify-between rounded-[1.45rem] border border-emerald-300/18 bg-[radial-gradient(circle_at_72%_20%,rgba(34,197,94,0.22),transparent_34%),linear-gradient(145deg,rgba(15,23,42,0.88),rgba(0,0,0,0.74))] p-6">
+          <div className="relative z-10 rounded-2xl border border-emerald-200/15 bg-slate-950/42 p-3 shadow-inner shadow-emerald-950/30">
+            <div className="course-device-card flex min-h-[20rem] flex-col justify-between gap-4 rounded-[1.2rem] border border-emerald-300/18 bg-[radial-gradient(circle_at_72%_20%,rgba(34,197,94,0.22),transparent_34%),linear-gradient(145deg,rgba(15,23,42,0.88),rgba(0,0,0,0.74))] p-5">
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-300 text-3xl text-slate-950 shadow-[0_0_54px_rgba(52,211,153,0.55)]"><FaRocket /></div>
               <div>
                 <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-emerald-200">{visualTitle}</p>
@@ -391,7 +391,15 @@ function HeroPanel({ eyebrow, title, headline, description, chips, highlights, a
                   ))}
                 </div>
               </div>
-              <p className="text-sm font-semibold leading-7 text-slate-300">Premium glass UI, mentor-led workflow, portfolio outcomes, and career support built for real execution.</p>
+              <div className="grid gap-2">
+                {highlights.slice(0, 4).map((item) => (
+                  <span key={item} className="flex items-center gap-2 rounded-xl border border-emerald-700/14 bg-white/75 px-3 py-2 text-sm font-black text-slate-950">
+                    <FaCheck className="text-emerald-600" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm font-semibold leading-6 text-slate-300">Mentor-led workflow, portfolio outcomes, and career support built for real execution.</p>
             </div>
           </div>
         </div>
@@ -402,13 +410,13 @@ function HeroPanel({ eyebrow, title, headline, description, chips, highlights, a
 
 function Band({ id, eyebrow, title, children, variant = "compact" }) {
   return (
-    <section id={id} className={`course-section-shell course-section-${variant} relative px-6 py-12 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:py-16`}>
+    <section id={id} className={`course-section-shell course-section-${variant} relative px-5 py-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:py-5`}>
       <div className="relative z-10 mx-auto max-w-[1540px]">
-        <div className="course-section-panel rounded-[2rem] border border-emerald-200/10 bg-slate-950/22 p-5 backdrop-blur-xl sm:p-7 lg:p-8">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="course-section-panel rounded-2xl border border-emerald-200/10 bg-slate-950/22 p-4 backdrop-blur-xl sm:p-4 lg:p-5">
+          <div className="mb-4 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="mb-3 text-sm font-black uppercase tracking-[0.22em] text-emerald-200">{eyebrow}</p>
-              <h2 className="max-w-4xl text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">{title}</h2>
+              <p className="mb-2 text-sm font-black uppercase tracking-[0.22em] text-emerald-200">{eyebrow}</p>
+              <h2 className="max-w-4xl text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl lg:text-[2.55rem]">{title}</h2>
             </div>
             <span className="hidden h-px flex-1 bg-gradient-to-r from-emerald-300/40 via-cyan-300/20 to-transparent lg:block" />
           </div>
@@ -421,8 +429,8 @@ function Band({ id, eyebrow, title, children, variant = "compact" }) {
 
 function InfoCard({ icon: Icon, title, text, tone = tones[0] }) {
   return (
-    <article className={`course-glass-card ${tone} p-5 transition hover:-translate-y-1 xl:p-6`}>
-      <Icon className="mb-4 text-2xl text-emerald-200" />
+    <article className={`course-glass-card ${tone} p-4 transition hover:-translate-y-1 xl:p-5`}>
+      <Icon className="mb-3 text-2xl text-emerald-200" />
       <h3 className="text-lg font-black text-white">{title}</h3>
       <p className="mt-3 text-sm font-semibold leading-7 text-slate-300">{text}</p>
     </article>
@@ -431,7 +439,7 @@ function InfoCard({ icon: Icon, title, text, tone = tones[0] }) {
 
 function LabelList({ label, items }) {
   return (
-    <div className="mt-5">
+    <div className="mt-4">
       <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-200">{label}</p>
       <div className="mt-2 grid gap-2">
         {items.map((item) => <span key={item} className="flex items-start gap-2 text-sm font-bold leading-6 text-slate-200"><FaCheck className="mt-1 shrink-0 text-emerald-300" />{item}</span>)}
@@ -452,8 +460,8 @@ function TimelineBand() {
 
 function StepCard({ index, title, text, tone }) {
   return (
-    <article className={`course-timeline-card ${tone} p-5 transition hover:-translate-y-1 xl:p-6`}>
-      <span className="course-step-dot mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-black text-slate-950">{index}</span>
+    <article className={`course-timeline-card ${tone} p-4 transition hover:-translate-y-1 xl:p-5`}>
+      <span className="course-step-dot mb-3 flex h-10 w-10 items-center justify-center rounded-full text-sm font-black text-slate-950">{index}</span>
       <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-200">{title}</p>
       <h3 className="mt-2 text-lg font-black text-white">{text}</h3>
     </article>
@@ -479,7 +487,7 @@ function SkillsBand() {
     <Band eyebrow="Skills You Will Gain" title="Technical Confidence + Professional Readiness" variant="split">
       <div className="grid gap-5 lg:grid-cols-2">
         {skillGroups.map(([title, ...items], index) => (
-          <article key={title} className={`course-glass-card ${tones[index]} p-6`}>
+          <article key={title} className={`course-glass-card ${tones[index]} p-4`}>
             <h3 className="text-2xl font-black text-white">{title}</h3>
             <LabelList label="Skill Areas" items={items} />
           </article>
@@ -553,7 +561,7 @@ function StoriesBand() {
     <Band eyebrow="Success Stories" title="Student Testimonials & Placed Candidate Signals" variant="showcase">
       <div className="grid gap-5 lg:grid-cols-3">
         {stories.map(([name, role, quote], index) => (
-          <article key={name} className={`course-glass-card ${tones[index]} p-6`}>
+          <article key={name} className={`course-glass-card ${tones[index]} p-4`}>
             <p className="text-2xl font-black text-emerald-200">★★★★★</p>
             <h3 className="mt-5 text-xl font-black text-white">{name}</h3>
             <p className="mt-1 text-sm font-black text-cyan-200">{role}</p>
@@ -585,12 +593,12 @@ function FaqBand() {
 
 function FinalCta({ title, primary }) {
   return (
-    <section className="relative px-6 py-16 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:py-24">
-      <div className="course-final-cta course-sparkle-field relative z-10 mx-auto max-w-[1540px] overflow-hidden rounded-[2.25rem] border border-emerald-200/15 bg-white/[0.06] p-8 text-center shadow-[0_32px_130px_-72px_rgba(34,197,94,0.85)] backdrop-blur-2xl lg:p-12">
-        <FaRocket className="mx-auto mb-6 text-5xl text-emerald-200" />
+    <section className="relative px-5 py-8 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:py-10">
+      <div className="course-final-cta course-sparkle-field relative z-10 mx-auto max-w-[1540px] overflow-hidden rounded-2xl border border-emerald-200/15 bg-white/[0.06] p-6 text-center shadow-[0_32px_130px_-72px_rgba(34,197,94,0.85)] backdrop-blur-2xl lg:p-8">
+        <FaRocket className="mx-auto mb-4 text-5xl text-emerald-200" />
         <h2 className="text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">{title}</h2>
-        <p className="mx-auto mt-5 max-w-3xl text-xl font-black leading-9 text-emerald-100">Learn Skills. Gain Experience. Build Confidence. Get Hired.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <p className="mx-auto mt-4 max-w-3xl text-xl font-black leading-9 text-emerald-100">Learn Skills. Gain Experience. Build Confidence. Get Hired.</p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("jawa:open-lead-phone"))} className="inline-flex min-h-13 items-center rounded-2xl bg-emerald-300 px-7 text-sm font-black text-slate-950 transition hover:-translate-y-0.5">{primary}</button>
           <a href="mailto:hr@jawaedtech.com" className="inline-flex min-h-13 items-center rounded-2xl border border-emerald-200/20 bg-white/[0.08] px-7 text-sm font-black text-white transition hover:-translate-y-0.5">Book Free Career Consultation</a>
         </div>
@@ -604,7 +612,7 @@ function FloatingActionPhone({ onClick, label }) {
     <button
       type="button"
       onClick={onClick}
-      className="fixed bottom-5 right-5 z-40 flex h-16 w-16 items-center justify-center rounded-[1.35rem] border border-emerald-200/25 bg-[linear-gradient(145deg,rgba(3,10,7,0.96),rgba(0,0,0,0.92))] text-2xl text-emerald-200 shadow-[0_22px_70px_-26px_rgba(34,197,94,0.95)] ring-1 ring-white/10 transition hover:-translate-y-1 hover:text-white sm:h-auto sm:w-auto sm:gap-3 sm:px-5 sm:py-4 sm:text-sm sm:font-black"
+      className="fixed bottom-5 right-5 z-40 flex h-16 w-16 items-center justify-center rounded-[1.35rem] border border-emerald-200/25 bg-[linear-gradient(145deg,rgba(3,10,7,0.96),rgba(0,0,0,0.92))] text-2xl text-white shadow-[0_22px_70px_-26px_rgba(34,197,94,0.95)] ring-1 ring-white/10 transition hover:-translate-y-1 sm:h-auto sm:w-auto sm:gap-3 sm:px-5 sm:py-4 sm:text-sm sm:font-black"
       aria-label={label}
       title={label}
     >

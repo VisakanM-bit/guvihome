@@ -19,7 +19,7 @@ import {
 
 const exploreLinks = [
   ["Home", "/"],
-  ["Career Programs", "/programs"],
+  ["Career Programs", "/#courses"],
   ["Internship Hub", "/internships/human-resource-internship"],
   ["Practice Hub", "/practice-hub"],
   ["Placement Assistance", "/placement-assistance"],

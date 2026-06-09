@@ -14,7 +14,7 @@ const choices = [
     icon: FaBookOpen,
     title: "Choose a Course",
     desc: "Explore HR, Full Stack, Python, AI & ML, DevOps, Testing, and MuleSoft programs.",
-    href: "/programs",
+    href: "/#courses",
     action: "Browse Courses",
   },
   {

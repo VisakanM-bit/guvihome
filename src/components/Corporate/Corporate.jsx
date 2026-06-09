@@ -66,10 +66,10 @@ function Corporate() {
 
   return (
 
-    <section className="bg-[#f7f7f7] py-8 sm:py-12 md:py-16 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-10">
+    <section className="bg-[#f7f7f7] py-9 sm:py-10 md:py-12 lg:py-14 px-4 sm:px-6 md:px-8 lg:px-10">
 
       {/* HEADING */}
-      <div className="text-center mb-24">
+      <div className="text-center mb-9">
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 lg:mb-5">
 
@@ -86,27 +86,27 @@ function Corporate() {
       </div>
 
       {/* CORPORATE ITEMS */}
-      <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
 
         {corporateData.map((item, index) => (
 
           <div
             key={index}
-            className="relative flex min-h-[230px] flex-col items-center justify-center rounded-2xl border border-sky-100 bg-white px-5 py-7 text-center shadow-[0_24px_80px_-58px_rgba(37,99,235,0.65)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_-58px_rgba(37,99,235,0.85)]"
+            className="relative flex min-h-[210px] flex-col items-center justify-center rounded-xl border border-emerald-100 bg-white px-5 py-6 text-center shadow-[0_24px_80px_-58px_rgba(34,197,94,0.65)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_-58px_rgba(34,197,94,0.85)]"
           >
 
             {/* TOP LINE */}
-            <div className="absolute left-1/2 top-8 hidden w-[70%] -translate-x-1/2 border-t border-dashed border-sky-200 lg:block"></div>
+            <div className="absolute left-1/2 top-8 hidden w-[70%] -translate-x-1/2 border-t border-dashed border-emerald-200 lg:block"></div>
 
             {/* ICON BOX */}
-            <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 text-2xl text-white shadow-lg shadow-sky-500/25 md:h-16 md:w-16 md:text-3xl">
+            <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-[#00a86b] text-2xl text-white shadow-lg shadow-emerald-500/25 md:h-16 md:w-16 md:text-3xl">
 
               {item.icon}
 
             </div>
 
             {/* VERTICAL LINE */}
-            <div className="h-10 border-l border-dashed border-sky-200"></div>
+            <div className="h-10 border-l border-dashed border-emerald-200"></div>
 
             {/* TEXT */}
             <h2 className="mt-3 whitespace-pre-line text-lg font-black leading-snug tracking-[-0.02em] text-gray-900 md:text-xl xl:text-2xl">
@@ -152,9 +152,9 @@ function Corporate() {
       </div>
 
       {/* BUTTON */}
-      <div className="flex justify-center mt-12 sm:mt-16">
+      <div className="flex justify-center mt-9 sm:mt-10">
 
-        <Link to="/about-edtech" className="bg-gradient-to-r from-sky-500 to-blue-600 transition-all duration-300 hover:from-sky-400 hover:to-blue-500 text-white text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-lg shadow-lg shadow-sky-500/20">
+        <Link to="/about-edtech" className="bg-[#00a86b] transition-all duration-300 hover:bg-[#00965f] text-white text-sm sm:text-base md:text-lg lg:text-xl lg:text-2xl font-semibold px-6 sm:px-8 md:px-10 lg:px-14 py-2 sm:py-3 md:py-4 lg:py-5 rounded-lg sm:rounded-xl lg:rounded-lg shadow-lg shadow-emerald-500/20">
 
           Learn More
 

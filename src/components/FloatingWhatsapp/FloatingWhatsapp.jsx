@@ -7,7 +7,7 @@ function FloatingWhatsapp() {
       href={`https://wa.me/${WHATSAPP_NUMBER}`}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-5 right-5 z-[80] flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-600 text-4xl text-white shadow-[0_18px_45px_-18px_rgba(37,99,235,0.9)] ring-4 ring-white/20 transition hover:-translate-y-1 hover:scale-105"
+      className="fixed bottom-5 right-5 z-[80] flex h-16 w-16 items-center justify-center rounded-full bg-slate-950 text-4xl text-emerald-200 shadow-[0_18px_45px_-18px_rgba(0,108,69,0.9)] ring-4 ring-emerald-200/30 transition hover:-translate-y-1 hover:scale-105 hover:bg-slate-900"
       aria-label="Chat on WhatsApp"
       title="Chat on WhatsApp"
     >

@@ -8,7 +8,6 @@ import ScrollToHash from "./components/ScrollToHash/ScrollToHash"
 import AnalyticsTracker from "./components/AnalyticsTracker/AnalyticsTracker"
 import FloatingWhatsapp from "./components/FloatingWhatsapp/FloatingWhatsapp"
 import App from "./App"
-import Programs from "./pages/Programs"
 import CourseDetail from "./pages/CourseDetail"
 import { PremiumAboutEdtechPage, PremiumCareerPage, PremiumInternshipPage, PremiumProjectPage } from "./pages/PremiumDetailPages"
 import Dashboard from "./pages/Dashboard"
@@ -25,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <FloatingWhatsapp />
         <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/programs" element={<Programs />} />
+        <Route path="/programs" element={<Navigate to="/#courses" replace />} />
         <Route path="/programs/:slug" element={<CourseDetail />} />
         <Route path="/internships" element={<Navigate to="/internships/human-resource-internship" replace />} />
         <Route path="/internships/:slug" element={<PremiumInternshipPage />} />

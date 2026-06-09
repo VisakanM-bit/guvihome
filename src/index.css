@@ -297,6 +297,7 @@ html[data-theme="dark"] main {
 
 .course-section-shell {
   scroll-margin-top: 7rem;
+  margin-block: -0.25rem;
 }
 
 .course-section-panel {
@@ -359,12 +360,7 @@ html[data-theme="dark"] main {
 }
 
 .course-device-card::after {
-  content: "";
-  position: absolute;
-  inset: auto 12% 10% 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.85), transparent);
-  box-shadow: 0 0 26px rgba(52, 211, 153, 0.8);
+  content: none;
 }
 
 .course-sparkle-field::after {
@@ -619,15 +615,15 @@ main .text-gray-500 {
 .hero-platform-stage {
   overflow: hidden;
   max-width: min(1120px, 100vw - 3rem);
-  padding: 0.35rem 0;
+  padding: 0.15rem 0;
   position: relative;
 }
 
 .hero-platform-fly {
   position: relative;
-  animation: hero-platform-fly 8.5s cubic-bezier(0.42, 0, 0.2, 1) infinite;
-  white-space: nowrap;
-  will-change: opacity, transform, filter;
+  animation: hero-platform-fly 14s ease-in-out infinite;
+  white-space: normal;
+  will-change: transform;
 }
 
 .hero-platform-fly::after {
@@ -639,7 +635,7 @@ main .text-gray-500 {
   mix-blend-mode: screen;
   opacity: 0.45;
   transform: translateX(-120%);
-  animation: hero-platform-shine 8.5s ease-in-out infinite;
+  animation: hero-platform-shine 14s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -786,24 +782,22 @@ main .text-gray-500 {
 
 @keyframes hero-platform-fly {
   0% {
-    opacity: 0;
-    filter: blur(5px) saturate(1.15);
-    transform: translate3d(-112%, 12px, 0) scale(0.9);
+    transform: translate3d(0, 0, 0);
   }
   21% {
-    opacity: 1;
-    filter: blur(0) saturate(1.25);
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, -0.18rem, 0);
+  }
+  42% {
+    transform: translate3d(0, 0, 0);
   }
   62% {
-    opacity: 1;
-    filter: blur(0) saturate(1.35);
-    transform: translate3d(58%, -3px, 0) scale(1.03);
+    transform: translate3d(0, -0.12rem, 0);
+  }
+  82% {
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    opacity: 0;
-    filter: blur(5px) saturate(1.15);
-    transform: translate3d(148%, -10px, 0) scale(0.96);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -861,6 +855,60 @@ main .text-gray-500 {
   }
 }
 
+/* Compact site rhythm: keeps modules close without breaking responsive grids. */
+.career-programs-section .grid,
+.course-detail-bg .grid,
+#career-ecosystem .grid {
+  gap: 0.65rem !important;
+}
+
+.course-section-shell {
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+  margin-block: -0.72rem;
+}
+
+.course-section-panel,
+.course-hero-panel,
+.course-final-cta,
+.career-program-card,
+.ecosystem-path-card,
+.course-glass-card,
+.course-project-card,
+.course-role-card,
+.course-timeline-card,
+.course-stat-card {
+  border-radius: 1rem !important;
+}
+
+.course-section-panel {
+  padding: 0.95rem !important;
+}
+
+.course-glass-card,
+.course-project-card,
+.course-role-card,
+.course-timeline-card,
+.course-stat-card,
+.career-program-card > div:last-child {
+  padding: 0.9rem !important;
+}
+
+.course-lead-copy {
+  padding: 0.75rem 0.9rem !important;
+}
+
+.course-device-card {
+  min-height: 18rem !important;
+}
+
+@media (min-width: 1024px) {
+  .course-section-shell {
+    padding-top: 0.95rem !important;
+    padding-bottom: 0.95rem !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body,
   .cybernet-network-bg,
@@ -873,4 +921,368 @@ main .text-gray-500 {
   .nav-logo-float {
     animation: none;
   }
+}
+
+/* Light sparkle theme: keeps the existing layout, swaps the page mood to white. */
+html,
+body,
+#root {
+  background: #f7fbf7 !important;
+  color: #07140e;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 78% 18%, rgba(0, 168, 107, 0.13), transparent 34%),
+    radial-gradient(circle at 16% 78%, rgba(16, 185, 129, 0.1), transparent 32%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620' viewBox='0 0 620 620'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%2300a86b' stroke-opacity='.2' stroke-width='1.15'%3E%3Cpath d='M35 420 78 350 124 383 177 325 244 357 288 286 354 312 426 252 512 294 579 220'/%3E%3Cpath d='M78 350 96 270 154 216 177 325 208 166 286 116 288 286'/%3E%3Cpath d='M354 312 374 205 426 252 478 150 512 294'/%3E%3Cpath d='M40 96 118 44 176 86 208 166 154 216 96 270'/%3E%3Cpath d='M410 42 478 150 560 88 604 146 579 220'/%3E%3Cpath d='M260 548 334 500 414 544 474 492 556 530'/%3E%3Cpath d='M244 357 260 548 354 312 414 544 512 294'/%3E%3C/g%3E%3Cg fill='%2300a86b'%3E%3Ccircle cx='35' cy='420' r='4' fill-opacity='.62'/%3E%3Ccircle cx='78' cy='350' r='3.5' fill-opacity='.52'/%3E%3Ccircle cx='124' cy='383' r='4' fill-opacity='.7'/%3E%3Ccircle cx='177' cy='325' r='3.5' fill-opacity='.5'/%3E%3Ccircle cx='244' cy='357' r='4' fill-opacity='.68'/%3E%3Ccircle cx='288' cy='286' r='3.5' fill-opacity='.56'/%3E%3Ccircle cx='354' cy='312' r='4.2' fill-opacity='.66'/%3E%3Ccircle cx='426' cy='252' r='3.5' fill-opacity='.56'/%3E%3Ccircle cx='512' cy='294' r='4.5' fill-opacity='.66'/%3E%3Ccircle cx='579' cy='220' r='4' fill-opacity='.62'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(135deg, #fbfffb 0%, #f3faf3 48%, #ffffff 100%) !important;
+}
+
+.cybernet-network-bg,
+.course-detail-bg {
+  background-color: #f7fbf7 !important;
+  background-image:
+    radial-gradient(circle at 76% 18%, rgba(0, 168, 107, 0.16), transparent 35%),
+    radial-gradient(circle at 14% 76%, rgba(16, 185, 129, 0.12), transparent 34%),
+    radial-gradient(circle at 48% 42%, rgba(0, 168, 107, 0.08), transparent 42%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620' viewBox='0 0 620 620'%3E%3Cg fill='none' stroke='%2300a86b' stroke-opacity='.22' stroke-width='1.15'%3E%3Cpath d='M35 420 78 350 124 383 177 325 244 357 288 286 354 312 426 252 512 294 579 220'/%3E%3Cpath d='M78 350 96 270 154 216 177 325 208 166 286 116 288 286'/%3E%3Cpath d='M354 312 374 205 426 252 478 150 512 294'/%3E%3Cpath d='M40 96 118 44 176 86 208 166 154 216 96 270'/%3E%3Cpath d='M410 42 478 150 560 88 604 146 579 220'/%3E%3Cpath d='M260 548 334 500 414 544 474 492 556 530'/%3E%3Cpath d='M244 357 260 548 354 312 414 544 512 294'/%3E%3C/g%3E%3Cg fill='%2300a86b'%3E%3Ccircle cx='35' cy='420' r='4' fill-opacity='.7'/%3E%3Ccircle cx='124' cy='383' r='4' fill-opacity='.75'/%3E%3Ccircle cx='244' cy='357' r='4' fill-opacity='.72'/%3E%3Ccircle cx='354' cy='312' r='4.2' fill-opacity='.72'/%3E%3Ccircle cx='512' cy='294' r='4.5' fill-opacity='.72'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(135deg, #fbfffb 0%, #f4fbf4 52%, #ffffff 100%) !important;
+}
+
+.cybernet-network-bg::before {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.42) 58%, rgba(255, 255, 255, 0.78) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.48)) !important;
+}
+
+.cybernet-network-bg::after,
+.course-detail-bg::before {
+  opacity: 0.18 !important;
+}
+
+.cybernet-network-bg > .relative.z-10 > div:first-child,
+.cybernet-network-bg > .relative.z-10 > div:first-child h1,
+.cybernet-network-bg > .relative.z-10 > div:first-child p {
+  color: #07140e !important;
+}
+
+.cybernet-network-bg > .relative.z-10 > div:first-child p:first-of-type,
+.hero-platform-fly,
+.career-programs-section h1,
+.career-programs-section p:first-child {
+  color: #063f2b !important;
+}
+
+.hero-platform-fly {
+  border-color: rgba(0, 108, 69, 0.22) !important;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.9), rgba(213, 250, 229, 0.72), rgba(187, 247, 208, 0.76)) !important;
+  box-shadow: 0 0 20px rgba(0, 168, 107, 0.22), 0 0 56px rgba(0, 168, 107, 0.2) !important;
+}
+
+.cybernet-network-bg a.bg-\[\#00a86b\],
+.cybernet-network-bg button.bg-\[\#00a86b\],
+.career-programs-section .bg-\[\#00a86b\] {
+  color: #062316 !important;
+  text-shadow: none;
+}
+
+.cybernet-network-bg button.bg-white\/\[0\.08\] {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(0, 96, 61, 0.3) !important;
+  color: #07140e !important;
+}
+
+.cybernet-network-bg .grid .bg-slate-950\/25 {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(0, 96, 61, 0.18) !important;
+  box-shadow: 0 18px 48px rgba(0, 108, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.cybernet-network-bg .grid .text-cyan-200 {
+  color: #006c45 !important;
+}
+
+.cybernet-network-bg .grid .text-blue-50\/90,
+.cybernet-network-bg .grid .text-blue-50\/85 {
+  color: #07140e !important;
+}
+
+section:not(.cybernet-network-bg),
+main,
+.career-programs-section {
+  background-color: transparent !important;
+  color: #07140e !important;
+}
+
+section:not(.cybernet-network-bg) .bg-white,
+section:not(.cybernet-network-bg) .bg-gray-50,
+section:not(.cybernet-network-bg) .bg-slate-50,
+main .bg-white,
+main .bg-gray-50,
+main .bg-slate-50 {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(0, 168, 107, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(242, 251, 244, 0.78)) !important;
+  border-color: rgba(0, 108, 69, 0.16) !important;
+}
+
+section:not(.cybernet-network-bg) .text-slate-950,
+section:not(.cybernet-network-bg) .text-slate-900,
+section:not(.cybernet-network-bg) .text-gray-900,
+section:not(.cybernet-network-bg) .text-gray-800,
+main .text-slate-950,
+main .text-slate-900,
+main .text-gray-900,
+main .text-gray-800 {
+  color: #07140e !important;
+}
+
+section:not(.cybernet-network-bg) .text-slate-700,
+section:not(.cybernet-network-bg) .text-slate-600,
+section:not(.cybernet-network-bg) .text-gray-700,
+section:not(.cybernet-network-bg) .text-gray-600,
+section:not(.cybernet-network-bg) .text-gray-500,
+main .text-slate-700,
+main .text-slate-600,
+main .text-gray-700,
+main .text-gray-600,
+main .text-gray-500 {
+  color: #173d2d !important;
+}
+
+.career-program-card {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(0, 168, 107, 0.11), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(240, 251, 244, 0.9)) !important;
+  border-color: rgba(0, 108, 69, 0.2) !important;
+  color: #07140e !important;
+  box-shadow:
+    0 18px 56px rgba(0, 108, 69, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.career-program-card:hover {
+  box-shadow:
+    0 26px 70px rgba(0, 108, 69, 0.18),
+    0 0 38px rgba(0, 168, 107, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+.career-program-card .text-slate-100,
+.career-program-card .text-slate-200,
+.career-program-card .text-white {
+  color: #07140e !important;
+}
+
+.career-program-card .border-white\/80 {
+  border-color: rgba(0, 77, 50, 0.45) !important;
+}
+
+.phone-login-shell .text-white,
+.phone-login-shell .text-emerald-50\/70,
+.phone-login-shell .text-blue-100\/70 {
+  color: #ffffff !important;
+}
+
+.phone-login-shell .bg-\[\#00a86b\] {
+  color: #ffffff !important;
+}
+
+/* Routed course, internship, project, service, and about pages share these templates. */
+.course-detail-bg {
+  color: #07140e !important;
+}
+
+.course-detail-bg [class*="text-white"],
+.course-detail-bg [class*="text-slate-100"],
+.course-detail-bg [class*="text-slate-200"],
+.course-detail-bg [class*="text-slate-300"],
+.course-detail-bg [class*="text-blue-100"] {
+  color: #07140e !important;
+}
+
+.course-detail-bg [class*="text-emerald-100"],
+.course-detail-bg [class*="text-emerald-200"],
+.course-detail-bg [class*="text-cyan-100"],
+.course-detail-bg [class*="text-cyan-200"],
+.course-detail-bg [class*="text-sky-200"] {
+  color: #006c45 !important;
+}
+
+.course-detail-bg .course-hero-panel,
+.course-detail-bg .course-section-panel,
+.course-detail-bg .course-final-cta,
+.course-detail-bg .course-glass-card,
+.course-detail-bg .course-project-card,
+.course-detail-bg .course-role-card,
+.course-detail-bg .course-timeline-card,
+.course-detail-bg .course-stat-card,
+.course-detail-bg .course-certificate-wrap,
+.course-detail-bg details.course-glass-card {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(0, 168, 107, 0.1), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(241, 252, 245, 0.92)) !important;
+  border-color: rgba(0, 108, 69, 0.18) !important;
+  color: #07140e !important;
+  box-shadow:
+    0 22px 72px rgba(0, 108, 69, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+
+.course-detail-bg .course-hero-panel,
+.course-detail-bg .course-section-panel,
+.course-detail-bg .course-final-cta {
+  border-width: 1px !important;
+  outline: 1px solid rgba(0, 108, 69, 0.04);
+}
+
+.course-detail-bg .course-glass-card,
+.course-detail-bg .course-project-card,
+.course-detail-bg .course-role-card,
+.course-detail-bg .course-timeline-card,
+.course-detail-bg .course-stat-card,
+.course-detail-bg details.course-glass-card {
+  min-height: 100%;
+  border-width: 1px !important;
+  outline: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.course-detail-bg .course-glass-card > *,
+.course-detail-bg .course-project-card > *,
+.course-detail-bg .course-role-card > *,
+.course-detail-bg .course-timeline-card > *,
+.course-detail-bg .course-stat-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.course-detail-bg .course-device-card,
+.course-detail-bg [class*="bg-slate-950/42"],
+.course-detail-bg [class*="bg-slate-950/34"],
+.course-detail-bg [class*="bg-slate-950/22"],
+.course-detail-bg [class*="bg-white/[0.055]"],
+.course-detail-bg [class*="bg-white/[0.06]"],
+.course-detail-bg [class*="bg-white/[0.08]"] {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(0, 168, 107, 0.1), transparent 32%),
+    rgba(255, 255, 255, 0.86) !important;
+  border-color: rgba(0, 108, 69, 0.2) !important;
+  color: #07140e !important;
+}
+
+.course-detail-bg .course-device-card {
+  gap: 0.85rem !important;
+  border-color: rgba(0, 108, 69, 0.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 16px 46px rgba(0, 108, 69, 0.1) !important;
+}
+
+.course-detail-bg .course-device-card .grid > div,
+.course-detail-bg .course-device-card span[class*="rounded"] {
+  border-color: rgba(0, 108, 69, 0.18) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.course-detail-bg .course-tool-badge,
+.course-detail-bg .course-benefit-pill {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(0, 108, 69, 0.2) !important;
+  color: #07140e !important;
+}
+
+.course-detail-bg .course-number-chip,
+.course-detail-bg .course-step-dot {
+  background: linear-gradient(135deg, #86efac, #d9f99d) !important;
+  color: #07140e !important;
+}
+
+.course-detail-bg .course-lead-copy {
+  background: linear-gradient(90deg, rgba(0, 168, 107, 0.12), rgba(255, 255, 255, 0.86)) !important;
+  color: #07140e !important;
+  border-left-color: rgba(0, 108, 69, 0.72) !important;
+}
+
+.course-detail-bg a[href="#curriculum"],
+.course-detail-bg a[href="#faq"],
+.course-detail-bg button[class*="border"],
+.course-detail-bg a[class*="border"] {
+  color: #063f2b !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(0, 108, 69, 0.28) !important;
+}
+
+.course-detail-bg button[class*="from-emerald"],
+.course-detail-bg a[class*="bg-[#00a86b]"],
+.course-detail-bg button[class*="bg-emerald-300"] {
+  color: #07140e !important;
+}
+
+.course-detail-bg .phone-login-frame,
+.course-detail-bg .phone-login-frame *,
+.course-detail-bg .network-glass-panel,
+.course-detail-bg .network-glass-panel *,
+.phone-login-frame,
+.phone-login-frame *,
+.enroll-tablet-shell,
+.enroll-tablet-shell * {
+  color: revert;
+}
+
+.course-detail-bg .phone-login-frame [class*="text-white"],
+.course-detail-bg .network-glass-panel [class*="text-white"],
+.phone-login-frame [class*="text-white"],
+.enroll-tablet-shell [class*="text-white"] {
+  color: #ffffff !important;
+}
+
+.course-detail-bg .phone-login-frame [class*="text-emerald"],
+.course-detail-bg .network-glass-panel [class*="text-emerald"],
+.phone-login-frame [class*="text-emerald"],
+.enroll-tablet-shell [class*="text-emerald"] {
+  color: #d1fae5 !important;
+}
+
+.course-detail-bg .phone-login-frame input,
+.course-detail-bg .phone-login-frame select,
+.course-detail-bg .network-glass-panel input,
+.course-detail-bg .network-glass-panel select,
+.phone-login-frame input,
+.phone-login-frame select,
+.enroll-tablet-shell input,
+.enroll-tablet-shell select {
+  color: #ffffff !important;
+}
+
+.cybernet-network-bg [class*="text-white"],
+.cybernet-network-bg [class*="text-slate-100"],
+.cybernet-network-bg [class*="text-slate-200"],
+.cybernet-network-bg [class*="text-slate-300"] {
+  color: #07140e !important;
+}
+
+.cybernet-network-bg [class*="text-emerald-100"],
+.cybernet-network-bg [class*="text-emerald-200"],
+.cybernet-network-bg [class*="text-cyan-100"],
+.cybernet-network-bg [class*="text-cyan-200"],
+.cybernet-network-bg [class*="text-sky-300"] {
+  color: #006c45 !important;
+}
+
+.cybernet-network-bg .phone-login-shell [class*="text-white"],
+.cybernet-network-bg .phone-login-shell input,
+.cybernet-network-bg .phone-login-shell select,
+.cybernet-network-bg .phone-login-shell button[class*="bg-[#00a86b]"],
+.cybernet-network-bg .network-glass-panel [class*="text-white"],
+.cybernet-network-bg .network-glass-panel input,
+.cybernet-network-bg .network-glass-panel select {
+  color: #ffffff !important;
+}
+
+.cybernet-network-bg .phone-login-shell [class*="text-emerald"],
+.cybernet-network-bg .network-glass-panel [class*="text-emerald"] {
+  color: #d1fae5 !important;
 }

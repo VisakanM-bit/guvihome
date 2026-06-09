@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   FaArrowLeft,
   FaAward,
@@ -164,51 +164,58 @@ const cardTones = [
 
 function CourseDetail() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [tabletOpen, setTabletOpen] = useState(false);
   const program = courseProgramMap[slug];
 
   if (!program) {
-    return <Navigate to="/programs" replace />;
+    return <Navigate to="/#courses" replace />;
   }
 
   const ProgramIcon = iconMap[program.category] || FaGraduationCap;
   const accent = accentMap[program.category] || accentMap.Technology;
 
   const openEnrollmentTablet = () => {
-    setTabletOpen(true);
+    navigate("/", {
+      state: {
+        authPrompt: "expert",
+        showEnrollmentPopup: true,
+        program: program.title,
+      },
+    });
   };
 
   return (
     <>
       <Navbar />
       <main className="course-detail-bg min-h-screen overflow-hidden text-white">
-        <section className="relative px-6 pb-18 pt-10 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:pb-24">
+        <section className="relative px-5 pb-5 pt-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:pb-6">
           <div className="relative z-10 mx-auto max-w-[1540px]">
             <Link
-              to="/programs"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-black text-emerald-200 transition hover:text-white"
+              to="/#courses"
+              className="mb-4 inline-flex items-center gap-2 text-sm font-black text-emerald-200 transition hover:text-white"
             >
               <FaArrowLeft />
               Back to programs
             </Link>
 
-            <div className="course-hero-panel course-sparkle-field grid gap-10 rounded-[2.25rem] border border-emerald-200/15 bg-white/[0.055] p-6 shadow-[0_30px_120px_-70px_rgba(34,197,94,0.8)] backdrop-blur-2xl sm:p-9 lg:grid-cols-[1.08fr_0.92fr] lg:p-12 xl:p-14">
+            <div className="course-hero-panel course-sparkle-field grid gap-4 rounded-2xl border border-emerald-200/15 bg-white/[0.055] p-5 shadow-[0_30px_120px_-70px_rgba(34,197,94,0.8)] backdrop-blur-2xl sm:p-6 lg:grid-cols-[1.08fr_0.92fr] lg:p-6 xl:p-7">
               <div className="relative z-10">
-                <div className={`mb-6 inline-flex items-center gap-3 rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.2em] ${accent.soft}`}>
+                <div className={`mb-4 inline-flex items-center gap-3 rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.2em] ${accent.soft}`}>
                   <ProgramIcon />
                   {program.category}
                 </div>
                 <h1 className="max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
                   {program.title}
                 </h1>
-                <p className="mt-5 max-w-3xl text-2xl font-black tracking-[-0.02em] text-emerald-200">
+                <p className="mt-4 max-w-3xl text-2xl font-black tracking-[-0.02em] text-emerald-200">
                   {program.tagline}
                 </p>
-                <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">
+                <p className="mt-4 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">
                   {program.description}
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={openEnrollmentTablet}
@@ -235,8 +242,8 @@ function CourseDetail() {
                 </div>
               </div>
 
-              <div className="relative z-10 rounded-[1.9rem] border border-emerald-200/15 bg-slate-950/42 p-5 shadow-inner shadow-emerald-950/30">
-                <div className="course-device-card flex min-h-[29rem] flex-col justify-between rounded-[1.45rem] border border-emerald-300/18 bg-[radial-gradient(circle_at_72%_20%,rgba(34,197,94,0.22),transparent_34%),linear-gradient(145deg,rgba(15,23,42,0.88),rgba(0,0,0,0.74))] p-6">
+              <div className="relative z-10 rounded-2xl border border-emerald-200/15 bg-slate-950/42 p-3 shadow-inner shadow-emerald-950/30">
+                <div className="course-device-card flex min-h-[20rem] flex-col justify-between rounded-[1.2rem] border border-emerald-300/18 bg-[radial-gradient(circle_at_72%_20%,rgba(34,197,94,0.22),transparent_34%),linear-gradient(145deg,rgba(15,23,42,0.88),rgba(0,0,0,0.74))] p-5">
                   <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-3xl ${accent.icon}`}>
                     <ProgramIcon />
                   </div>
@@ -251,7 +258,7 @@ function CourseDetail() {
                       ))}
                     </div>
                   </div>
-                  <div className="mt-7 grid grid-cols-2 gap-3">
+                  <div className="mt-5 grid grid-cols-2 gap-3">
                     <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
                       <p className="text-2xl font-black text-emerald-200">{program.modules.length}+</p>
                       <p className="mt-1 text-xs font-bold text-slate-300">Skill modules</p>
@@ -271,7 +278,7 @@ function CourseDetail() {
           <p className="course-lead-copy max-w-5xl text-lg font-semibold leading-9 text-slate-200">
             {program.overview}
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
             {overviewCards.map(([title, text], index) => (
               <InfoCard key={title} icon={FaChartLine} title={title} text={text} tone={cardTones[index % cardTones.length]} />
             ))}
@@ -279,17 +286,17 @@ function CourseDetail() {
         </ContentBand>
 
         <ContentBand id="curriculum" eyebrow="What You Will Master" title="Premium Curriculum Modules" variant="mesh">
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {program.modules.map((module, index) => (
-              <article key={module.name} className={`course-glass-card ${cardTones[index % cardTones.length]} group p-5 transition hover:-translate-y-1 xl:p-6`}>
-                <div className="mb-5 flex items-center gap-4">
+              <article key={module.name} className={`course-glass-card ${cardTones[index % cardTones.length]} group p-4 transition hover:-translate-y-1 xl:p-5`}>
+                <div className="mb-4 flex items-center gap-3">
                   <span className="course-number-chip flex h-12 w-12 items-center justify-center rounded-xl text-lg font-black">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-xl font-black tracking-[-0.02em] text-white">{module.name}</h3>
                 </div>
                 <p className="text-sm font-semibold leading-7 text-slate-300">{module.description}</p>
-                <div className="mt-5 grid gap-2">
+                <div className="mt-4 grid gap-2">
                   {module.outcomes.map((item) => (
                     <span key={item} className="flex items-start gap-2 text-sm font-bold leading-6 text-slate-200">
                       <FaCheck className="mt-1 shrink-0 text-emerald-300" />
@@ -311,10 +318,10 @@ function CourseDetail() {
         </ContentBand>
 
         <ContentBand eyebrow="Real World Projects" title="Portfolio-Ready Project Showcase" variant="showcase">
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             {program.projects.map(([name, description, tech, skills], index) => (
-              <article key={name} className={`course-project-card ${cardTones[index % cardTones.length]} p-5 transition hover:-translate-y-1 xl:p-6`}>
-                <FaTools className="mb-5 text-2xl text-emerald-200" />
+              <article key={name} className={`course-project-card ${cardTones[index % cardTones.length]} p-4 transition hover:-translate-y-1 xl:p-5`}>
+                <FaTools className="mb-4 text-2xl text-emerald-200" />
                 <h3 className="text-xl font-black text-white">{name}</h3>
                 <p className="mt-3 text-sm font-semibold leading-7 text-slate-300">{description}</p>
                 <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-emerald-200">Technologies Used</p>
@@ -345,9 +352,9 @@ function CourseDetail() {
         </ContentBand>
 
         <ContentBand eyebrow="Career Opportunities" title="Roles You Can Prepare For" variant="showcase">
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {program.outcomes.map((role, index) => (
-              <article key={role} className={`course-role-card ${cardTones[index % cardTones.length]} p-5 xl:p-6`}>
+              <article key={role} className={`course-role-card ${cardTones[index % cardTones.length]} p-4 xl:p-5`}>
                 <FaBriefcase className="mb-4 text-2xl text-emerald-200" />
                 <h3 className="text-xl font-black text-white">{role}</h3>
                 <p className="mt-3 text-sm font-semibold leading-7 text-slate-300">
@@ -434,16 +441,16 @@ function CourseDetail() {
           </div>
         </ContentBand>
 
-        <section className="relative px-6 py-16 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:py-24">
-          <div className="course-final-cta course-sparkle-field relative z-10 mx-auto max-w-[1540px] overflow-hidden rounded-[2.25rem] border border-emerald-200/15 bg-white/[0.06] p-8 text-center shadow-[0_32px_130px_-72px_rgba(34,197,94,0.85)] backdrop-blur-2xl lg:p-12">
-            <FaLightbulb className="mx-auto mb-6 text-5xl text-emerald-200" />
+        <section className="relative px-5 py-8 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:py-10">
+          <div className="course-final-cta course-sparkle-field relative z-10 mx-auto max-w-[1540px] overflow-hidden rounded-2xl border border-emerald-200/15 bg-white/[0.06] p-6 text-center shadow-[0_32px_130px_-72px_rgba(34,197,94,0.85)] backdrop-blur-2xl lg:p-8">
+            <FaLightbulb className="mx-auto mb-4 text-5xl text-emerald-200" />
             <h2 className="text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
               Become Industry Ready Today
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-xl font-black leading-9 text-emerald-100">
+            <p className="mx-auto mt-4 max-w-3xl text-xl font-black leading-9 text-emerald-100">
               Learn. Practice. Intern. Build. Prepare. Get Hired.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
               <button type="button" onClick={openEnrollmentTablet} className="min-h-13 rounded-2xl bg-emerald-300 px-7 text-sm font-black text-slate-950 transition hover:-translate-y-0.5">
                 Enroll Now
               </button>
@@ -469,13 +476,13 @@ function CourseDetail() {
 
 function ContentBand({ id, eyebrow, title, children, variant = "default" }) {
   return (
-    <section id={id} className={`course-section-shell course-section-${variant} relative px-6 py-12 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 lg:py-16`}>
+    <section id={id} className={`course-section-shell course-section-${variant} relative px-5 py-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 lg:py-5`}>
       <div className="relative z-10 mx-auto max-w-[1540px]">
-        <div className="course-section-panel rounded-[2rem] border border-emerald-200/10 bg-slate-950/22 p-5 backdrop-blur-xl sm:p-7 lg:p-8">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="course-section-panel rounded-2xl border border-emerald-200/10 bg-slate-950/22 p-4 backdrop-blur-xl sm:p-4 lg:p-5">
+          <div className="mb-4 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="mb-3 text-sm font-black uppercase tracking-[0.22em] text-emerald-200">{eyebrow}</p>
-              <h2 className="max-w-4xl text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">{title}</h2>
+              <p className="mb-2 text-sm font-black uppercase tracking-[0.22em] text-emerald-200">{eyebrow}</p>
+              <h2 className="max-w-4xl text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl lg:text-[2.55rem]">{title}</h2>
             </div>
             <span className="hidden h-px flex-1 bg-gradient-to-r from-emerald-300/40 via-cyan-300/20 to-transparent lg:block" />
           </div>
@@ -488,8 +495,8 @@ function ContentBand({ id, eyebrow, title, children, variant = "default" }) {
 
 function InfoCard({ icon: Icon, title, text, tone = "course-tone-emerald" }) {
   return (
-    <article className={`course-glass-card ${tone} p-5 transition hover:-translate-y-1 xl:p-6`}>
-      <Icon className="mb-4 text-2xl text-emerald-200" />
+    <article className={`course-glass-card ${tone} p-4 transition hover:-translate-y-1 xl:p-5`}>
+      <Icon className="mb-3 text-2xl text-emerald-200" />
       <h3 className="text-lg font-black text-white">{title}</h3>
       <p className="mt-3 text-sm font-semibold leading-7 text-slate-300">{text}</p>
     </article>
@@ -498,8 +505,8 @@ function InfoCard({ icon: Icon, title, text, tone = "course-tone-emerald" }) {
 
 function TimelineCard({ index, text, tone = "course-tone-emerald" }) {
   return (
-    <article className={`course-timeline-card ${tone} p-5 transition hover:-translate-y-1 xl:p-6`}>
-      <span className="course-step-dot mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-black text-slate-950">
+    <article className={`course-timeline-card ${tone} p-4 transition hover:-translate-y-1 xl:p-5`}>
+      <span className="course-step-dot mb-3 flex h-10 w-10 items-center justify-center rounded-full text-sm font-black text-slate-950">
         {index}
       </span>
       <h3 className="text-lg font-black text-white">{text}</h3>

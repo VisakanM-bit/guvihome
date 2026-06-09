@@ -23,7 +23,7 @@ const HIGHLIGHTS = [
   { icon: FaUsers, text: "4.8M+ learners community" },
 ];
 
-const MARKETING_PATHS = ["/", "/programs"];
+const MARKETING_PATHS = ["/"];
 
 function CareerPopup() {
   const navigate = useNavigate();
@@ -114,7 +114,7 @@ function CareerPopup() {
           <button
             type="button"
             onClick={() => setManualOpen(true)}
-            className="fixed bottom-5 right-5 z-[9990] flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 text-white text-sm font-bold px-5 py-3 rounded-full shadow-lg shadow-red-500/30 hover:brightness-110 transition"
+            className="fixed bottom-5 right-5 z-[9990] flex items-center gap-2 bg-[#00a86b] text-white text-sm font-bold px-5 py-3 rounded-full shadow-lg shadow-emerald-500/30 hover:bg-[#00965f] transition"
           >
             <FaHeadset />
             Talk to Career Expert
@@ -199,7 +199,7 @@ function CareerPopup() {
           {/* Right panel — form (scrollable on short screens) */}
           <div className="flex-1 flex flex-col min-h-0 md:min-h-[480px] overflow-y-auto">
             <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center flex-1">
-              <p className="text-[11px] font-bold text-red-600 uppercase tracking-widest">
+              <p className="text-[11px] font-bold text-[#00a86b] uppercase tracking-widest">
                 First visit offer
               </p>
               <h3 className="text-2xl sm:text-[1.65rem] font-bold text-slate-900 mt-1">
@@ -279,7 +279,7 @@ function CareerPopup() {
               <button
                 type="button"
                 onClick={() => setShowInfo(true)}
-                className="text-sm text-red-600 font-semibold hover:underline mb-4 text-left"
+                className="text-sm text-[#00a86b] font-semibold hover:underline mb-4 text-left"
               >
                 What&apos;s included? →
               </button>
@@ -288,7 +288,7 @@ function CareerPopup() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:brightness-110 disabled:opacity-60 text-white font-bold text-sm sm:text-base shadow-lg shadow-red-500/25 transition flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-xl bg-[#00a86b] hover:bg-[#00965f] disabled:opacity-60 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2"
               >
                 <FaCheckCircle />
                 {submitting ? "Saving..." : "TALK TO OUR CAREER EXPERT"}

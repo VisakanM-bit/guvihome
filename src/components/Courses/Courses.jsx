@@ -104,9 +104,9 @@ const programs = [
 
 function Courses() {
   return (
-    <section id="courses" className="career-programs-section px-4 py-12 sm:px-6 md:px-8 lg:px-8 lg:py-16 2xl:px-10">
+    <section id="courses" className="career-programs-section px-4 py-6 sm:px-6 md:px-8 lg:px-8 lg:py-7 2xl:px-10">
       <div className="w-full">
-        <div className="mx-auto mb-10 max-w-4xl text-center">
+        <div className="mx-auto mb-5 max-w-4xl text-center">
           <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#00a86b]">
             Career Accelerator Programs
           </p>
@@ -119,12 +119,12 @@ function Courses() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 2xl:gap-7">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 2xl:gap-5">
           {programs.map(({ icon: Icon, image, title, subtitle, skills, support, slug }) => (
             <Link
               key={title}
               to={`/programs/${slug}`}
-              className="career-program-card group flex min-h-full flex-col overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1"
+              className="career-program-card group flex min-h-full flex-col overflow-hidden rounded-xl transition duration-300 hover:-translate-y-1"
             >
               <div className="relative h-52 overflow-hidden bg-slate-900 2xl:h-60">
                 <img
@@ -139,35 +139,35 @@ function Courses() {
               </div>
 
               <div className="flex flex-1 flex-col p-5 2xl:p-6">
-                <h2 className="min-h-[64px] text-xl font-black leading-snug text-slate-950 2xl:text-2xl">
+                <h2 className="min-h-[76px] text-xl font-black leading-snug text-slate-950 2xl:text-2xl">
                   {title}
                 </h2>
-                <p className="mt-3 min-h-[48px] text-sm font-bold leading-6 text-slate-600 2xl:text-base">
+                <p className="mt-3 min-h-[56px] text-base font-bold leading-7 text-slate-200 2xl:text-lg">
                   {subtitle}
                 </p>
 
-                <div className="mt-5 grid gap-2">
+                <div className="mt-4 grid gap-2">
                   {skills.map((skill) => (
-                    <span key={skill} className="flex items-center gap-2 text-sm font-semibold text-slate-700 2xl:text-base">
+                    <span key={skill} className="flex items-center gap-2 text-base font-semibold text-slate-100 2xl:text-lg">
                       <FaCheck className="shrink-0 text-[#00a86b]" />
                       {skill}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-5 grid gap-2 border-t border-slate-100 pt-4">
+                <div className="mt-5 grid gap-2 border-t border-white/80 pt-4">
                   {support.map((item) => (
-                    <span key={item} className="text-sm font-extrabold text-slate-800 2xl:text-base">
+                    <span key={item} className="text-base font-extrabold text-white 2xl:text-lg">
                       {item}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-auto flex gap-3 pt-5">
-                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl border border-slate-300 px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 2xl:text-base">
+                <div className="mt-auto flex gap-3 pt-7">
+                  <span className="flex min-h-[72px] flex-1 items-center justify-center rounded-xl border border-white/80 px-5 text-lg font-extrabold text-white transition hover:bg-white/10 2xl:text-xl">
                     View Curriculum
                   </span>
-                  <span className="flex min-h-12 flex-1 items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 px-3 text-sm font-extrabold text-white shadow-lg shadow-sky-500/20 transition hover:from-sky-400 hover:to-violet-500 2xl:text-base">
+                  <span className="flex min-h-[72px] flex-1 items-center justify-center rounded-xl bg-[#00a86b] px-5 text-lg font-extrabold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-[#00965f] 2xl:text-xl">
                     Explore Program
                   </span>
                 </div>

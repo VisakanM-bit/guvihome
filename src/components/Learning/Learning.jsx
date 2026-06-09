@@ -24,7 +24,7 @@ const learningTabs = [
       "Keep every track focused on real workplace outcomes, not random theory.",
     ],
     button: "Explore Career Programs",
-    href: "/programs",
+    href: "/#courses",
   },
   {
     title: "Internship Hub",
@@ -125,21 +125,21 @@ function Learning() {
   const SelectedIcon = selected.icon;
 
   return (
-    <section className="cybernet-network-bg px-4 py-12 text-white sm:px-6 md:px-8 lg:px-10 lg:py-20">
+    <section className="cybernet-network-bg px-4 py-12 text-slate-950 sm:px-6 md:px-8 lg:px-10 lg:py-20">
       <div className="relative z-10 mx-auto max-w-[1540px]">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-3 text-sm font-black uppercase tracking-[0.22em] text-sky-300">
+          <p className="mb-3 text-sm font-black uppercase tracking-[0.22em] text-emerald-700">
             Jawa EdTech Career Workspace
           </p>
-          <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-6xl">
             Learn. Practice. Earn. Have Fun!
           </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-base font-semibold leading-8 text-slate-200 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-3xl text-base font-semibold leading-8 text-emerald-950 sm:text-lg">
             A clean, connected space for learning, internships, projects, mentorship, placement preparation, milestones, and community support.
           </p>
         </div>
 
-        <div className="mt-9 overflow-x-auto rounded-xl border border-sky-200/12 bg-black/38 p-1 shadow-[0_24px_90px_-58px_rgba(56,189,248,0.75)] backdrop-blur-xl">
+        <div className="mt-9 overflow-x-auto rounded-xl border border-emerald-700/16 bg-white p-1 shadow-[0_24px_90px_-58px_rgba(0,108,69,0.45)] backdrop-blur-xl">
           <div className="flex min-w-max">
             {learningTabs.map(({ title, icon: Icon }, index) => (
               <button
@@ -148,8 +148,8 @@ function Learning() {
                 onClick={() => setActive(index)}
                 className={`flex min-h-16 min-w-[10.5rem] items-center justify-center gap-2 border-b-4 px-5 text-sm font-black transition sm:text-base ${
                   active === index
-                    ? "border-sky-400 bg-sky-400/16 text-sky-100 shadow-[inset_0_0_28px_rgba(56,189,248,0.18)]"
-                    : "border-transparent text-slate-300 hover:bg-white/[0.07] hover:text-white"
+                    ? "border-emerald-600 bg-emerald-100 text-emerald-950 shadow-[inset_0_0_28px_rgba(0,168,107,0.12)]"
+                    : "border-transparent text-slate-950 hover:bg-emerald-50 hover:text-emerald-800"
                 }`}
               >
                 <Icon className="text-base" />
@@ -162,38 +162,38 @@ function Learning() {
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="flex justify-center lg:justify-start">
             <div className="relative w-full max-w-[640px]">
-              <div className="absolute -inset-4 rounded-[2rem] bg-sky-400/12 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[1.7rem] border border-sky-200/18 bg-black p-3 shadow-[0_30px_100px_-46px_rgba(56,189,248,0.78)]">
-                <div className="overflow-hidden rounded-[1.2rem] bg-slate-950">
+              <div className="absolute -inset-4 rounded-[2rem] bg-emerald-400/18 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[1.7rem] border border-emerald-700/18 bg-white p-3 shadow-[0_30px_100px_-46px_rgba(0,108,69,0.58)]">
+                <div className="overflow-hidden rounded-[1.2rem] bg-emerald-50">
                   <img
                     src={selected.image}
                     alt={selected.title}
                     className="aspect-[16/10] w-full object-cover transition duration-500"
                   />
                 </div>
-                <div className="mx-auto h-5 w-[88%] rounded-b-2xl bg-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]" />
+                <div className="mx-auto h-5 w-[88%] rounded-b-2xl bg-emerald-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]" />
               </div>
             </div>
           </div>
 
           <div className="mx-auto w-full max-w-2xl lg:mx-0">
-            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-400 text-2xl text-slate-950 shadow-[0_0_34px_rgba(56,189,248,0.55)]">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-300 text-2xl text-slate-950 shadow-[0_0_34px_rgba(0,168,107,0.4)]">
               <SelectedIcon />
             </div>
-            <h3 className="text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
+            <h3 className="text-4xl font-black tracking-[-0.03em] text-slate-950 sm:text-5xl">
               {selected.title}
             </h3>
             <ul className="mt-7 grid gap-5">
               {selected.description.map((point) => (
-                <li key={point} className="flex gap-4 text-base font-semibold leading-7 text-slate-200 sm:text-lg">
-                  <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-sky-400 shadow-[0_0_16px_rgba(56,189,248,0.9)]" />
+                <li key={point} className="flex gap-4 text-base font-semibold leading-7 text-slate-950 sm:text-lg">
+                  <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_16px_rgba(0,168,107,0.75)]" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
             <Link
               to={selected.href}
-              className="mt-9 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 to-violet-600 px-8 text-base font-black text-white shadow-[0_20px_70px_-36px_rgba(56,189,248,0.95)] transition hover:-translate-y-0.5 hover:from-sky-400 hover:to-violet-500 sm:w-auto"
+              className="mt-9 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl bg-[#00a86b] px-8 text-base font-black text-slate-950 shadow-[0_20px_70px_-36px_rgba(0,168,107,0.75)] transition hover:-translate-y-0.5 hover:bg-[#00965f] sm:w-auto"
             >
               {selected.button}
               <FaArrowRight />
